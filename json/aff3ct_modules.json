@@ -1,0 +1,818 @@
+{
+	"aff3ct::module::Source":
+	{
+		"module_name": "aff3ct::module::Source",
+		"tasks":
+		{
+			"generate_N1":
+			{
+				"task_name": "generate",
+				"sockets":
+				[
+					{
+					"soc_name": "U_K",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, A> &"
+					}
+				]
+			},
+			"generate_N2":
+			{
+				"task_name": "generate",
+				"sockets":
+				[
+					{
+					"soc_name": "U_K",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Encoder":
+	{
+		"module_name": "aff3ct::module::Encoder",
+		"tasks":
+		{
+			"encode_N1":
+			{
+				"task_name": "encode",
+				"sockets":
+				[
+					{
+					"soc_name": "U_K",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, A> &"
+					},
+					{
+					"soc_name": "X_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, A> &"
+					}
+				]
+			},
+			"encode_N2":
+			{
+				"task_name": "encode",
+				"sockets":
+				[
+					{
+					"soc_name": "U_K",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					},
+					{
+					"soc_name": "X_N",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Interleaver":
+	{
+		"module_name": "aff3ct::module::Interleaver",
+		"tasks":
+		{
+			"deinterleave_N1":
+			{
+				"task_name": "deinterleave",
+				"sockets":
+				[
+					{
+					"soc_name": "itl",
+					"soc_dir": "in",
+					"soc_type": "D *"
+					},
+					{
+					"soc_name": "nat",
+					"soc_dir": "out",
+					"soc_type": "D *"
+					}
+				]
+			},
+			"deinterleave_N2":
+			{
+				"task_name": "deinterleave",
+				"sockets":
+				[
+					{
+					"soc_name": "itl",
+					"soc_dir": "in",
+					"soc_type": "D *"
+					},
+					{
+					"soc_name": "nat",
+					"soc_dir": "out",
+					"soc_type": "D *"
+					}
+				]
+			},
+			"deinterleave_N3":
+			{
+				"task_name": "deinterleave",
+				"sockets":
+				[
+					{
+					"soc_name": "itl",
+					"soc_dir": "in",
+					"soc_type": "std::vector<D, A> &"
+					},
+					{
+					"soc_name": "nat",
+					"soc_dir": "out",
+					"soc_type": "std::vector<D, A> &"
+					}
+				]
+			},
+			"interleave_N1":
+			{
+				"task_name": "interleave",
+				"sockets":
+				[
+					{
+					"soc_name": "nat",
+					"soc_dir": "in",
+					"soc_type": "D *"
+					},
+					{
+					"soc_name": "itl",
+					"soc_dir": "out",
+					"soc_type": "D *"
+					}
+				]
+			},
+			"interleave_N2":
+			{
+				"task_name": "interleave",
+				"sockets":
+				[
+					{
+					"soc_name": "nat",
+					"soc_dir": "in",
+					"soc_type": "D *"
+					},
+					{
+					"soc_name": "itl",
+					"soc_dir": "out",
+					"soc_type": "D *"
+					}
+				]
+			},
+			"interleave_N3":
+			{
+				"task_name": "interleave",
+				"sockets":
+				[
+					{
+					"soc_name": "nat",
+					"soc_dir": "in",
+					"soc_type": "std::vector<D, A> &"
+					},
+					{
+					"soc_name": "itl",
+					"soc_dir": "out",
+					"soc_type": "std::vector<D, A> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Decoder_SIHO":
+	{
+		"module_name": "aff3ct::module::Decoder_SIHO",
+		"tasks":
+		{
+			"decode_siho_N1":
+			{
+				"task_name": "decode_siho",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "V_K",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			},
+			"decode_siho_N2":
+			{
+				"task_name": "decode_siho",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, AR> &"
+					},
+					{
+					"soc_name": "V_K",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, AB> &"
+					}
+				]
+			},
+			"decode_siho_cw_N1":
+			{
+				"task_name": "decode_siho_cw",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "V_N",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			},
+			"decode_siho_cw_N2":
+			{
+				"task_name": "decode_siho_cw",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, AR> &"
+					},
+					{
+					"soc_name": "V_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, AB> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Decoder_HIHO":
+	{
+		"module_name": "aff3ct::module::Decoder_HIHO",
+		"tasks":
+		{
+			"decode_hiho_N1":
+			{
+				"task_name": "decode_hiho",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					},
+					{
+					"soc_name": "V_K",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			},
+			"decode_hiho_N2":
+			{
+				"task_name": "decode_hiho",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, A> &"
+					},
+					{
+					"soc_name": "V_K",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, A> &"
+					}
+				]
+			},
+			"decode_hiho_cw_N1":
+			{
+				"task_name": "decode_hiho_cw",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					},
+					{
+					"soc_name": "V_N",
+					"soc_dir": "out",
+					"soc_type": "B *"
+					}
+				]
+			},
+			"decode_hiho_cw_N2":
+			{
+				"task_name": "decode_hiho_cw",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, A> &"
+					},
+					{
+					"soc_name": "V_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<B, A> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Decoder_SISO":
+	{
+		"module_name": "aff3ct::module::Decoder_SISO",
+		"tasks":
+		{
+			"decode_siso_N1":
+			{
+				"task_name": "decode_siso",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"decode_siso_N2":
+			{
+				"task_name": "decode_siso",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, A> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, A> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Modem":
+	{
+		"module_name": "aff3ct::module::Modem",
+		"tasks":
+		{
+			"demodulate_N1":
+			{
+				"task_name": "demodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "Q *"
+					}
+				]
+			},
+			"demodulate_wg_N1":
+			{
+				"task_name": "demodulate_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "H_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "Q *"
+					}
+				]
+			},
+			"filter_N1":
+			{
+				"task_name": "filter",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"modulate_N1":
+			{
+				"task_name": "modulate",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N1",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					},
+					{
+					"soc_name": "X_N2",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"tdemodulate_N1":
+			{
+				"task_name": "tdemodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N3",
+					"soc_dir": "out",
+					"soc_type": "Q *"
+					}
+				]
+			},
+			"tdemodulate_wg_N1":
+			{
+				"task_name": "tdemodulate_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "H_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "Y_N3",
+					"soc_dir": "out",
+					"soc_type": "Q *"
+					}
+				]
+			},
+			"tmodulate_N1":
+			{
+				"task_name": "tmodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N1",
+					"soc_dir": "in",
+					"soc_type": "Q *"
+					},
+					{
+					"soc_name": "X_N2",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"demodulate_N2":
+			{
+				"task_name": "demodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, A> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<Q, A> &"
+					}
+				]
+			},
+			"demodulate_wg_N2":
+			{
+				"task_name": "demodulate_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "H_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, AR> &"
+					},
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, AQ> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<Q, AQ> &"
+					}
+				]
+			},
+			"filter_N2":
+			{
+				"task_name": "filter",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, A> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, A> &"
+					}
+				]
+			},
+			"modulate_N2":
+			{
+				"task_name": "modulate",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, AB> &"
+					},
+					{
+					"soc_name": "X_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, AR> &"
+					}
+				]
+			},
+			"tdemodulate_N2":
+			{
+				"task_name": "tdemodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, A> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, A> &"
+					},
+					{
+					"soc_name": "Y_N3",
+					"soc_dir": "out",
+					"soc_type": "std::vector<Q, A> &"
+					}
+				]
+			},
+			"tdemodulate_wg_N2":
+			{
+				"task_name": "tdemodulate_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "H_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, AR> &"
+					},
+					{
+					"soc_name": "Y_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, AQ> &"
+					},
+					{
+					"soc_name": "Y_N2",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, AQ> &"
+					},
+					{
+					"soc_name": "Y_N3",
+					"soc_dir": "out",
+					"soc_type": "std::vector<Q, AQ> &"
+					}
+				]
+			},
+			"tmodulate_N2":
+			{
+				"task_name": "tmodulate",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N1",
+					"soc_dir": "in",
+					"soc_type": "std::vector<Q, AQ> &"
+					},
+					{
+					"soc_name": "X_N2",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, AR> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Channel":
+	{
+		"module_name": "aff3ct::module::Channel",
+		"tasks":
+		{
+			"add_noise_N1":
+			{
+				"task_name": "add_noise",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"add_noise_wg_N1":
+			{
+				"task_name": "add_noise_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "H_N",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			},
+			"add_noise_N2":
+			{
+				"task_name": "add_noise",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, A> &"
+					},
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, A> &"
+					}
+				]
+			},
+			"add_noise_wg_N2":
+			{
+				"task_name": "add_noise_wg",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N",
+					"soc_dir": "in",
+					"soc_type": "std::vector<R, A> &"
+					},
+					{
+					"soc_name": "H_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, A> &"
+					},
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "out",
+					"soc_type": "std::vector<R, A> &"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Channel_AWGN_LLR":
+	{
+		"module_name": "aff3ct::module::Channel_AWGN_LLR",
+		"tasks":
+		{
+			"add_noise_N1":
+			{
+				"task_name": "add_noise",
+				"sockets":
+				[
+					{
+					"soc_name": "X_N",
+					"soc_dir": "in",
+					"soc_type": "R *"
+					},
+					{
+					"soc_name": "Y_N",
+					"soc_dir": "out",
+					"soc_type": "R *"
+					}
+				]
+			}
+		}
+	},
+
+	"aff3ct::module::Monitor_BFER":
+	{
+		"module_name": "aff3ct::module::Monitor_BFER",
+		"tasks":
+		{
+			"check_errors_N1":
+			{
+				"task_name": "check_errors",
+				"sockets":
+				[
+					{
+					"soc_name": "U",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, A> &"
+					},
+					{
+					"soc_name": "Y",
+					"soc_dir": "in",
+					"soc_type": "std::vector<B, A> &"
+					}
+				]
+			},
+			"check_errors_N2":
+			{
+				"task_name": "check_errors",
+				"sockets":
+				[
+					{
+					"soc_name": "U",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					},
+					{
+					"soc_name": "Y",
+					"soc_dir": "in",
+					"soc_type": "B *"
+					}
+				]
+			}
+		}
+	}
+}
