@@ -22,62 +22,63 @@
     <script>
     const header = document.querySelector('header');
     const section = document.querySelector('section');
-    var requestURL = 'https://github.com/NicolasKoenig03/aff3ct.github.io/tree/master/json/db.json';
-    var request = new XMLHttpRequest();
-    request.open('GET', requestURL);
-    request.responseType = 'json';
-    request.send();
 
-    request.onload = function() {
-        var aff3ct = request.response;
-        populateHeader(aff3ct);
-        showHeroes(aff3ct);
-    }
+    obj = '{"aff3ct::module::Source":{"module_name": "aff3ct::module::Source","tasks":{"generate_N1":{"task_name": "generate","sockets":[{"soc_name": "U_K","soc_dir": "out","soc_type": "std::vector<B, A> &"}]},"generate_N2":{"task_name": "generate","sockets":[{"soc_name": "U_K","soc_dir": "out","soc_type": "B *"}]}}}}';
+    json = JSON.parse(obj);
+
+    populateHeader(json);
+    showTask(json);
 
     function populateHeader(jsonObj) {
         var source = jsonObj['aff3ct::module::Source'];
 
         var myH1 = document.createElement('h1');
-        myH1.textContent = source[1].module_name;
+        myH1.textContent = source.module_name;
         header.appendChild(myH1);
 
-        /*var myPara = document.createElement('p');
-        myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + jsonObj['formed'];
-        header.appendChild(myPara);*/
+        var myPara = document.createElement('p');
+        myPara.textContent = 'Tasks: ';
+        header.appendChild(myPara);
     }
 
-    /*function showHeroes(jsonObj) {
-        var heroes = jsonObj['members'];
+    function showTask(jsonObj) {
+        var source = jsonObj['aff3ct::module::Source'];
+
+        var length = Object.keys(source.tasks).length
       
-        for (var i = 0; i < heroes.length; i++) {
+        for (var i = 0; i < length; i++) {
             var myArticle = document.createElement('article');
             var myH2 = document.createElement('h2');
             var myPara1 = document.createElement('p');
             var myPara2 = document.createElement('p');
             var myPara3 = document.createElement('p');
-            var myList = document.createElement('ul');
+            var myPara4 = document.createElement('p');
+            /*var myList = document.createElement('ul');*/
 
-            myH2.textContent = heroes[i].name;
-            myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
-            myPara2.textContent = 'Age: ' + heroes[i].age;
-            myPara3.textContent = 'Superpowers:';
+            myH2.textContent = 'Generate_N' + (i+1) + '     ';
+            myPara1.textContent = 'Task name: ' + source.tasks.generate_N1.task_name;
+            myPara2.textContent = 'Soc name: ' + source.tasks.generate_N1.sockets[0].soc_name;
+            myPara3.textContent = 'Soc dir: ' + source.tasks.generate_N1.sockets[0].soc_dir;
+            myPara4.textContent = 'Soc type: ' + source.tasks.generate_N1.sockets[0].soc_type;
         
-            var superPowers = heroes[i].powers;
-            for (var j = 0; j < superPowers.length; j++) {
+            /*var sockets = source.tasks.generate_N1.sockets[0];
+            for (var j = 0; j < sockets.length; j++) {
                 var listItem = document.createElement('li');
-                listItem.textContent = superPowers[j];
+                listItem.textContent = sockets[j];
                 myList.appendChild(listItem);
-            }
+            }*/
 
             myArticle.appendChild(myH2);
             myArticle.appendChild(myPara1);
             myArticle.appendChild(myPara2);
             myArticle.appendChild(myPara3);
-            myArticle.appendChild(myList);
+            myArticle.appendChild(myPara4);
+
+            /*myArticle.appendChild(myList);*/
 
             section.appendChild(myArticle);
         }
-    }*/
+    }
 
 
     </script>
