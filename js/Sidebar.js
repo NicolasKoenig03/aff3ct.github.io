@@ -86,6 +86,7 @@ Sidebar.prototype.init = function()
 	this.addModemPalette(false);
 	this.addChannelPalette(false);
 	this.addMonitorPalette(false);
+	this.addGeneralPalette(false);
 };
 
 /**
@@ -960,7 +961,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 		var sb = this;
 
 		// Reusable cells
-		var field = new mxCell('+ field: type', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
 
 		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
@@ -968,6 +969,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 
 		// Default tags
 		var dt = 'uml static class ';
+
 		var fns = [
 			this.addEntry(dt + 'object instance', function() {
 				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
@@ -975,7 +977,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 				cell.vertex = true;
 				cell.insert(field.clone());
 				cell.insert(divider.clone());
-				cell.insert(sb.cloneCell(field, '+ method(type): type'))
+				cell.insert(sb.cloneCell(field, 'Param2'))
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		}),
 		this.addEntry(dt + 'object instance', function() {
@@ -984,7 +986,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
+			cell.insert(sb.cloneCell(field, 'Param 2'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		}),
 		this.addEntry(dt + 'object instance', function() {
@@ -993,7 +995,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
+			cell.insert(sb.cloneCell(field, 'Param 2'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		})
 	];
@@ -1007,7 +1009,7 @@ Sidebar.prototype.addModemPalette = function(expand)
 		var sb = this;
 
 		// Reusable cells
-		var field = new mxCell('+ field: type', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
 
 		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
@@ -1017,35 +1019,26 @@ Sidebar.prototype.addModemPalette = function(expand)
 		var dt = 'uml static class ';
 		var fns = [
 			this.addEntry(dt + 'object instance', function() {
-				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
+				var cell = new mxCell('BPSK', new mxGeometry(0, 0, 160, 90),
 		    		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
 				cell.vertex = true;
 				cell.insert(field.clone());
 				cell.insert(divider.clone());
-				cell.insert(sb.cloneCell(field, '+ method(type): type'))
+				cell.insert(sb.cloneCell(field, 'Param 2'))
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		}),
 		this.addEntry(dt + 'object instance', function() {
-			var cell = new mxCell('User1', new mxGeometry(0, 0, 160, 90),
+			var cell = new mxCell('USE', new mxGeometry(0, 0, 160, 90),
 					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
-		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
-		}),
-		this.addEntry(dt + 'object instance', function() {
-			var cell = new mxCell('User2', new mxGeometry(0, 0, 160, 90),
-					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
-			cell.vertex = true;
-			cell.insert(field.clone());
-			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
+			cell.insert(sb.cloneCell(field, 'Param 2'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		})
 	];
 
-	this.addPaletteFunctions('sources', 'Sources', expand || false, fns);
+	this.addPaletteFunctions('modem', 'Modem', expand || false, fns);
 };
 
 Sidebar.prototype.addChannelPalette = function(expand)
@@ -1054,7 +1047,7 @@ Sidebar.prototype.addChannelPalette = function(expand)
 		var sb = this;
 
 		// Reusable cells
-		var field = new mxCell('+ field: type', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
 
 		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
@@ -1064,35 +1057,17 @@ Sidebar.prototype.addChannelPalette = function(expand)
 		var dt = 'uml static class ';
 		var fns = [
 			this.addEntry(dt + 'object instance', function() {
-				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
+				var cell = new mxCell('LLR AWGN', new mxGeometry(0, 0, 160, 90),
 		    		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
 				cell.vertex = true;
 				cell.insert(field.clone());
 				cell.insert(divider.clone());
-				cell.insert(sb.cloneCell(field, '+ method(type): type'))
+				cell.insert(sb.cloneCell(field, 'Param 2'))
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
-		}),
-		this.addEntry(dt + 'object instance', function() {
-			var cell = new mxCell('User1', new mxGeometry(0, 0, 160, 90),
-					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
-			cell.vertex = true;
-			cell.insert(field.clone());
-			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
-		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
-		}),
-		this.addEntry(dt + 'object instance', function() {
-			var cell = new mxCell('User2', new mxGeometry(0, 0, 160, 90),
-					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
-			cell.vertex = true;
-			cell.insert(field.clone());
-			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
-		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		})
 	];
 
-	this.addPaletteFunctions('sources', 'Sources', expand || false, fns);
+	this.addPaletteFunctions('channel', 'Channel', expand || false, fns);
 };
 
 Sidebar.prototype.addMonitorPalette = function(expand)
@@ -1101,7 +1076,7 @@ Sidebar.prototype.addMonitorPalette = function(expand)
 		var sb = this;
 
 		// Reusable cells
-		var field = new mxCell('+ field: type', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
 
 		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
@@ -1111,21 +1086,21 @@ Sidebar.prototype.addMonitorPalette = function(expand)
 		var dt = 'uml static class ';
 		var fns = [
 			this.addEntry(dt + 'object instance', function() {
-				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
+				var cell = new mxCell('BFER_1', new mxGeometry(0, 0, 160, 90),
 		    		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
 				cell.vertex = true;
 				cell.insert(field.clone());
 				cell.insert(divider.clone());
-				cell.insert(sb.cloneCell(field, '+ method(type): type'))
+				cell.insert(sb.cloneCell(field, 'Param 2'))
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		}),
 		this.addEntry(dt + 'object instance', function() {
-			var cell = new mxCell('User1', new mxGeometry(0, 0, 160, 90),
+			var cell = new mxCell('BFER_2', new mxGeometry(0, 0, 160, 90),
 					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
+			cell.insert(sb.cloneCell(field, 'Param 2'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		}),
 		this.addEntry(dt + 'object instance', function() {
@@ -1134,12 +1109,27 @@ Sidebar.prototype.addMonitorPalette = function(expand)
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, '+ method(type): type'))
+			cell.insert(sb.cloneCell(field, 'Param 2'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		})
 	];
 
-	this.addPaletteFunctions('sources', 'Sources', expand || false, fns);
+	this.addPaletteFunctions('monitor', 'Monitor', expand || false, fns);
+};
+
+Sidebar.prototype.addGeneralPalette = function(expand)
+{
+	var lineTags = 'line lines connector connectors connection connections arrow arrows ';
+	var fns = [
+		this.createVertexTemplateEntry('shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;', 120, 60, '', 'Process', null, null, 'process task'),
+	 	this.createEdgeTemplateEntry('shape=link;html=1;', 50, 50, '', 'Link', null, lineTags + 'link'),
+	 	this.createEdgeTemplateEntry('endArrow=none;dashed=1;html=1;', 50, 50, '', 'Dashed Line', null, lineTags + 'dashed undirected no'),
+	 	this.createEdgeTemplateEntry('endArrow=none;html=1;', 50, 50, '', 'Line', null, lineTags + 'simple undirected plain blank no'),
+	 	this.createEdgeTemplateEntry('endArrow=classic;startArrow=classic;html=1;', 50, 50, '', 'Bidirectional Connector', null, lineTags + 'bidirectional'),
+	 	this.createEdgeTemplateEntry('endArrow=classic;html=1;', 50, 50, '', 'Directional Connector', null, lineTags + 'directional directed')
+	];
+
+	this.addPaletteFunctions('general', mxResources.get('general'), (expand != null) ? expand : true, fns);
 };
 
 /**
