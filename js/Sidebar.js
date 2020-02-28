@@ -960,6 +960,8 @@ Sidebar.prototype.addSourcePalette = function(expand)
 	// Avoids having to bind all functions to "this"
 		var sb = this;
 
+		var field = new mxCell('', new mxGeometry(0,0,))
+
 		// Reusable cells
 		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
@@ -971,6 +973,8 @@ Sidebar.prototype.addSourcePalette = function(expand)
 		var dt = 'uml static class ';
 
 		var fns = [
+			this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;', 120, 60, '', 'Rectangle', null, null, 'rect rectangle box'),
+
 			this.addEntry(dt + 'object instance', function() {
 				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
 		    		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
@@ -979,6 +983,42 @@ Sidebar.prototype.addSourcePalette = function(expand)
 				cell.insert(divider.clone());
 				cell.insert(sb.cloneCell(field, 'Param2'))
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
+		}),
+		this.addEntry(dt + 'object instance', function() {
+			// var cell = new mxCell('Process', new mxGeometry(0, 0, 160, 90),
+			// 		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
+			//
+			// var v2 = cell.insert(cell, null, 'in', 0, 0.5, 20, 20, 'portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
+			// v2.geometry.offset = new mxPoint(-10, -10);
+			// v2.geometry.relative = true;
+			//
+			// var v3 = cell.insert(cell, null, 'out', 1, 0.5, 20, 20, 'portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
+			// v3.geometry.offset = new mxPoint(-10, -10);
+			// v3.geometry.relative = true;
+			//
+			// cell.vertex = true;
+			//
+			// return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
+
+			var edge = new mxCell('Process', new mxGeometry(0, 0, 0, 0), 'endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;');
+			edge.geometry.setTerminalPoint(new mxPoint(0, 0), true);
+			edge.geometry.setTerminalPoint(new mxPoint(160, 0), false);
+			edge.geometry.relative = true;
+			edge.edge = true;
+
+		    	var cell1 = new mxCell('0..n', new mxGeometry(-1, 0, 0, 0), 'resizable=0;html=1;align=left;verticalAlign=top;labelBackgroundColor=#FF0040;fontSize=10;');
+		    	cell1.geometry.relative = true;
+		    	cell1.setConnectable(false);
+		    	cell1.vertex = true;
+		    	edge.insert(cell1);
+
+		    	var cell2 = new mxCell('1', new mxGeometry(1, 0, 0, 0), 'resizable=0;html=1;align=right;verticalAlign=top;labelBackgroundColor=#FF0040;fontSize=10;');
+		    	cell2.geometry.relative = true;
+		    	cell2.setConnectable(false);
+		    	cell2.vertex = true;
+		    	edge.insert(cell2);
+
+			return sb.createEdgeTemplateFromCells([edge], 160, 0, 'Relation 2');
 		}),
 		this.addEntry(dt + 'object instance', function() {
 			var cell = new mxCell('User1', new mxGeometry(0, 0, 160, 90),
