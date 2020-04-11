@@ -3120,7 +3120,7 @@ EditorUi.prototype.updateActionStates = function()
 
 	// Updates menu states
    	var state = graph.view.getState(graph.getSelectionCell());
-    this.menus.get('navigation').setEnabled(selected || graph.view.currentRoot != null);
+    // this.menus.get('navigation').setEnabled(selected || graph.view.currentRoot != null);
     this.actions.get('collapsible').setEnabled(vertexSelected &&
     	(graph.isContainer(graph.getSelectionCell()) || graph.model.getChildCount(graph.getSelectionCell()) > 0));
     this.actions.get('home').setEnabled(graph.view.currentRoot != null);
@@ -3136,11 +3136,11 @@ EditorUi.prototype.updateActionStates = function()
     this.actions.get('grid').setEnabled(!this.editor.chromeless || this.editor.editable);
 
     var unlocked = graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent());
-    this.menus.get('layout').setEnabled(unlocked);
-    this.menus.get('insert').setEnabled(unlocked);
-    this.menus.get('direction').setEnabled(unlocked && vertexSelected);
-    this.menus.get('align').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
-    this.menus.get('distribute').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
+    // this.menus.get('layout').setEnabled(unlocked);
+    // this.menus.get('insert').setEnabled(unlocked);
+    // this.menus.get('direction').setEnabled(unlocked && vertexSelected);
+    // this.menus.get('align').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
+    // this.menus.get('distribute').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
     this.actions.get('selectVertices').setEnabled(unlocked);
     this.actions.get('selectEdges').setEnabled(unlocked);
     this.actions.get('selectAll').setEnabled(unlocked);
@@ -3358,7 +3358,7 @@ EditorUi.prototype.createSidebarFooterContainer = function()
 EditorUi.prototype.createUi = function()
 {
 	// Creates menubar
-	this.menubar = (this.editor.chromeless) ? null : this.menus.createMenubar(this.createDiv('geMenubar'));
+	// this.menubar = (this.editor.chromeless) ? null : this.menus.createMenubar(this.createDiv('geMenubar'));
 	
 	if (this.menubar != null)
 	{
@@ -3421,7 +3421,7 @@ EditorUi.prototype.createUi = function()
 	}
 
 	// Creates toolbar
-	this.toolbar = (this.editor.chromeless) ? null : this.createToolbar(this.createDiv('geToolbar'));
+	// this.toolbar = (this.editor.chromeless) ? null : this.createToolbar(this.createDiv('geToolbar'));
 	
 	if (this.toolbar != null)
 	{
@@ -3470,10 +3470,10 @@ EditorUi.prototype.setStatusText = function(value)
 /**
  * Creates a new toolbar for the given container.
  */
-EditorUi.prototype.createToolbar = function(container)
-{
-	return new Toolbar(this, container);
-};
+// EditorUi.prototype.createToolbar = function(container)
+// {
+// 	return new Toolbar(this, container);
+// };
 
 /**
  * Creates a new sidebar for the given container.
