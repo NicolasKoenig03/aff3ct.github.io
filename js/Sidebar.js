@@ -642,7 +642,7 @@ Sidebar.prototype.addSearchPalette = function(expand)
 	div.style.overflow = 'hidden';
 	div.style.width = '100%';
 	div.style.padding = '8px';
-	div.style.paddingTop = '14px';
+	div.style.paddingTop = '80px';
 	div.style.paddingBottom = '0px';
 
 	if (!expand)
