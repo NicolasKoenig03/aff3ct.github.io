@@ -4032,6 +4032,8 @@ HoverIcons.prototype.getState = function(state)
 			{
 				cell = null;
 			}
+
+
 			
 			state = this.graph.view.getState(cell);
 			
