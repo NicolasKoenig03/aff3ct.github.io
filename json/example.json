@@ -1,0 +1,140 @@
+{
+    "aff3ct::module::Source_random": {
+        "module_name": "aff3ct::module::Source",
+        "user_name": "", // what the user decides to name his "box"
+        "tasks": {
+            "generate_N1": {
+                "task_name": "generate",
+                "sockets": [
+                    {
+                        "soc_name": "U_K",
+                        "soc_dir": "out",
+                        "soc_type": "std::vector<B, A> &"
+                    }
+                ]
+            }
+        }
+    },
+    "aff3ct::module::Encoder": {
+        "module_name": "aff3ct::module::Encoder",
+        "tasks": {
+            "encode_N1": {
+                "task_name": "encode",
+                "sockets": [
+                    {
+                        "soc_name": "U_K",
+                        "soc_dir": "in",
+                        "soc_type": "std::vector<B, A> &"
+                    },
+                    {
+                        "soc_name": "X_N",
+                        "soc_dir": "out",
+                        "soc_type": "std::vector<B, A> &"
+                    }
+                ]
+            }
+        }
+    },
+    "aff3ct::module::Decoder_SIHO": {
+        "module_name": "aff3ct::module::Decoder_SIHO",
+        "tasks": {
+            "decode_siho_N1": {
+                "task_name": "decode_siho",
+                "sockets": [
+                    {
+                        "soc_name": "Y_N",
+                        "soc_dir": "in",
+                        "soc_type": "R *"
+                    },
+                    {
+                        "soc_name": "V_K",
+                        "soc_dir": "out",
+                        "soc_type": "B *"
+                    }
+                ]
+            }
+        }
+    },
+    "aff3ct::module::Modem": {
+        "module_name": "aff3ct::module::Modem",
+        "tasks": {
+            "demodulate_N1": {
+                "task_name": "demodulate",
+                "sockets": [
+                    {
+                        "soc_name": "Y_N1",
+                        "soc_dir": "in",
+                        "soc_type": "Q *"
+                    },
+                    {
+                        "soc_name": "Y_N2",
+                        "soc_dir": "out",
+                        "soc_type": "Q *"
+                    }
+                ]
+            },
+            "modulate_N1": {
+                "task_name": "modulate",
+                "sockets": [
+                    {
+                        "soc_name": "X_N1",
+                        "soc_dir": "in",
+                        "soc_type": "B *"
+                    },
+                    {
+                        "soc_name": "X_N2",
+                        "soc_dir": "out",
+                        "soc_type": "R *"
+                    }
+                ]
+            }
+        }
+    },
+    "aff3ct::module::Channel_AWGN_LLR": {
+        "module_name": "aff3ct::module::Channel_AWGN_LLR",
+        "tasks": {
+            "add_noise": {
+                "task_name": "add_noise",
+                "sockets": [
+                    {
+                        "soc_name": "X_N",
+                        "soc_dir": "in",
+                        "soc_type": "R *"
+                    },
+                    {
+                        "soc_name": "Y_N",
+                        "soc_dir": "out",
+                        "soc_type": "R *"
+                    }
+                ]
+            }
+        }
+    },
+    "aff3ct::module::Monitor_BFER": {
+        "module_name": "aff3ct::module::Monitor_BFER",
+        "tasks": {
+            "check_errors_N1": {
+                "task_name": "check_errors",
+                "sockets": [
+                    {
+                        "soc_name": "U",
+                        "soc_dir": "in",
+                        "soc_type": "std::vector<B, A> &"
+                    },
+                    {
+                        "soc_name": "Y",
+                        "soc_dir": "in",
+                        "soc_type": "std::vector<B, A> &"
+                    }
+                ]
+            }
+        }
+    },
+    "parameters": {
+        "code": 32,
+        "codewordSize": 128,
+        "frame": 100,
+        "seed": 0
+    },
+    "bindings": {}
+}

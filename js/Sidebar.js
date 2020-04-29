@@ -4,6 +4,8 @@
 /**
  * Construcs a new sidebar for the given editor.
  */
+
+
 function Sidebar(editorUi, container)
 {
 	this.editorUi = editorUi;
@@ -28,7 +30,7 @@ function Sidebar(editorUi, container)
 
 	this.pointerDownHandler = mxUtils.bind(this, function()
 	{
-		this.showTooltips = false;
+		this.showTooltips = true;
 		this.hideTooltip();
 	});
 
@@ -960,66 +962,62 @@ Sidebar.prototype.addSourcePalette = function(expand)
 	// Avoids having to bind all functions to "this"
 		var sb = this;
 
-		var field = new mxCell('', new mxGeometry(0,0,))
-
-		// Reusable cells
-		var field = new mxCell('Param 1', new mxGeometry(0, 0, 100, 26), 'text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+		// Reusable cell
+		var field = new mxCell('Param 1', new mxGeometry(10, 27, 140, 26), 'text;strokeColor=none;fillColor=red;align=left;verticalAlign=top;resizable=0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
 		field.vertex = true;
 
 		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
 		divider.vertex = true;
 
+
+
+
 		// Default tags
 		var dt = 'uml static class ';
 
 		var fns = [
-			this.createVertexTemplateEntry('rounded=0;whiteSpace=wrap;html=1;', 120, 60, '', 'Rectangle', null, null, 'rect rectangle box'),
 
-			this.addEntry(dt + 'object instance', function() {
-				var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
-		    		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
-				cell.vertex = true;
-				cell.insert(field.clone());
-				cell.insert(divider.clone());
-				cell.insert(sb.cloneCell(field, 'Param2'))
-			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
+		this.addEntry(dt + 'object instance', function() {
+			// var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
+			// 	'swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;fillColor=#008cff;fontColor=#FFFFFF;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;glass=0;comic=0;fillOpacity=100;noLabel=0;labelPadding=0;portConstraintRotation=0;rotation=0;allowArrows=1;snapToPoint=0;perimeter=none;container=0;resizable=0;movableLabel=0;movable=1;backgroundOutline=0;resizeHeight=0;rotatable=0;connectable=0;');
+			var cell = new mxCell('dsdqs', new mxGeometry(0, 0, 160, 90),
+					'swimlane;fontStyle=1;align=center;verticalAlign=top;horizontal=1;childLayout=stackLayout;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;');
+			cell.vertex = true;
+
+			cell.insert(sb.cloneCell(field, 'Class test'));
+			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'test');
+		}),
+		this.addEntry(dt + 'object instance', function () {
+			var options = PopulateDropDownList();
+			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
+				'<b>Module</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;">' +
+				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options	+ '</SELECT><br/>', new mxGeometry(0, 0, 190, 220),
+				'resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
+			cell.vertex = true;
+
+			var input = new mxCell('IN', new mxGeometry(-10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
+			input.vertex = true;
+			
+			var output = new mxCell('OUT', new mxGeometry(cell.geometry.width -10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
+			output.vertex = true;
+
+			cell.insert(input);
+			cell.insert(output);
+
+			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Source 2');
 		}),
 		this.addEntry(dt + 'object instance', function() {
-			// var cell = new mxCell('Process', new mxGeometry(0, 0, 160, 90),
-			// 		'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
-			//
-			// var v2 = cell.insert(cell, null, 'in', 0, 0.5, 20, 20, 'portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
-			// v2.geometry.offset = new mxPoint(-10, -10);
-			// v2.geometry.relative = true;
-			//
-			// var v3 = cell.insert(cell, null, 'out', 1, 0.5, 20, 20, 'portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
-			// v3.geometry.offset = new mxPoint(-10, -10);
-			// v3.geometry.relative = true;
-			//
-			// cell.vertex = true;
-			//
-			// return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 
-			var edge = new mxCell('Process', new mxGeometry(0, 0, 0, 0), 'endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;');
-			edge.geometry.setTerminalPoint(new mxPoint(0, 0), true);
-			edge.geometry.setTerminalPoint(new mxPoint(160, 0), false);
-			edge.geometry.relative = true;
-			edge.edge = true;
+			var cell = new mxCell('Random', new mxGeometry(0, 0, 160, 90),
+					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
+			cell.vertex = true;
+			cell.insert(field.clone());
 
-		    	var cell1 = new mxCell('0..n', new mxGeometry(-1, 0, 0, 0), 'resizable=0;html=1;align=left;verticalAlign=top;labelBackgroundColor=#FF0040;fontSize=10;');
-		    	cell1.geometry.relative = true;
-		    	cell1.setConnectable(false);
-		    	cell1.vertex = true;
-		    	edge.insert(cell1);
-
-		    	var cell2 = new mxCell('1', new mxGeometry(1, 0, 0, 0), 'resizable=0;html=1;align=right;verticalAlign=top;labelBackgroundColor=#FF0040;fontSize=10;');
-		    	cell2.geometry.relative = true;
-		    	cell2.setConnectable(false);
-		    	cell2.vertex = true;
-		    	edge.insert(cell2);
-
-			return sb.createEdgeTemplateFromCells([edge], 160, 0, 'Relation 2');
+			return sb.createVertexTemplateFromCells([cell], 160, 90, 'Relation 2');
 		}),
+
+
 		this.addEntry(dt + 'object instance', function() {
 			var cell = new mxCell('User1', new mxGeometry(0, 0, 160, 90),
 					'swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;');
@@ -1035,7 +1033,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 			cell.vertex = true;
 			cell.insert(field.clone());
 			cell.insert(divider.clone());
-			cell.insert(sb.cloneCell(field, 'Param 2'))
+			cell.insert(sb.cloneCell(field, 'something else'))
 		return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Class');
 		})
 	];
@@ -1056,7 +1054,7 @@ Sidebar.prototype.addModemPalette = function(expand)
 		divider.vertex = true;
 
 		// Default tags
-		var dt = 'uml static class ';
+		var dt = 'uml static class';
 		var fns = [
 			this.addEntry(dt + 'object instance', function() {
 				var cell = new mxCell('BPSK', new mxGeometry(0, 0, 160, 90),
@@ -2693,6 +2691,8 @@ Sidebar.prototype.createVertexTemplateFromData = function(data, width, height, t
 	return this.createVertexTemplateFromCells(cells, width, height, title, showLabel, showTitle, allowCellsInserted);
 };
 
+
+
 /**
  * Creates a drop handler for inserting the given cells.
  */
@@ -3055,3 +3055,22 @@ Sidebar.prototype.destroy = function()
 		this.pointerOutHandler = null;
 	}
 };
+
+
+
+// function to populate dropdown menu with json informations coming from aff3ct library
+
+function PopulateDropDownList() {
+	var modules = [
+		{ SourceId: 1, Name: "Source1" },
+		{ SourceId: 2, Name: "Source2" },
+		{ SourceId: 3, Name: "Source3" }
+	];
+	var option = "";
+	// Adding options to the ddl
+	for (var i = 0; i < modules.length; i++) {
+		var option = option + '<option value="' + modules[i]['SourceId'] + '">' + modules[i]['Name'] + '</option>';
+	}
+
+	return option;
+}
