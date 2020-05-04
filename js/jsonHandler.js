@@ -4,7 +4,7 @@ function main() {
     document.getElementById("download-btn").addEventListener("click", function () {
 
         var filename = "project.cpp";
-        var code = buildHeader() + buildMain + buildModule + buildTask + buildFooter();
+        var code = buildHeader() + buildMain + buildModule + buildTask + buildFooter() + 'lol';
         download(filename, code)
     }, false);
 
@@ -19,9 +19,10 @@ function main() {
     request_ModuleTask.onload = function() {
         const objTask = request_ModuleTask.response;
         const jsonTask = JSON.parse(objTask);
-        buildModule = BuildModule(jsonTask)
-        buildMain = buildMain(jsonTask)
-        buildTask = buildTask(jsonTask)
+        buildModule = buildModule(jsonTask);
+        buildMain = buildMain(jsonTask);
+        buildTask = buildTask(jsonTask);
+        console.log(buildTask)
     }   
 }
 
@@ -56,7 +57,7 @@ function buildMain(jsonObj) {
     return initCode 
 }
 
-function BuildModule(jsonObj) {
+function buildModule(jsonObj) {
     buildModule = getModule(jsonObj)
     let buildModuleCode = '\tstd::unique_ptr<module::' + buildModule.source + '\t\t<>> source \t(new module::' + buildModule.source + '\t\t<>(K    ));\n'
         + '\tstd::unique_ptr<module::' + buildModule.encoder + '\t\t<>> encoder \t(new module::' + buildModule.encoder + '\t\t<>(K    ));\n'
@@ -70,14 +71,14 @@ function BuildModule(jsonObj) {
 function buildTask(jsonObj) {
     task = getTasks(jsonObj)
     sck = getSocket(jsonObj)
-    buildTask = '\tusing namespace module;\n'
+    let buildTaskCode = '\tusing namespace module;\n'
         + '\t(*encoder)[enc::sck::' +task.encoder+ '      ::'+sck.encIn+' ].bind((*source )[src::sck::' + task.source + '   ::' + sck.srcOut+' ]);\n'
         + '\t(*modem  )[mdm::sck::' +task.mod+     '    ::'+ sck.modIn +'].bind((*encoder)[enc::sck::' + task.encoder + '     ::' + sck.encOut +' ]);\n'
         + '\t(*channel)[chn::sck::' +task.channel+ '   ::'+ sck.chanIn + ' ].bind((*modem  )[mdm::sck::' + task.mod + '   ::' + sck.modOut +']);\n'
         + '\t(*modem  )[mdm::sck::' +task.demod+   '  ::' + sck.demodIn + '].bind((*channel)[chn::sck::' + task.channel + '  ::' + sck.chanOut +' ]);\n'
         + '\t(*decoder)[dec::sck::' +task.decoder+ ' ::' + sck.decodIn + ' ].bind((*modem  )[mdm::sck::' + task.demod + ' ::' + sck.demodOut +']);\n\n'
 
-    return buildTask
+    return buildTaskCode
 }
 
 function buildFooter() {
@@ -145,8 +146,6 @@ function getModule (jsonObj) {
     let channel = jsonObj['aff3ct::module::Channel_AWGN_LLR'].module_name;
     let decoder = jsonObj['aff3ct::module::Decoder_SIHO'].module_name;
 
-    // source = 'std::unique_ptr <' + source + '<>> source(new ' + source + '<>(K));'
-
     let buildModule = { "source" : source, "encoder" : encoder, "modem" : modem, "channel" : channel, "decoder" : decoder }
 
     for(var k in buildModule) {
@@ -169,33 +168,36 @@ function getTasks(jsonObj) {
 }
 
 function getSocket(jsonObj) {
-    let encIn    = jsonObj['aff3ct::module::Encoder'].tasks.encode_N1.sockets[0].soc_name;
-    let modIn    = jsonObj['aff3ct::module::Modem'].tasks.modulate_N1.sockets[0].soc_name;
-    let demodIn  = jsonObj['aff3ct::module::Modem'].tasks.demodulate_N1.sockets[0].soc_name;
-    let chanIn   = jsonObj['aff3ct::module::Channel_AWGN_LLR'].tasks.add_noise.sockets[0].soc_name;
-    let decodIn  = jsonObj['aff3ct::module::Decoder_SIHO'].tasks.decode_siho_N1.sockets[0].soc_name;
-
-    let srcOut   = jsonObj['aff3ct::module::Source_random'].tasks.generate_N1.sockets[0].soc_name;
-    let encOut   = jsonObj['aff3ct::module::Encoder'].tasks.encode_N1.sockets[1].soc_name;
-    let modOut   = jsonObj['aff3ct::module::Modem'].tasks.modulate_N1.sockets[1].soc_name;
-    let demodOut = jsonObj['aff3ct::module::Modem'].tasks.demodulate_N1.sockets[1].soc_name;
-    let chanOut  = jsonObj['aff3ct::module::Channel_AWGN_LLR'].tasks.add_noise.sockets[1].soc_name;
-    let decodOut = jsonObj['aff3ct::module::Decoder_SIHO'].tasks.decode_siho_N1.sockets[1].soc_name;
+    
+    let srcOut   = stripBindings(jsonObj['bindings'].src_enc, 0);
+    let encIn    = stripBindings(jsonObj['bindings'].src_enc, 1);
+    
+    let encOut   = stripBindings(jsonObj['bindings'].enc_mdm , 0);
+    let modIn    = stripBindings(jsonObj['bindings'].enc_mdm, 1);
+    
+    let modOut   = stripBindings(jsonObj['bindings'].mdm_chn, 0);
+    let chanIn   = stripBindings(jsonObj['bindings'].mdm_chn, 1);
+    
+    let chanOut  = stripBindings(jsonObj['bindings'].chn_mdm, 0);
+    let demodIn  = stripBindings(jsonObj['bindings'].chn_mdm, 1);
+    
+    let demodOut = stripBindings(jsonObj['bindings'].mdm_dec, 0);
+    let decodIn  = stripBindings(jsonObj['bindings'].mdm_dec, 1);
 
     socket = 
         {  
-            "encIn": encIn,
-            "modIn": modIn,
-            "demodIn": demodIn,
-            "chanIn": chanIn,
-            "decodIn": decodIn,
             "srcOut": srcOut,
+            "encIn": encIn,
             "encOut": encOut,
+            "modIn": modIn,
             "modOut": modOut,
-            "demodOut": demodOut,
+            "chanIn": chanIn,
             "chanOut": chanOut,
-            "decodOut": decodOut
+            "demodIn": demodIn,
+            "demodOut": demodOut,
+            "decodIn": decodIn,
         }
+        console.log(socket)
 
     return socket
 }
@@ -205,12 +207,15 @@ function getParam(jsonObj) {
     return parameters
 }
 
-function stripAff3ct(text) {
-    text = text.replace('aff3ct::', '')
-    return text
+function stripBindings(text, socket) {
+    arr = text.split(";");
+    if (socket === 0) { // this is an input
+        code = arr[0] // output
+    } else if (socket === 1) {
+        code = arr[1] // input
+    }
+    return code
 }
-
-
 // Takes filename and text content to write a downloadable file when pressing a button
 function download(filename, text) {
     var element = document.createElement('a');
