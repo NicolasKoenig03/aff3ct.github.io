@@ -3116,7 +3116,8 @@ EditorUi.prototype.updateActionStates = function()
 		(graph.getModel().getChildCount(graph.getSelectionCell()) > 0 ||
 		(oneVertexSelected && graph.isContainer(graph.getSelectionCell()))));
    	this.actions.get('removeFromGroup').setEnabled(oneVertexSelected &&
-   		graph.getModel().isVertex(graph.getModel().getParent(graph.getSelectionCell())));
+		   graph.getModel().isVertex(graph.getModel().getParent(graph.getSelectionCell())));
+	this.actions.get('getXml').setEnabled(graph.getModel());
 
 	// Updates menu states
    	var state = graph.view.getState(graph.getSelectionCell());

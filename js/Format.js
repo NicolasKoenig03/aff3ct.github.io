@@ -5293,6 +5293,7 @@ StyleFormatPanel.prototype.addStyleOps = function(div)
 	return div;
 };
 
+
 /**
  * Adds the label menu items to the given menu and parent.
  */
@@ -5765,8 +5766,20 @@ DiagramFormatPanel.prototype.addStyleOps = function(div)
 	btn.style.width = '202px';
 	div.appendChild(btn);
 
+	var btn = mxUtils.button(mxResources.get('getXml'), mxUtils.bind(this, function (evt) {
+		this.editorUi.actions.get('getXml').funct();
+	}));
+
+	mxUtils.br(div);
+
+	btn.setAttribute('title', mxResources.get('getXml') + ' (' + this.editorUi.actions.get('getXml').shortcut + ')');
+	btn.style.width = '202px';
+	btn.style.marginBottom = '2px';
+	div.appendChild(btn);
+
 	return div;
 };
+
 
 /**
  * Adds the label menu items to the given menu and parent.

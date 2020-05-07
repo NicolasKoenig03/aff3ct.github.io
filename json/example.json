@@ -1,7 +1,6 @@
 {
 	"aff3ct::module::Source_random": {
 		"module_name": "aff3ct::module::Source",
-		"user_name": "",
 		"tasks": {
 			"generate_N1": {
 				"task_name": "generate",

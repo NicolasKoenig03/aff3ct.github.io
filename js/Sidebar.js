@@ -87,6 +87,7 @@ Sidebar.prototype.init = function()
 	this.addChannelPalette(false);
 	this.addMonitorPalette(false);
 	this.addGeneralPalette(false);
+	this.addGetXmlButton(true);
 };
 
 /**
@@ -520,6 +521,7 @@ Sidebar.prototype.addEntry = function(tags, fn)
 
 	return fn;
 };
+
 
 /**
  * Adds shape search UI.
@@ -1002,6 +1004,17 @@ Sidebar.prototype.addSourcePalette = function(expand)
 
 	this.addPaletteFunctions('sources', 'Sources', expand || false, fns);
 };
+
+// Adds an option to view the XML of the graph
+Sidebar.prototype.addGetXmlButton = function(expand) 
+{
+	var sb = this; 
+	document.body.appendChild(mxUtils.button('View XML', function () {
+   	var encoder = new mxCodec();
+  	var node = encoder.encode(graph.getModel());
+   	mxUtils.popup(mxUtils.getXml(node), true);
+	}));
+}
 
 Sidebar.prototype.addModemPalette = function(expand)
 {

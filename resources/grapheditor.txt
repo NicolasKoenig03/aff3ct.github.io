@@ -141,6 +141,7 @@ formattedText=Formatted Text
 gap=Gap
 glass=Glass
 general=General
+getXml=get Xml
 global=Global
 gradient=Gradient
 gradientColor=Color
