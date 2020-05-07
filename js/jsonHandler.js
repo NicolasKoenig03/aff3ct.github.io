@@ -4,7 +4,7 @@ function main() {
     document.getElementById("download-btn").addEventListener("click", function () {
 
         var filename = "project.cpp";
-        var code = buildHeader() + buildMain + buildModule + buildTask + buildFooter() + 'lol';
+        var code = buildHeader() + buildMain + buildModule + buildTask + buildFooter();
         download(filename, code)
     }, false);
 

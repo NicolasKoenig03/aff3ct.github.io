@@ -90,7 +90,7 @@ Sidebar.prototype.init = function()
 	this.addChannelPalette(false);
 	this.addDecoderPalette(false);
 	this.addMonitorPalette(false);
-	this.addGeneralPalette(false);
+	// this.addGeneralPalette(false);
 	this.addGetXmlButton(true);
 };
 
@@ -1039,7 +1039,7 @@ Sidebar.prototype.addEncoderPalette = function(expand) {
 	];
 
 	this.addPaletteFunctions('encoder', 'Encoder', expand || false, fns);
-
+}
 // Adds an option to view the XML of the graph
 Sidebar.prototype.addGetXmlButton = function(expand)
 {
