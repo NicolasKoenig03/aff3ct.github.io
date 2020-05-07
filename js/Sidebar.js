@@ -90,7 +90,8 @@ Sidebar.prototype.init = function()
 	this.addChannelPalette(false);
 	this.addDecoderPalette(false);
 	this.addMonitorPalette(false);
-	// this.addGeneralPalette(false);
+	this.addGeneralPalette(false);
+	this.addGetXmlButton(true);
 };
 
 /**
@@ -525,6 +526,7 @@ Sidebar.prototype.addEntry = function(tags, fn)
 	return fn;
 };
 
+
 /**
  * Adds shape search UI.
  */
@@ -646,7 +648,7 @@ Sidebar.prototype.addSearchPalette = function(expand)
 	div.style.overflow = 'hidden';
 	div.style.width = '100%';
 	div.style.padding = '8px';
-	div.style.paddingTop = '14px';
+	div.style.paddingTop = '80px';
 	div.style.paddingBottom = '0px';
 
 	if (!expand)
@@ -986,7 +988,7 @@ Sidebar.prototype.addSourcePalette = function(expand)
 
 			var input = new mxCell('IN', new mxGeometry(-10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
 			input.vertex = true;
-			
+
 			var output = new mxCell('OUT', new mxGeometry(cell.geometry.width -10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
 			output.vertex = true;
 
@@ -1037,6 +1039,16 @@ Sidebar.prototype.addEncoderPalette = function(expand) {
 	];
 
 	this.addPaletteFunctions('encoder', 'Encoder', expand || false, fns);
+
+// Adds an option to view the XML of the graph
+Sidebar.prototype.addGetXmlButton = function(expand)
+{
+	var sb = this;
+	document.body.appendChild(mxUtils.button('View XML', function () {
+   	var encoder = new mxCodec();
+  	var node = encoder.encode(graph.getModel());
+   	mxUtils.popup(mxUtils.getXml(node), true);
+	}));
 }
 
 Sidebar.prototype.addModemPalette = function(expand)
@@ -1155,7 +1167,7 @@ Sidebar.prototype.addDecoderPalette = function(expand) {
 		})
 	];
 
-	this.addPaletteFunctions('decoder', 'Decoder', expand || false, fns);	
+	this.addPaletteFunctions('decoder', 'Decoder', expand || false, fns);
 }
 
 Sidebar.prototype.addMonitorPalette = function(expand)
