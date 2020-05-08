@@ -352,12 +352,13 @@ Format.prototype.refresh = function()
 	div.style.color = 'rgb(112, 112, 112)';
 	div.style.textAlign = 'left';
 	div.style.cursor = 'default';
+	div.style.marginTop = '0px';
 	
 	var label = document.createElement('div');
 	label.className = 'geFormatSection';
 	label.style.textAlign = 'center';
 	label.style.fontWeight = 'bold';
-	label.style.paddingTop = '8px';
+	label.style.paddingTop = '0px';
 	label.style.fontSize = '13px';
 	label.style.borderWidth = '0px 0px 1px 1px';
 	label.style.borderStyle = 'solid';
@@ -1224,6 +1225,7 @@ BaseFormatPanel.prototype.addArrow = function(elt, height)
 	arrow.style.display = (mxClient.IS_QUIRKS) ? 'inline' : 'inline-block';
 	arrow.style.padding = '6px';
 	arrow.style.paddingRight = '4px';
+	arrow.style.marginTop = '50px';
 	
 	var m = (10 - height);
 	
@@ -1731,23 +1733,23 @@ ArrangePanel.prototype.addAlign = function(div)
 		div.style.height = '60px';
 	}
 	
-	var left = this.editorUi.toolbar.addButton('geSprite-alignleft', mxResources.get('left'),
-		function() { graph.alignCells(mxConstants.ALIGN_LEFT); }, stylePanel);
-	var center = this.editorUi.toolbar.addButton('geSprite-aligncenter', mxResources.get('center'),
-		function() { graph.alignCells(mxConstants.ALIGN_CENTER); }, stylePanel);
-	var right = this.editorUi.toolbar.addButton('geSprite-alignright', mxResources.get('right'),
-		function() { graph.alignCells(mxConstants.ALIGN_RIGHT); }, stylePanel);
+	// var left = this.editorUi.toolbar.addButton('geSprite-alignleft', mxResources.get('left'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_LEFT); }, stylePanel);
+	// var center = this.editorUi.toolbar.addButton('geSprite-aligncenter', mxResources.get('center'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_CENTER); }, stylePanel);
+	// var right = this.editorUi.toolbar.addButton('geSprite-alignright', mxResources.get('right'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_RIGHT); }, stylePanel);
 
-	var top = this.editorUi.toolbar.addButton('geSprite-aligntop', mxResources.get('top'),
-		function() { graph.alignCells(mxConstants.ALIGN_TOP); }, stylePanel);
-	var middle = this.editorUi.toolbar.addButton('geSprite-alignmiddle', mxResources.get('middle'),
-		function() { graph.alignCells(mxConstants.ALIGN_MIDDLE); }, stylePanel);
-	var bottom = this.editorUi.toolbar.addButton('geSprite-alignbottom', mxResources.get('bottom'),
-		function() { graph.alignCells(mxConstants.ALIGN_BOTTOM); }, stylePanel);
+	// var top = this.editorUi.toolbar.addButton('geSprite-aligntop', mxResources.get('top'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_TOP); }, stylePanel);
+	// var middle = this.editorUi.toolbar.addButton('geSprite-alignmiddle', mxResources.get('middle'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_MIDDLE); }, stylePanel);
+	// var bottom = this.editorUi.toolbar.addButton('geSprite-alignbottom', mxResources.get('bottom'),
+	// 	function() { graph.alignCells(mxConstants.ALIGN_BOTTOM); }, stylePanel);
 	
-	this.styleButtons([left, center, right, top, middle, bottom]);
-	right.style.marginRight = '6px';
-	div.appendChild(stylePanel);
+	// this.styleButtons([left, center, right, top, middle, bottom]);
+	// right.style.marginRight = '6px';
+	// div.appendChild(stylePanel);
 	
 	return div;
 };
@@ -2571,69 +2573,69 @@ TextFormatPanel.prototype.addFont = function(container)
 	colorPanel.style.paddingTop = '6px';
 	colorPanel.style.paddingBottom = '6px';
 	
-	var fontMenu = this.editorUi.toolbar.addMenu('Helvetica', mxResources.get('fontFamily'),
-		true, 'fontFamily', stylePanel, null, true);
-	fontMenu.style.color = 'rgb(112, 112, 112)';
-	fontMenu.style.whiteSpace = 'nowrap';
-	fontMenu.style.overflow = 'hidden';
-	fontMenu.style.margin = '0px';
+	// var fontMenu = this.editorUi.toolbar.addMenu('Helvetica', mxResources.get('fontFamily'),
+	// 	true, 'fontFamily', stylePanel, null, true);
+	// fontMenu.style.color = 'rgb(112, 112, 112)';
+	// fontMenu.style.whiteSpace = 'nowrap';
+	// fontMenu.style.overflow = 'hidden';
+	// fontMenu.style.margin = '0px';
 	
-	this.addArrow(fontMenu);
-	fontMenu.style.width = '192px';
-	fontMenu.style.height = '15px';
+	// this.addArrow(fontMenu);
+	// fontMenu.style.width = '192px';
+	// fontMenu.style.height = '15px';
 	
-	var stylePanel2 = stylePanel.cloneNode(false);
-	stylePanel2.style.marginLeft = '-3px';
-	var fontStyleItems = this.editorUi.toolbar.addItems(['bold', 'italic', 'underline'], stylePanel2, true);
-	fontStyleItems[0].setAttribute('title', mxResources.get('bold') + ' (' + this.editorUi.actions.get('bold').shortcut + ')');
-	fontStyleItems[1].setAttribute('title', mxResources.get('italic') + ' (' + this.editorUi.actions.get('italic').shortcut + ')');
-	fontStyleItems[2].setAttribute('title', mxResources.get('underline') + ' (' + this.editorUi.actions.get('underline').shortcut + ')');
+	// var stylePanel2 = stylePanel.cloneNode(false);
+	// stylePanel2.style.marginLeft = '-3px';
+	// var fontStyleItems = this.editorUi.toolbar.addItems(['bold', 'italic', 'underline'], stylePanel2, true);
+	// fontStyleItems[0].setAttribute('title', mxResources.get('bold') + ' (' + this.editorUi.actions.get('bold').shortcut + ')');
+	// fontStyleItems[1].setAttribute('title', mxResources.get('italic') + ' (' + this.editorUi.actions.get('italic').shortcut + ')');
+	// fontStyleItems[2].setAttribute('title', mxResources.get('underline') + ' (' + this.editorUi.actions.get('underline').shortcut + ')');
 	
-	var verticalItem = this.editorUi.toolbar.addItems(['vertical'], stylePanel2, true)[0];
+	// var verticalItem = this.editorUi.toolbar.addItems(['vertical'], stylePanel2, true)[0];
 	
-	if (mxClient.IS_QUIRKS)
-	{
-		mxUtils.br(container);
-	}
+	// if (mxClient.IS_QUIRKS)
+	// {
+	// 	mxUtils.br(container);
+	// }
 	
-	container.appendChild(stylePanel2);
+	// container.appendChild(stylePanel2);
 
-	this.styleButtons(fontStyleItems);
-	this.styleButtons([verticalItem]);
+	// this.styleButtons(fontStyleItems);
+	// this.styleButtons([verticalItem]);
 	
-	var stylePanel3 = stylePanel.cloneNode(false);
-	stylePanel3.style.marginLeft = '-3px';
-	stylePanel3.style.paddingBottom = '0px';
+	// var stylePanel3 = stylePanel.cloneNode(false);
+	// stylePanel3.style.marginLeft = '-3px';
+	// stylePanel3.style.paddingBottom = '0px';
 	
-	// Helper function to return a wrapper function does not pass any arguments
-	var callFn = function(fn)
-	{
-		return function()
-		{
-			return fn();
-		};
-	};
+	// // Helper function to return a wrapper function does not pass any arguments
+	// var callFn = function(fn)
+	// {
+	// 	return function()
+	// 	{
+	// 		return fn();
+	// 	};
+	// };
 	
-	var left = this.editorUi.toolbar.addButton('geSprite-left', mxResources.get('left'),
-		(graph.cellEditor.isContentEditing()) ?
-		function(evt)
-		{
-			graph.cellEditor.alignText(mxConstants.ALIGN_LEFT, evt);
-		} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_LEFT])), stylePanel3);
-	var center = this.editorUi.toolbar.addButton('geSprite-center', mxResources.get('center'),
-		(graph.cellEditor.isContentEditing()) ?
-		function(evt)
-		{
-			graph.cellEditor.alignText(mxConstants.ALIGN_CENTER, evt);
-		} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_CENTER])), stylePanel3);
-	var right = this.editorUi.toolbar.addButton('geSprite-right', mxResources.get('right'),
-		(graph.cellEditor.isContentEditing()) ?
-		function(evt)
-		{
-			graph.cellEditor.alignText(mxConstants.ALIGN_RIGHT, evt);
-		} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_RIGHT])), stylePanel3);
+	// var left = this.editorUi.toolbar.addButton('geSprite-left', mxResources.get('left'),
+	// 	(graph.cellEditor.isContentEditing()) ?
+	// 	function(evt)
+	// 	{
+	// 		graph.cellEditor.alignText(mxConstants.ALIGN_LEFT, evt);
+	// 	} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_LEFT])), stylePanel3);
+	// var center = this.editorUi.toolbar.addButton('geSprite-center', mxResources.get('center'),
+	// 	(graph.cellEditor.isContentEditing()) ?
+	// 	function(evt)
+	// 	{
+	// 		graph.cellEditor.alignText(mxConstants.ALIGN_CENTER, evt);
+	// 	} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_CENTER])), stylePanel3);
+	// var right = this.editorUi.toolbar.addButton('geSprite-right', mxResources.get('right'),
+	// 	(graph.cellEditor.isContentEditing()) ?
+	// 	function(evt)
+	// 	{
+	// 		graph.cellEditor.alignText(mxConstants.ALIGN_RIGHT, evt);
+	// 	} : callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_ALIGN], [mxConstants.ALIGN_RIGHT])), stylePanel3);
 
-	this.styleButtons([left, center, right]);
+	// this.styleButtons([left, center, right]);
 	
 	// Quick hack for strikethrough
 	// TODO: Add translations and toggle state
@@ -2653,21 +2655,21 @@ TextFormatPanel.prototype.addFont = function(container)
 		this.styleButtons([strike]);
 	}
 	
-	var top = this.editorUi.toolbar.addButton('geSprite-top', mxResources.get('top'),
-		callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_TOP])), stylePanel3);
-	var middle = this.editorUi.toolbar.addButton('geSprite-middle', mxResources.get('middle'),
-		callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_MIDDLE])), stylePanel3);
-	var bottom = this.editorUi.toolbar.addButton('geSprite-bottom', mxResources.get('bottom'),
-		callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_BOTTOM])), stylePanel3);
+	// var top = this.editorUi.toolbar.addButton('geSprite-top', mxResources.get('top'),
+	// 	callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_TOP])), stylePanel3);
+	// var middle = this.editorUi.toolbar.addButton('geSprite-middle', mxResources.get('middle'),
+	// 	callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_MIDDLE])), stylePanel3);
+	// var bottom = this.editorUi.toolbar.addButton('geSprite-bottom', mxResources.get('bottom'),
+	// 	callFn(this.editorUi.menus.createStyleChangeFunction([mxConstants.STYLE_VERTICAL_ALIGN], [mxConstants.ALIGN_BOTTOM])), stylePanel3);
 	
-	this.styleButtons([top, middle, bottom]);
+	// this.styleButtons([top, middle, bottom]);
 	
-	if (mxClient.IS_QUIRKS)
-	{
-		mxUtils.br(container);
-	}
+	// if (mxClient.IS_QUIRKS)
+	// {
+	// 	mxUtils.br(container);
+	// }
 	
-	container.appendChild(stylePanel3);
+	// container.appendChild(stylePanel3);
 	
 	// Hack for updating UI state below based on current text selection
 	// currentTable is the current selected DOM table updated below
@@ -2748,11 +2750,11 @@ TextFormatPanel.prototype.addFont = function(container)
 		
 		container.appendChild(tmp);
 	}
-	else
-	{
-		fontStyleItems[2].style.marginRight = '9px';
-		right.style.marginRight = '9px';
-	}
+	// else
+	// {
+	// 	fontStyleItems[2].style.marginRight = '9px';
+	// 	right.style.marginRight = '9px';
+	// }
 	
 	// Label position
 	var stylePanel4 = stylePanel.cloneNode(false);
@@ -2878,162 +2880,162 @@ TextFormatPanel.prototype.addFont = function(container)
 	
 	input.style.width = '46px';
 	input.style.height = (mxClient.IS_QUIRKS) ? '21px' : '17px';
-	stylePanel2.appendChild(input);
+	// stylePanel2.appendChild(input);
 	
 	// Workaround for font size 4 if no text is selected is update font size below
 	// after first character was entered (as the font element is lazy created)
 	var pendingFontSize = null;
 
-	var inputUpdate = this.installInputHandler(input, mxConstants.STYLE_FONTSIZE, Menus.prototype.defaultFontSize, 1, 999, ' pt',
-	function(fontSize)
-	{
-		// IE does not support containsNode
-		// KNOWN: Fixes font size issues but bypasses undo
-		if (window.getSelection && !mxClient.IS_IE && !mxClient.IS_IE11)
-		{
-			var selection = window.getSelection();
-			var container = (selection.rangeCount > 0) ? selection.getRangeAt(0).commonAncestorContainer :
-				graph.cellEditor.textarea;
+	// var inputUpdate = this.installInputHandler(input, mxConstants.STYLE_FONTSIZE, Menus.prototype.defaultFontSize, 1, 999, ' pt',
+	// function(fontSize)
+	// {
+	// 	// IE does not support containsNode
+	// 	// KNOWN: Fixes font size issues but bypasses undo
+	// 	if (window.getSelection && !mxClient.IS_IE && !mxClient.IS_IE11)
+	// 	{
+	// 		var selection = window.getSelection();
+	// 		var container = (selection.rangeCount > 0) ? selection.getRangeAt(0).commonAncestorContainer :
+	// 			graph.cellEditor.textarea;
 
-			function updateSize(elt, ignoreContains)
-			{
-				if (graph.cellEditor.textarea != null && elt != graph.cellEditor.textarea &&
-					graph.cellEditor.textarea.contains(elt) &&
-					(ignoreContains || selection.containsNode(elt, true)))
-				{
-					if (elt.nodeName == 'FONT')
-					{
-						elt.removeAttribute('size');
-						elt.style.fontSize = fontSize + 'px';
-					}
-					else
-					{
-						var css = mxUtils.getCurrentStyle(elt);
+	// 		function updateSize(elt, ignoreContains)
+	// 		{
+	// 			if (graph.cellEditor.textarea != null && elt != graph.cellEditor.textarea &&
+	// 				graph.cellEditor.textarea.contains(elt) &&
+	// 				(ignoreContains || selection.containsNode(elt, true)))
+	// 			{
+	// 				if (elt.nodeName == 'FONT')
+	// 				{
+	// 					elt.removeAttribute('size');
+	// 					elt.style.fontSize = fontSize + 'px';
+	// 				}
+	// 				else
+	// 				{
+	// 					var css = mxUtils.getCurrentStyle(elt);
 						
-						if (css.fontSize != fontSize + 'px')
-						{
-							if (mxUtils.getCurrentStyle(elt.parentNode).fontSize != fontSize + 'px')
-							{
-								elt.style.fontSize = fontSize + 'px';
-							}
-							else
-							{
-								elt.style.fontSize = '';
-							}
-						}
-					}
-				}
-			};
+	// 					if (css.fontSize != fontSize + 'px')
+	// 					{
+	// 						if (mxUtils.getCurrentStyle(elt.parentNode).fontSize != fontSize + 'px')
+	// 						{
+	// 							elt.style.fontSize = fontSize + 'px';
+	// 						}
+	// 						else
+	// 						{
+	// 							elt.style.fontSize = '';
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 		};
 			
-			// Wraps text node or mixed selection with leading text in a font element
-			if (container == graph.cellEditor.textarea ||
-				container.nodeType != mxConstants.NODETYPE_ELEMENT)
-			{
-				document.execCommand('fontSize', false, '1');
-			}
+	// 		// Wraps text node or mixed selection with leading text in a font element
+	// 		if (container == graph.cellEditor.textarea ||
+	// 			container.nodeType != mxConstants.NODETYPE_ELEMENT)
+	// 		{
+	// 			document.execCommand('fontSize', false, '1');
+	// 		}
 
-			if (container != graph.cellEditor.textarea)
-			{
-				container = container.parentNode;
-			}
+	// 		if (container != graph.cellEditor.textarea)
+	// 		{
+	// 			container = container.parentNode;
+	// 		}
 			
-			if (container != null && container.nodeType == mxConstants.NODETYPE_ELEMENT)
-			{
-				var elts = container.getElementsByTagName('*');
-				updateSize(container);
+	// 		if (container != null && container.nodeType == mxConstants.NODETYPE_ELEMENT)
+	// 		{
+	// 			var elts = container.getElementsByTagName('*');
+	// 			updateSize(container);
 				
-				for (var i = 0; i < elts.length; i++)
-				{
-					updateSize(elts[i]);
-				}
-			}
+	// 			for (var i = 0; i < elts.length; i++)
+	// 			{
+	// 				updateSize(elts[i]);
+	// 			}
+	// 		}
 
-			input.value = fontSize + ' pt';
-		}
-		else if (window.getSelection || document.selection)
-		{
-			// Checks selection
-			var par = null;
+	// 		input.value = fontSize + ' pt';
+	// 	}
+	// 	else if (window.getSelection || document.selection)
+	// 	{
+	// 		// Checks selection
+	// 		var par = null;
 			
-			if (document.selection)
-			{
-				par = document.selection.createRange().parentElement();
-			}
-			else
-			{
-				var selection = window.getSelection();
+	// 		if (document.selection)
+	// 		{
+	// 			par = document.selection.createRange().parentElement();
+	// 		}
+	// 		else
+	// 		{
+	// 			var selection = window.getSelection();
 				
-				if (selection.rangeCount > 0)
-				{
-					par = selection.getRangeAt(0).commonAncestorContainer;
-				}
-			}
+	// 			if (selection.rangeCount > 0)
+	// 			{
+	// 				par = selection.getRangeAt(0).commonAncestorContainer;
+	// 			}
+	// 		}
 			
-			// Node.contains does not work for text nodes in IE11
-			function isOrContains(container, node)
-			{
-			    while (node != null)
-			    {
-			        if (node === container)
-			        {
-			            return true;
-			        }
+	// 		// Node.contains does not work for text nodes in IE11
+	// 		function isOrContains(container, node)
+	// 		{
+	// 		    while (node != null)
+	// 		    {
+	// 		        if (node === container)
+	// 		        {
+	// 		            return true;
+	// 		        }
 			        
-			        node = node.parentNode;
-			    }
+	// 		        node = node.parentNode;
+	// 		    }
 			    
-			    return false;
-			};
+	// 		    return false;
+	// 		};
 			
-			if (par != null && isOrContains(graph.cellEditor.textarea, par))
-			{
-				pendingFontSize = fontSize;
+	// 		if (par != null && isOrContains(graph.cellEditor.textarea, par))
+	// 		{
+	// 			pendingFontSize = fontSize;
 				
-				// Workaround for can't set font size in px is to change font size afterwards
-				document.execCommand('fontSize', false, '4');
-				var elts = graph.cellEditor.textarea.getElementsByTagName('font');
+	// 			// Workaround for can't set font size in px is to change font size afterwards
+	// 			document.execCommand('fontSize', false, '4');
+	// 			var elts = graph.cellEditor.textarea.getElementsByTagName('font');
 				
-				for (var i = 0; i < elts.length; i++)
-				{
-					if (elts[i].getAttribute('size') == '4')
-					{
-						elts[i].removeAttribute('size');
-						elts[i].style.fontSize = pendingFontSize + 'px';
+	// 			for (var i = 0; i < elts.length; i++)
+	// 			{
+	// 				if (elts[i].getAttribute('size') == '4')
+	// 				{
+	// 					elts[i].removeAttribute('size');
+	// 					elts[i].style.fontSize = pendingFontSize + 'px';
 			
-						// Overrides fontSize in input with the one just assigned as a workaround
-						// for potential fontSize values of parent elements that don't match
-						window.setTimeout(function()
-						{
-							input.value = pendingFontSize + ' pt';
-							pendingFontSize = null;
-						}, 0);
+	// 					// Overrides fontSize in input with the one just assigned as a workaround
+	// 					// for potential fontSize values of parent elements that don't match
+	// 					window.setTimeout(function()
+	// 					{
+	// 						input.value = pendingFontSize + ' pt';
+	// 						pendingFontSize = null;
+	// 					}, 0);
 						
-						break;
-					}
-				}
-			}
-		}
-	}, true);
+	// 					break;
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }, true);
 	
-	var stepper = this.createStepper(input, inputUpdate, 1, 10, true, Menus.prototype.defaultFontSize);
-	stepper.style.display = input.style.display;
-	stepper.style.marginTop = '4px';
+	// var stepper = this.createStepper(input, inputUpdate, 1, 10, true, Menus.prototype.defaultFontSize);
+	// stepper.style.display = input.style.display;
+	// stepper.style.marginTop = '4px';
 	
-	if (!mxClient.IS_QUIRKS)
-	{
-		stepper.style.right = '20px';
-	}
+	// if (!mxClient.IS_QUIRKS)
+	// {
+	// 	stepper.style.right = '20px';
+	// }
 	
-	stylePanel2.appendChild(stepper);
+	// stylePanel2.appendChild(stepper);
 	
-	var arrow = fontMenu.getElementsByTagName('div')[0];
-	arrow.style.cssFloat = 'right';
+	// var arrow = fontMenu.getElementsByTagName('div')[0];
+	// arrow.style.cssFloat = 'right';
 	
-	var bgColorApply = null;
-	var currentBgColor = '#ffffff';
+	// var bgColorApply = null;
+	// var currentBgColor = '#ffffff';
 	
-	var fontColorApply = null;
-	var currentFontColor = '#000000';
+	// var fontColorApply = null;
+	// var currentFontColor = '#000000';
 		
 	var bgPanel = (graph.cellEditor.isContentEditing()) ? this.createColorOption(mxResources.get('backgroundColor'), function()
 	{
@@ -3592,28 +3594,28 @@ TextFormatPanel.prototype.addFont = function(container)
 	{
 		ss = this.format.getSelectionState();
 		var fontStyle = mxUtils.getValue(ss.style, mxConstants.STYLE_FONTSTYLE, 0);
-		setSelected(fontStyleItems[0], (fontStyle & mxConstants.FONT_BOLD) == mxConstants.FONT_BOLD);
-		setSelected(fontStyleItems[1], (fontStyle & mxConstants.FONT_ITALIC) == mxConstants.FONT_ITALIC);
-		setSelected(fontStyleItems[2], (fontStyle & mxConstants.FONT_UNDERLINE) == mxConstants.FONT_UNDERLINE);
-		fontMenu.firstChild.nodeValue = mxUtils.getValue(ss.style, mxConstants.STYLE_FONTFAMILY, Menus.prototype.defaultFont);
+		// setSelected(fontStyleItems[0], (fontStyle & mxConstants.FONT_BOLD) == mxConstants.FONT_BOLD);
+		// setSelected(fontStyleItems[1], (fontStyle & mxConstants.FONT_ITALIC) == mxConstants.FONT_ITALIC);
+		// setSelected(fontStyleItems[2], (fontStyle & mxConstants.FONT_UNDERLINE) == mxConstants.FONT_UNDERLINE);
+		// fontMenu.firstChild.nodeValue = mxUtils.getValue(ss.style, mxConstants.STYLE_FONTFAMILY, Menus.prototype.defaultFont);
 
-		setSelected(verticalItem, mxUtils.getValue(ss.style, mxConstants.STYLE_HORIZONTAL, '1') == '0');
+		// setSelected(verticalItem, mxUtils.getValue(ss.style, mxConstants.STYLE_HORIZONTAL, '1') == '0');
 		
-		if (force || document.activeElement != input)
-		{
-			var tmp = parseFloat(mxUtils.getValue(ss.style, mxConstants.STYLE_FONTSIZE, Menus.prototype.defaultFontSize));
-			input.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
+		// if (force || document.activeElement != input)
+		// {
+		// 	var tmp = parseFloat(mxUtils.getValue(ss.style, mxConstants.STYLE_FONTSIZE, Menus.prototype.defaultFontSize));
+		// 	input.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+		// }
 		
-		var align = mxUtils.getValue(ss.style, mxConstants.STYLE_ALIGN, mxConstants.ALIGN_CENTER);
-		setSelected(left, align == mxConstants.ALIGN_LEFT);
-		setSelected(center, align == mxConstants.ALIGN_CENTER);
-		setSelected(right, align == mxConstants.ALIGN_RIGHT);
+		// var align = mxUtils.getValue(ss.style, mxConstants.STYLE_ALIGN, mxConstants.ALIGN_CENTER);
+		// setSelected(left, align == mxConstants.ALIGN_LEFT);
+		// setSelected(center, align == mxConstants.ALIGN_CENTER);
+		// setSelected(right, align == mxConstants.ALIGN_RIGHT);
 		
-		var valign = mxUtils.getValue(ss.style, mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
-		setSelected(top, valign == mxConstants.ALIGN_TOP);
-		setSelected(middle, valign == mxConstants.ALIGN_MIDDLE);
-		setSelected(bottom, valign == mxConstants.ALIGN_BOTTOM);
+		// var valign = mxUtils.getValue(ss.style, mxConstants.STYLE_VERTICAL_ALIGN, mxConstants.ALIGN_MIDDLE);
+		// setSelected(top, valign == mxConstants.ALIGN_TOP);
+		// setSelected(middle, valign == mxConstants.ALIGN_MIDDLE);
+		// setSelected(bottom, valign == mxConstants.ALIGN_BOTTOM);
 		
 		var pos = mxUtils.getValue(ss.style, mxConstants.STYLE_LABEL_POSITION, mxConstants.ALIGN_CENTER);
 		var vpos = mxUtils.getValue(ss.style, mxConstants.STYLE_VERTICAL_LABEL_POSITION, mxConstants.ALIGN_MIDDLE);
@@ -4057,7 +4059,7 @@ StyleFormatPanel.prototype.init = function()
 			this.container.appendChild(this.addFill(this.createPanel()));
 		}
 	
-		this.container.appendChild(this.addStroke(this.createPanel()));
+		// this.container.appendChild(this.addStroke(this.createPanel()));
 		this.container.appendChild(this.addLineJumps(this.createPanel()));
 		var opacityPanel = this.createRelativeOption(mxResources.get('opacity'), mxConstants.STYLE_OPACITY, 41);
 		opacityPanel.style.paddingTop = '8px';
@@ -4383,697 +4385,697 @@ StyleFormatPanel.prototype.getCustomColors = function()
 /**
  * Adds the label menu items to the given menu and parent.
  */
-StyleFormatPanel.prototype.addStroke = function(container)
-{
-	var ui = this.editorUi;
-	var graph = ui.editor.graph;
-	var ss = this.format.getSelectionState();
+// StyleFormatPanel.prototype.addStroke = function(container)
+// {
+// 	var ui = this.editorUi;
+// 	var graph = ui.editor.graph;
+// 	var ss = this.format.getSelectionState();
 	
-	container.style.paddingTop = '4px';
-	container.style.paddingBottom = '4px';
-	container.style.whiteSpace = 'normal';
+// 	container.style.paddingTop = '4px';
+// 	container.style.paddingBottom = '4px';
+// 	container.style.whiteSpace = 'normal';
 	
-	var colorPanel = document.createElement('div');
-	colorPanel.style.fontWeight = 'bold';
+// 	var colorPanel = document.createElement('div');
+// 	colorPanel.style.fontWeight = 'bold';
 	
-	// Adds gradient direction option
-	var styleSelect = document.createElement('select');
-	styleSelect.style.position = 'absolute';
-	styleSelect.style.marginTop = '-2px';
-	styleSelect.style.right = '72px';
-	styleSelect.style.width = '80px';
+// 	// Adds gradient direction option
+// 	var styleSelect = document.createElement('select');
+// 	styleSelect.style.position = 'absolute';
+// 	styleSelect.style.marginTop = '-2px';
+// 	styleSelect.style.right = '72px';
+// 	styleSelect.style.width = '80px';
 
-	var styles = ['sharp', 'rounded', 'curved'];
+// 	var styles = ['sharp', 'rounded', 'curved'];
 
-	for (var i = 0; i < styles.length; i++)
-	{
-		var styleOption = document.createElement('option');
-		styleOption.setAttribute('value', styles[i]);
-		mxUtils.write(styleOption, mxResources.get(styles[i]));
-		styleSelect.appendChild(styleOption);
-	}
+// 	for (var i = 0; i < styles.length; i++)
+// 	{
+// 		var styleOption = document.createElement('option');
+// 		styleOption.setAttribute('value', styles[i]);
+// 		mxUtils.write(styleOption, mxResources.get(styles[i]));
+// 		styleSelect.appendChild(styleOption);
+// 	}
 	
-	mxEvent.addListener(styleSelect, 'change', function(evt)
-	{
-		graph.getModel().beginUpdate();
-		try
-		{
-			var keys = [mxConstants.STYLE_ROUNDED, mxConstants.STYLE_CURVED];
-			// Default for rounded is 1
-			var values = ['0', null];
+// 	mxEvent.addListener(styleSelect, 'change', function(evt)
+// 	{
+// 		graph.getModel().beginUpdate();
+// 		try
+// 		{
+// 			var keys = [mxConstants.STYLE_ROUNDED, mxConstants.STYLE_CURVED];
+// 			// Default for rounded is 1
+// 			var values = ['0', null];
 			
-			if (styleSelect.value == 'rounded')
-			{
-				values = ['1', null];
-			}
-			else if (styleSelect.value == 'curved')
-			{
-				values = [null, '1'];
-			}
+// 			if (styleSelect.value == 'rounded')
+// 			{
+// 				values = ['1', null];
+// 			}
+// 			else if (styleSelect.value == 'curved')
+// 			{
+// 				values = [null, '1'];
+// 			}
 			
-			for (var i = 0; i < keys.length; i++)
-			{
-				graph.setCellStyles(keys[i], values[i], graph.getSelectionCells());
-			}
+// 			for (var i = 0; i < keys.length; i++)
+// 			{
+// 				graph.setCellStyles(keys[i], values[i], graph.getSelectionCells());
+// 			}
 			
-			ui.fireEvent(new mxEventObject('styleChanged', 'keys', keys,
-				'values', values, 'cells', graph.getSelectionCells()));
-		}
-		finally
-		{
-			graph.getModel().endUpdate();
-		}
+// 			ui.fireEvent(new mxEventObject('styleChanged', 'keys', keys,
+// 				'values', values, 'cells', graph.getSelectionCells()));
+// 		}
+// 		finally
+// 		{
+// 			graph.getModel().endUpdate();
+// 		}
 		
-		mxEvent.consume(evt);
-	});
+// 		mxEvent.consume(evt);
+// 	});
 	
-	// Stops events from bubbling to color option event handler
-	mxEvent.addListener(styleSelect, 'click', function(evt)
-	{
-		mxEvent.consume(evt);
-	});
+// 	// Stops events from bubbling to color option event handler
+// 	mxEvent.addListener(styleSelect, 'click', function(evt)
+// 	{
+// 		mxEvent.consume(evt);
+// 	});
 
-	var strokeKey = (ss.style.shape == 'image') ? mxConstants.STYLE_IMAGE_BORDER : mxConstants.STYLE_STROKECOLOR;
-	var label = (ss.style.shape == 'image') ? mxResources.get('border') : mxResources.get('line');
+// 	var strokeKey = (ss.style.shape == 'image') ? mxConstants.STYLE_IMAGE_BORDER : mxConstants.STYLE_STROKECOLOR;
+// 	var label = (ss.style.shape == 'image') ? mxResources.get('border') : mxResources.get('line');
 	
-	var lineColor = this.createCellColorOption(label, strokeKey, '#000000');
-	lineColor.appendChild(styleSelect);
-	colorPanel.appendChild(lineColor);
+// 	var lineColor = this.createCellColorOption(label, strokeKey, '#000000');
+// 	lineColor.appendChild(styleSelect);
+// 	colorPanel.appendChild(lineColor);
 	
-	// Used if only edges selected
-	var stylePanel = colorPanel.cloneNode(false);
-	stylePanel.style.fontWeight = 'normal';
-	stylePanel.style.whiteSpace = 'nowrap';
-	stylePanel.style.position = 'relative';
-	stylePanel.style.paddingLeft = '16px'
-	stylePanel.style.marginBottom = '2px';
-	stylePanel.style.marginTop = '2px';
-	stylePanel.className = 'geToolbarContainer';
+// 	// Used if only edges selected
+// 	var stylePanel = colorPanel.cloneNode(false);
+// 	stylePanel.style.fontWeight = 'normal';
+// 	stylePanel.style.whiteSpace = 'nowrap';
+// 	stylePanel.style.position = 'relative';
+// 	stylePanel.style.paddingLeft = '16px'
+// 	stylePanel.style.marginBottom = '2px';
+// 	stylePanel.style.marginTop = '2px';
+// 	stylePanel.className = 'geToolbarContainer';
 
-	var addItem = mxUtils.bind(this, function(menu, width, cssName, keys, values)
-	{
-		var item = this.editorUi.menus.styleChange(menu, '', keys, values, 'geIcon', null);
+// 	var addItem = mxUtils.bind(this, function(menu, width, cssName, keys, values)
+// 	{
+// 		var item = this.editorUi.menus.styleChange(menu, '', keys, values, 'geIcon', null);
 	
-		var pat = document.createElement('div');
-		pat.style.width = width + 'px';
-		pat.style.height = '1px';
-		pat.style.borderBottom = '1px ' + cssName + ' ' + this.defaultStrokeColor;
-		pat.style.paddingTop = '6px';
+// 		var pat = document.createElement('div');
+// 		pat.style.width = width + 'px';
+// 		pat.style.height = '1px';
+// 		pat.style.borderBottom = '1px ' + cssName + ' ' + this.defaultStrokeColor;
+// 		pat.style.paddingTop = '6px';
 
-		item.firstChild.firstChild.style.padding = '0px 4px 0px 4px';
-		item.firstChild.firstChild.style.width = width + 'px';
-		item.firstChild.firstChild.appendChild(pat);
+// 		item.firstChild.firstChild.style.padding = '0px 4px 0px 4px';
+// 		item.firstChild.firstChild.style.width = width + 'px';
+// 		item.firstChild.firstChild.appendChild(pat);
 		
-		return item;
-	});
+// 		return item;
+// 	});
 
-	var pattern = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel, 'geSprite-orthogonal', mxResources.get('pattern'), false, mxUtils.bind(this, function(menu)
-	{
-		addItem(menu, 75, 'solid', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], [null, null]).setAttribute('title', mxResources.get('solid'));
-		addItem(menu, 75, 'dashed', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', null]).setAttribute('title', mxResources.get('dashed'));
-		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 1']).setAttribute('title', mxResources.get('dotted') + ' (1)');
-		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 2']).setAttribute('title', mxResources.get('dotted') + ' (2)');
-		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 4']).setAttribute('title', mxResources.get('dotted') + ' (3)');
-	}));
+// 	var pattern = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel, 'geSprite-orthogonal', mxResources.get('pattern'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		addItem(menu, 75, 'solid', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], [null, null]).setAttribute('title', mxResources.get('solid'));
+// 		addItem(menu, 75, 'dashed', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', null]).setAttribute('title', mxResources.get('dashed'));
+// 		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 1']).setAttribute('title', mxResources.get('dotted') + ' (1)');
+// 		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 2']).setAttribute('title', mxResources.get('dotted') + ' (2)');
+// 		addItem(menu, 75, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 4']).setAttribute('title', mxResources.get('dotted') + ' (3)');
+// 	}));
 	
-	// Used for mixed selection (vertices and edges)
-	var altStylePanel = stylePanel.cloneNode(false);
+// 	// Used for mixed selection (vertices and edges)
+// 	var altStylePanel = stylePanel.cloneNode(false);
 	
-	var edgeShape = this.editorUi.toolbar.addMenuFunctionInContainer(altStylePanel, 'geSprite-connection', mxResources.get('connection'), false, mxUtils.bind(this, function(menu)
-	{
-		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], [null, null, null, null], 'geIcon geSprite geSprite-connection', null, true).setAttribute('title', mxResources.get('line'));
-		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['link', null, null, null], 'geIcon geSprite geSprite-linkedge', null, true).setAttribute('title', mxResources.get('link'));
-		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['flexArrow', null, null, null], 'geIcon geSprite geSprite-arrow', null, true).setAttribute('title', mxResources.get('arrow'));
-		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['arrow', null, null, null], 'geIcon geSprite geSprite-simplearrow', null, true).setAttribute('title', mxResources.get('simpleArrow')); 
-	}));
+// 	var edgeShape = this.editorUi.toolbar.addMenuFunctionInContainer(altStylePanel, 'geSprite-connection', mxResources.get('connection'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], [null, null, null, null], 'geIcon geSprite geSprite-connection', null, true).setAttribute('title', mxResources.get('line'));
+// 		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['link', null, null, null], 'geIcon geSprite geSprite-linkedge', null, true).setAttribute('title', mxResources.get('link'));
+// 		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['flexArrow', null, null, null], 'geIcon geSprite geSprite-arrow', null, true).setAttribute('title', mxResources.get('arrow'));
+// 		this.editorUi.menus.styleChange(menu, '', [mxConstants.STYLE_SHAPE, mxConstants.STYLE_STARTSIZE, mxConstants.STYLE_ENDSIZE, 'width'], ['arrow', null, null, null], 'geIcon geSprite geSprite-simplearrow', null, true).setAttribute('title', mxResources.get('simpleArrow')); 
+// 	}));
 
-	var altPattern = this.editorUi.toolbar.addMenuFunctionInContainer(altStylePanel, 'geSprite-orthogonal', mxResources.get('pattern'), false, mxUtils.bind(this, function(menu)
-	{
-		addItem(menu, 33, 'solid', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], [null, null]).setAttribute('title', mxResources.get('solid'));
-		addItem(menu, 33, 'dashed', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', null]).setAttribute('title', mxResources.get('dashed'));
-		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 1']).setAttribute('title', mxResources.get('dotted') + ' (1)');
-		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 2']).setAttribute('title', mxResources.get('dotted') + ' (2)');
-		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 4']).setAttribute('title', mxResources.get('dotted') + ' (3)');
-	}));
+// 	var altPattern = this.editorUi.toolbar.addMenuFunctionInContainer(altStylePanel, 'geSprite-orthogonal', mxResources.get('pattern'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		addItem(menu, 33, 'solid', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], [null, null]).setAttribute('title', mxResources.get('solid'));
+// 		addItem(menu, 33, 'dashed', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', null]).setAttribute('title', mxResources.get('dashed'));
+// 		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 1']).setAttribute('title', mxResources.get('dotted') + ' (1)');
+// 		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 2']).setAttribute('title', mxResources.get('dotted') + ' (2)');
+// 		addItem(menu, 33, 'dotted', [mxConstants.STYLE_DASHED, mxConstants.STYLE_DASH_PATTERN], ['1', '1 4']).setAttribute('title', mxResources.get('dotted') + ' (3)');
+// 	}));
 	
-	var stylePanel2 = stylePanel.cloneNode(false);
+// 	var stylePanel2 = stylePanel.cloneNode(false);
 
-	// Stroke width
-	var input = document.createElement('input');
-	input.style.textAlign = 'right';
-	input.style.marginTop = '2px';
-	input.style.width = '41px';
-	input.setAttribute('title', mxResources.get('linewidth'));
+// 	// Stroke width
+// 	var input = document.createElement('input');
+// 	input.style.textAlign = 'right';
+// 	input.style.marginTop = '2px';
+// 	input.style.width = '41px';
+// 	input.setAttribute('title', mxResources.get('linewidth'));
 	
-	stylePanel.appendChild(input);
+// 	stylePanel.appendChild(input);
 	
-	var altInput = input.cloneNode(true);
-	altStylePanel.appendChild(altInput);
+// 	var altInput = input.cloneNode(true);
+// 	altStylePanel.appendChild(altInput);
 
-	function update(evt)
-	{
-		// Maximum stroke width is 999
-		var value = parseInt(input.value);
-		value = Math.min(999, Math.max(1, (isNaN(value)) ? 1 : value));
+// 	function update(evt)
+// 	{
+// 		// Maximum stroke width is 999
+// 		var value = parseInt(input.value);
+// 		value = Math.min(999, Math.max(1, (isNaN(value)) ? 1 : value));
 		
-		if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1))
-		{
-			graph.setCellStyles(mxConstants.STYLE_STROKEWIDTH, value, graph.getSelectionCells());
-			ui.fireEvent(new mxEventObject('styleChanged', 'keys', [mxConstants.STYLE_STROKEWIDTH],
-					'values', [value], 'cells', graph.getSelectionCells()));
-		}
+// 		if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1))
+// 		{
+// 			graph.setCellStyles(mxConstants.STYLE_STROKEWIDTH, value, graph.getSelectionCells());
+// 			ui.fireEvent(new mxEventObject('styleChanged', 'keys', [mxConstants.STYLE_STROKEWIDTH],
+// 					'values', [value], 'cells', graph.getSelectionCells()));
+// 		}
 
-		input.value = value + ' pt';
-		mxEvent.consume(evt);
-	};
+// 		input.value = value + ' pt';
+// 		mxEvent.consume(evt);
+// 	};
 
-	function altUpdate(evt)
-	{
-		// Maximum stroke width is 999
-		var value = parseInt(altInput.value);
-		value = Math.min(999, Math.max(1, (isNaN(value)) ? 1 : value));
+// 	function altUpdate(evt)
+// 	{
+// 		// Maximum stroke width is 999
+// 		var value = parseInt(altInput.value);
+// 		value = Math.min(999, Math.max(1, (isNaN(value)) ? 1 : value));
 		
-		if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1))
-		{
-			graph.setCellStyles(mxConstants.STYLE_STROKEWIDTH, value, graph.getSelectionCells());
-			ui.fireEvent(new mxEventObject('styleChanged', 'keys', [mxConstants.STYLE_STROKEWIDTH],
-					'values', [value], 'cells', graph.getSelectionCells()));
-		}
+// 		if (value != mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1))
+// 		{
+// 			graph.setCellStyles(mxConstants.STYLE_STROKEWIDTH, value, graph.getSelectionCells());
+// 			ui.fireEvent(new mxEventObject('styleChanged', 'keys', [mxConstants.STYLE_STROKEWIDTH],
+// 					'values', [value], 'cells', graph.getSelectionCells()));
+// 		}
 
-		altInput.value = value + ' pt';
-		mxEvent.consume(evt);
-	};
+// 		altInput.value = value + ' pt';
+// 		mxEvent.consume(evt);
+// 	};
 
-	var stepper = this.createStepper(input, update, 1, 9);
-	stepper.style.display = input.style.display;
-	stepper.style.marginTop = '2px';
-	stylePanel.appendChild(stepper);
+// 	var stepper = this.createStepper(input, update, 1, 9);
+// 	stepper.style.display = input.style.display;
+// 	stepper.style.marginTop = '2px';
+// 	stylePanel.appendChild(stepper);
 	
-	var altStepper = this.createStepper(altInput, altUpdate, 1, 9);
-	altStepper.style.display = altInput.style.display;
-	altStepper.style.marginTop = '2px';
-	altStylePanel.appendChild(altStepper);
+// 	var altStepper = this.createStepper(altInput, altUpdate, 1, 9);
+// 	altStepper.style.display = altInput.style.display;
+// 	altStepper.style.marginTop = '2px';
+// 	altStylePanel.appendChild(altStepper);
 	
-	if (!mxClient.IS_QUIRKS)
-	{
-		input.style.position = 'absolute';
-		input.style.right = '32px';
-		input.style.height = '15px';
-		stepper.style.right = '20px';
+// 	if (!mxClient.IS_QUIRKS)
+// 	{
+// 		input.style.position = 'absolute';
+// 		input.style.right = '32px';
+// 		input.style.height = '15px';
+// 		stepper.style.right = '20px';
 
-		altInput.style.position = 'absolute';
-		altInput.style.right = '32px';
-		altInput.style.height = '15px';
-		altStepper.style.right = '20px';
-	}
-	else
-	{
-		input.style.height = '17px';
-		altInput.style.height = '17px';
-	}
+// 		altInput.style.position = 'absolute';
+// 		altInput.style.right = '32px';
+// 		altInput.style.height = '15px';
+// 		altStepper.style.right = '20px';
+// 	}
+// 	else
+// 	{
+// 		input.style.height = '17px';
+// 		altInput.style.height = '17px';
+// 	}
 	
-	mxEvent.addListener(input, 'blur', update);
-	mxEvent.addListener(input, 'change', update);
+// 	mxEvent.addListener(input, 'blur', update);
+// 	mxEvent.addListener(input, 'change', update);
 
-	mxEvent.addListener(altInput, 'blur', altUpdate);
-	mxEvent.addListener(altInput, 'change', altUpdate);
+// 	mxEvent.addListener(altInput, 'blur', altUpdate);
+// 	mxEvent.addListener(altInput, 'change', altUpdate);
 	
-	if (mxClient.IS_QUIRKS)
-	{
-		mxUtils.br(stylePanel2);
-		mxUtils.br(stylePanel2);
-	}
+// 	if (mxClient.IS_QUIRKS)
+// 	{
+// 		mxUtils.br(stylePanel2);
+// 		mxUtils.br(stylePanel2);
+// 	}
 	
-	var edgeStyle = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-orthogonal', mxResources.get('waypoints'), false, mxUtils.bind(this, function(menu)
-	{
-		if (ss.style.shape != 'arrow')
-		{
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], [null, null, null], 'geIcon geSprite geSprite-straight', null, true).setAttribute('title', mxResources.get('straight'));
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['orthogonalEdgeStyle', null, null], 'geIcon geSprite geSprite-orthogonal', null, true).setAttribute('title', mxResources.get('orthogonal'));
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['elbowEdgeStyle', null, null, null], 'geIcon geSprite geSprite-horizontalelbow', null, true).setAttribute('title', mxResources.get('simple'));
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['elbowEdgeStyle', 'vertical', null, null], 'geIcon geSprite geSprite-verticalelbow', null, true).setAttribute('title', mxResources.get('simple'));
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['isometricEdgeStyle', null, null, null], 'geIcon geSprite geSprite-horizontalisometric', null, true).setAttribute('title', mxResources.get('isometric'));
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['isometricEdgeStyle', 'vertical', null, null], 'geIcon geSprite geSprite-verticalisometric', null, true).setAttribute('title', mxResources.get('isometric'));
+// 	var edgeStyle = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-orthogonal', mxResources.get('waypoints'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		if (ss.style.shape != 'arrow')
+// 		{
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], [null, null, null], 'geIcon geSprite geSprite-straight', null, true).setAttribute('title', mxResources.get('straight'));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['orthogonalEdgeStyle', null, null], 'geIcon geSprite geSprite-orthogonal', null, true).setAttribute('title', mxResources.get('orthogonal'));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['elbowEdgeStyle', null, null, null], 'geIcon geSprite geSprite-horizontalelbow', null, true).setAttribute('title', mxResources.get('simple'));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['elbowEdgeStyle', 'vertical', null, null], 'geIcon geSprite geSprite-verticalelbow', null, true).setAttribute('title', mxResources.get('simple'));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['isometricEdgeStyle', null, null, null], 'geIcon geSprite geSprite-horizontalisometric', null, true).setAttribute('title', mxResources.get('isometric'));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['isometricEdgeStyle', 'vertical', null, null], 'geIcon geSprite geSprite-verticalisometric', null, true).setAttribute('title', mxResources.get('isometric'));
 	
-			if (ss.style.shape == 'connector')
-			{
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['orthogonalEdgeStyle', '1', null], 'geIcon geSprite geSprite-curved', null, true).setAttribute('title', mxResources.get('curved'));
-			}
+// 			if (ss.style.shape == 'connector')
+// 			{
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['orthogonalEdgeStyle', '1', null], 'geIcon geSprite geSprite-curved', null, true).setAttribute('title', mxResources.get('curved'));
+// 			}
 			
-			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['entityRelationEdgeStyle', null, null], 'geIcon geSprite geSprite-entity', null, true).setAttribute('title', mxResources.get('entityRelation'));
-		}
-	}));
+// 			this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_EDGE, mxConstants.STYLE_CURVED, mxConstants.STYLE_NOEDGESTYLE], ['entityRelationEdgeStyle', null, null], 'geIcon geSprite geSprite-entity', null, true).setAttribute('title', mxResources.get('entityRelation'));
+// 		}
+// 	}));
 
-	var lineStart = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-startclassic', mxResources.get('linestart'), false, mxUtils.bind(this, function(menu)
-	{
-		if (ss.style.shape == 'connector' || ss.style.shape == 'flexArrow' || ss.style.shape == 'filledEdge')
-		{
-			var item = this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.NONE, 0], 'geIcon', null, false);
-			item.setAttribute('title', mxResources.get('none'));
-			item.firstChild.firstChild.innerHTML = '<font style="font-size:10px;">' + mxUtils.htmlEntities(mxResources.get('none')) + '</font>';
+// 	var lineStart = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-startclassic', mxResources.get('linestart'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		if (ss.style.shape == 'connector' || ss.style.shape == 'flexArrow' || ss.style.shape == 'filledEdge')
+// 		{
+// 			var item = this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.NONE, 0], 'geIcon', null, false);
+// 			item.setAttribute('title', mxResources.get('none'));
+// 			item.firstChild.firstChild.innerHTML = '<font style="font-size:10px;">' + mxUtils.htmlEntities(mxResources.get('none')) + '</font>';
 
-			if (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge')
-			{
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC, 1], 'geIcon geSprite geSprite-startclassic', null, false).setAttribute('title', mxResources.get('classic'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC_THIN, 1], 'geIcon geSprite geSprite-startclassicthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OPEN, 0], 'geIcon geSprite geSprite-startopen', null, false).setAttribute('title', mxResources.get('openArrow'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OPEN_THIN, 0], 'geIcon geSprite geSprite-startopenthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['openAsync', 0], 'geIcon geSprite geSprite-startopenasync', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK, 1], 'geIcon geSprite geSprite-startblock', null, false).setAttribute('title', mxResources.get('block'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK_THIN, 1], 'geIcon geSprite geSprite-startblockthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['async', 1], 'geIcon geSprite geSprite-startasync', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OVAL, 1], 'geIcon geSprite geSprite-startoval', null, false).setAttribute('title', mxResources.get('oval'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND, 1], 'geIcon geSprite geSprite-startdiamond', null, false).setAttribute('title', mxResources.get('diamond'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND_THIN, 1], 'geIcon geSprite geSprite-startthindiamond', null, false).setAttribute('title', mxResources.get('diamondThin'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC, 0], 'geIcon geSprite geSprite-startclassictrans', null, false).setAttribute('title', mxResources.get('classic'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC_THIN, 0], 'geIcon geSprite geSprite-startclassicthintrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK, 0], 'geIcon geSprite geSprite-startblocktrans', null, false).setAttribute('title', mxResources.get('block'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK_THIN, 0], 'geIcon geSprite geSprite-startblockthintrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['async', 0], 'geIcon geSprite geSprite-startasynctrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OVAL, 0], 'geIcon geSprite geSprite-startovaltrans', null, false).setAttribute('title', mxResources.get('oval'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND, 0], 'geIcon geSprite geSprite-startdiamondtrans', null, false).setAttribute('title', mxResources.get('diamond'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND_THIN, 0], 'geIcon geSprite geSprite-startthindiamondtrans', null, false).setAttribute('title', mxResources.get('diamondThin'));
+// 			if (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge')
+// 			{
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC, 1], 'geIcon geSprite geSprite-startclassic', null, false).setAttribute('title', mxResources.get('classic'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC_THIN, 1], 'geIcon geSprite geSprite-startclassicthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OPEN, 0], 'geIcon geSprite geSprite-startopen', null, false).setAttribute('title', mxResources.get('openArrow'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OPEN_THIN, 0], 'geIcon geSprite geSprite-startopenthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['openAsync', 0], 'geIcon geSprite geSprite-startopenasync', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK, 1], 'geIcon geSprite geSprite-startblock', null, false).setAttribute('title', mxResources.get('block'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK_THIN, 1], 'geIcon geSprite geSprite-startblockthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['async', 1], 'geIcon geSprite geSprite-startasync', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OVAL, 1], 'geIcon geSprite geSprite-startoval', null, false).setAttribute('title', mxResources.get('oval'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND, 1], 'geIcon geSprite geSprite-startdiamond', null, false).setAttribute('title', mxResources.get('diamond'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND_THIN, 1], 'geIcon geSprite geSprite-startthindiamond', null, false).setAttribute('title', mxResources.get('diamondThin'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC, 0], 'geIcon geSprite geSprite-startclassictrans', null, false).setAttribute('title', mxResources.get('classic'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_CLASSIC_THIN, 0], 'geIcon geSprite geSprite-startclassicthintrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK, 0], 'geIcon geSprite geSprite-startblocktrans', null, false).setAttribute('title', mxResources.get('block'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_BLOCK_THIN, 0], 'geIcon geSprite geSprite-startblockthintrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['async', 0], 'geIcon geSprite geSprite-startasynctrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_OVAL, 0], 'geIcon geSprite geSprite-startovaltrans', null, false).setAttribute('title', mxResources.get('oval'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND, 0], 'geIcon geSprite geSprite-startdiamondtrans', null, false).setAttribute('title', mxResources.get('diamond'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], [mxConstants.ARROW_DIAMOND_THIN, 0], 'geIcon geSprite geSprite-startthindiamondtrans', null, false).setAttribute('title', mxResources.get('diamondThin'));
 				
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['dash', 0], 'geIcon geSprite geSprite-startdash', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['cross', 0], 'geIcon geSprite geSprite-startcross', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['circlePlus', 0], 'geIcon geSprite geSprite-startcircleplus', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['circle', 1], 'geIcon geSprite geSprite-startcircle', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERone', 0], 'geIcon geSprite geSprite-starterone', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERmandOne', 0], 'geIcon geSprite geSprite-starteronetoone', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERmany', 0], 'geIcon geSprite geSprite-startermany', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERoneToMany', 0], 'geIcon geSprite geSprite-starteronetomany', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERzeroToOne', 1], 'geIcon geSprite geSprite-starteroneopt', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERzeroToMany', 1], 'geIcon geSprite geSprite-startermanyopt', null, false);
-			}
-			else
-			{
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW], [mxConstants.ARROW_BLOCK], 'geIcon geSprite geSprite-startblocktrans', null, false).setAttribute('title', mxResources.get('block'));
-			}
-		}
-	}));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['dash', 0], 'geIcon geSprite geSprite-startdash', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['cross', 0], 'geIcon geSprite geSprite-startcross', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['circlePlus', 0], 'geIcon geSprite geSprite-startcircleplus', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['circle', 1], 'geIcon geSprite geSprite-startcircle', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERone', 0], 'geIcon geSprite geSprite-starterone', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERmandOne', 0], 'geIcon geSprite geSprite-starteronetoone', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERmany', 0], 'geIcon geSprite geSprite-startermany', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERoneToMany', 0], 'geIcon geSprite geSprite-starteronetomany', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERzeroToOne', 1], 'geIcon geSprite geSprite-starteroneopt', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW, 'startFill'], ['ERzeroToMany', 1], 'geIcon geSprite geSprite-startermanyopt', null, false);
+// 			}
+// 			else
+// 			{
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_STARTARROW], [mxConstants.ARROW_BLOCK], 'geIcon geSprite geSprite-startblocktrans', null, false).setAttribute('title', mxResources.get('block'));
+// 			}
+// 		}
+// 	}));
 
-	var lineEnd = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-endclassic', mxResources.get('lineend'), false, mxUtils.bind(this, function(menu)
-	{
-		if (ss.style.shape == 'connector' || ss.style.shape == 'flexArrow' || ss.style.shape == 'filledEdge')
-		{
-			var item = this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.NONE, 0], 'geIcon', null, false);
-			item.setAttribute('title', mxResources.get('none'));
-			item.firstChild.firstChild.innerHTML = '<font style="font-size:10px;">' + mxUtils.htmlEntities(mxResources.get('none')) + '</font>';
+// 	var lineEnd = this.editorUi.toolbar.addMenuFunctionInContainer(stylePanel2, 'geSprite-endclassic', mxResources.get('lineend'), false, mxUtils.bind(this, function(menu)
+// 	{
+// 		if (ss.style.shape == 'connector' || ss.style.shape == 'flexArrow' || ss.style.shape == 'filledEdge')
+// 		{
+// 			var item = this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.NONE, 0], 'geIcon', null, false);
+// 			item.setAttribute('title', mxResources.get('none'));
+// 			item.firstChild.firstChild.innerHTML = '<font style="font-size:10px;">' + mxUtils.htmlEntities(mxResources.get('none')) + '</font>';
 			
-			if (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge')
-			{
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC, 1], 'geIcon geSprite geSprite-endclassic', null, false).setAttribute('title', mxResources.get('classic'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC_THIN, 1], 'geIcon geSprite geSprite-endclassicthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OPEN, 0], 'geIcon geSprite geSprite-endopen', null, false).setAttribute('title', mxResources.get('openArrow'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OPEN_THIN, 0], 'geIcon geSprite geSprite-endopenthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['openAsync', 0], 'geIcon geSprite geSprite-endopenasync', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK, 1], 'geIcon geSprite geSprite-endblock', null, false).setAttribute('title', mxResources.get('block'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK_THIN, 1], 'geIcon geSprite geSprite-endblockthin', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['async', 1], 'geIcon geSprite geSprite-endasync', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OVAL, 1], 'geIcon geSprite geSprite-endoval', null, false).setAttribute('title', mxResources.get('oval'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND, 1], 'geIcon geSprite geSprite-enddiamond', null, false).setAttribute('title', mxResources.get('diamond'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND_THIN, 1], 'geIcon geSprite geSprite-endthindiamond', null, false).setAttribute('title', mxResources.get('diamondThin'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC, 0], 'geIcon geSprite geSprite-endclassictrans', null, false).setAttribute('title', mxResources.get('classic'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC_THIN, 0], 'geIcon geSprite geSprite-endclassicthintrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK, 0], 'geIcon geSprite geSprite-endblocktrans', null, false).setAttribute('title', mxResources.get('block'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK_THIN, 0], 'geIcon geSprite geSprite-endblockthintrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['async', 0], 'geIcon geSprite geSprite-endasynctrans', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OVAL, 0], 'geIcon geSprite geSprite-endovaltrans', null, false).setAttribute('title', mxResources.get('oval'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND, 0], 'geIcon geSprite geSprite-enddiamondtrans', null, false).setAttribute('title', mxResources.get('diamond'));
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND_THIN, 0], 'geIcon geSprite geSprite-endthindiamondtrans', null, false).setAttribute('title', mxResources.get('diamondThin'));
+// 			if (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge')
+// 			{
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC, 1], 'geIcon geSprite geSprite-endclassic', null, false).setAttribute('title', mxResources.get('classic'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC_THIN, 1], 'geIcon geSprite geSprite-endclassicthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OPEN, 0], 'geIcon geSprite geSprite-endopen', null, false).setAttribute('title', mxResources.get('openArrow'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OPEN_THIN, 0], 'geIcon geSprite geSprite-endopenthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['openAsync', 0], 'geIcon geSprite geSprite-endopenasync', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK, 1], 'geIcon geSprite geSprite-endblock', null, false).setAttribute('title', mxResources.get('block'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK_THIN, 1], 'geIcon geSprite geSprite-endblockthin', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['async', 1], 'geIcon geSprite geSprite-endasync', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OVAL, 1], 'geIcon geSprite geSprite-endoval', null, false).setAttribute('title', mxResources.get('oval'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND, 1], 'geIcon geSprite geSprite-enddiamond', null, false).setAttribute('title', mxResources.get('diamond'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND_THIN, 1], 'geIcon geSprite geSprite-endthindiamond', null, false).setAttribute('title', mxResources.get('diamondThin'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC, 0], 'geIcon geSprite geSprite-endclassictrans', null, false).setAttribute('title', mxResources.get('classic'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_CLASSIC_THIN, 0], 'geIcon geSprite geSprite-endclassicthintrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK, 0], 'geIcon geSprite geSprite-endblocktrans', null, false).setAttribute('title', mxResources.get('block'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_BLOCK_THIN, 0], 'geIcon geSprite geSprite-endblockthintrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['async', 0], 'geIcon geSprite geSprite-endasynctrans', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_OVAL, 0], 'geIcon geSprite geSprite-endovaltrans', null, false).setAttribute('title', mxResources.get('oval'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND, 0], 'geIcon geSprite geSprite-enddiamondtrans', null, false).setAttribute('title', mxResources.get('diamond'));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], [mxConstants.ARROW_DIAMOND_THIN, 0], 'geIcon geSprite geSprite-endthindiamondtrans', null, false).setAttribute('title', mxResources.get('diamondThin'));
 
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['dash', 0], 'geIcon geSprite geSprite-enddash', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['cross', 0], 'geIcon geSprite geSprite-endcross', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['circlePlus', 0], 'geIcon geSprite geSprite-endcircleplus', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['circle', 1], 'geIcon geSprite geSprite-endcircle', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERone', 0], 'geIcon geSprite geSprite-enderone', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERmandOne', 0], 'geIcon geSprite geSprite-enderonetoone', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERmany', 0], 'geIcon geSprite geSprite-endermany', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERoneToMany', 0], 'geIcon geSprite geSprite-enderonetomany', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERzeroToOne', 1], 'geIcon geSprite geSprite-enderoneopt', null, false);
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERzeroToMany', 1], 'geIcon geSprite geSprite-endermanyopt', null, false);
-			}
-			else
-			{
-				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW], [mxConstants.ARROW_BLOCK], 'geIcon geSprite geSprite-endblocktrans', null, false).setAttribute('title', mxResources.get('block'));
-			}
-		}
-	}));
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['dash', 0], 'geIcon geSprite geSprite-enddash', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['cross', 0], 'geIcon geSprite geSprite-endcross', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['circlePlus', 0], 'geIcon geSprite geSprite-endcircleplus', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['circle', 1], 'geIcon geSprite geSprite-endcircle', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERone', 0], 'geIcon geSprite geSprite-enderone', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERmandOne', 0], 'geIcon geSprite geSprite-enderonetoone', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERmany', 0], 'geIcon geSprite geSprite-endermany', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERoneToMany', 0], 'geIcon geSprite geSprite-enderonetomany', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERzeroToOne', 1], 'geIcon geSprite geSprite-enderoneopt', null, false);
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW, 'endFill'], ['ERzeroToMany', 1], 'geIcon geSprite geSprite-endermanyopt', null, false);
+// 			}
+// 			else
+// 			{
+// 				this.editorUi.menus.edgeStyleChange(menu, '', [mxConstants.STYLE_ENDARROW], [mxConstants.ARROW_BLOCK], 'geIcon geSprite geSprite-endblocktrans', null, false).setAttribute('title', mxResources.get('block'));
+// 			}
+// 		}
+// 	}));
 
-	this.addArrow(edgeShape, 8);
-	this.addArrow(edgeStyle);
-	this.addArrow(lineStart);
-	this.addArrow(lineEnd);
+// 	this.addArrow(edgeShape, 8);
+// 	this.addArrow(edgeStyle);
+// 	this.addArrow(lineStart);
+// 	this.addArrow(lineEnd);
 	
-	var symbol = this.addArrow(pattern, 9);
-	symbol.className = 'geIcon';
-	symbol.style.width = '84px';
+// 	var symbol = this.addArrow(pattern, 9);
+// 	symbol.className = 'geIcon';
+// 	symbol.style.width = '84px';
 	
-	var altSymbol = this.addArrow(altPattern, 9);
-	altSymbol.className = 'geIcon';
-	altSymbol.style.width = '22px';
+// 	var altSymbol = this.addArrow(altPattern, 9);
+// 	altSymbol.className = 'geIcon';
+// 	altSymbol.style.width = '22px';
 	
-	var solid = document.createElement('div');
-	solid.style.width = '85px';
-	solid.style.height = '1px';
-	solid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
-	solid.style.marginBottom = '9px';
-	symbol.appendChild(solid);
+// 	var solid = document.createElement('div');
+// 	solid.style.width = '85px';
+// 	solid.style.height = '1px';
+// 	solid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
+// 	solid.style.marginBottom = '9px';
+// 	symbol.appendChild(solid);
 	
-	var altSolid = document.createElement('div');
-	altSolid.style.width = '23px';
-	altSolid.style.height = '1px';
-	altSolid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
-	altSolid.style.marginBottom = '9px';
-	altSymbol.appendChild(altSolid);
+// 	var altSolid = document.createElement('div');
+// 	altSolid.style.width = '23px';
+// 	altSolid.style.height = '1px';
+// 	altSolid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
+// 	altSolid.style.marginBottom = '9px';
+// 	altSymbol.appendChild(altSolid);
 
-	pattern.style.height = '15px';
-	altPattern.style.height = '15px';
-	edgeShape.style.height = '15px';
-	edgeStyle.style.height = '17px';
-	lineStart.style.marginLeft = '3px';
-	lineStart.style.height = '17px';
-	lineEnd.style.marginLeft = '3px';
-	lineEnd.style.height = '17px';
+// 	pattern.style.height = '15px';
+// 	altPattern.style.height = '15px';
+// 	edgeShape.style.height = '15px';
+// 	edgeStyle.style.height = '17px';
+// 	lineStart.style.marginLeft = '3px';
+// 	lineStart.style.height = '17px';
+// 	lineEnd.style.marginLeft = '3px';
+// 	lineEnd.style.height = '17px';
 
-	container.appendChild(colorPanel);
-	container.appendChild(altStylePanel);
-	container.appendChild(stylePanel);
+// 	container.appendChild(colorPanel);
+// 	container.appendChild(altStylePanel);
+// 	container.appendChild(stylePanel);
 
-	var arrowPanel = stylePanel.cloneNode(false);
-	arrowPanel.style.paddingBottom = '6px';
-	arrowPanel.style.paddingTop = '4px';
-	arrowPanel.style.fontWeight = 'normal';
+// 	var arrowPanel = stylePanel.cloneNode(false);
+// 	arrowPanel.style.paddingBottom = '6px';
+// 	arrowPanel.style.paddingTop = '4px';
+// 	arrowPanel.style.fontWeight = 'normal';
 	
-	var span = document.createElement('div');
-	span.style.position = 'absolute';
-	span.style.marginLeft = '3px';
-	span.style.marginBottom = '12px';
-	span.style.marginTop = '2px';
-	span.style.fontWeight = 'normal';
-	span.style.width = '76px';
+// 	var span = document.createElement('div');
+// 	span.style.position = 'absolute';
+// 	span.style.marginLeft = '3px';
+// 	span.style.marginBottom = '12px';
+// 	span.style.marginTop = '2px';
+// 	span.style.fontWeight = 'normal';
+// 	span.style.width = '76px';
 	
-	mxUtils.write(span, mxResources.get('lineend'));
-	arrowPanel.appendChild(span);
+// 	mxUtils.write(span, mxResources.get('lineend'));
+// 	arrowPanel.appendChild(span);
 	
-	var endSpacingUpdate, endSizeUpdate;
-	var endSpacing = this.addUnitInput(arrowPanel, 'pt', 74, 33, function()
-	{
-		endSpacingUpdate.apply(this, arguments);
-	});
-	var endSize = this.addUnitInput(arrowPanel, 'pt', 20, 33, function()
-	{
-		endSizeUpdate.apply(this, arguments);
-	});
+// 	var endSpacingUpdate, endSizeUpdate;
+// 	var endSpacing = this.addUnitInput(arrowPanel, 'pt', 74, 33, function()
+// 	{
+// 		endSpacingUpdate.apply(this, arguments);
+// 	});
+// 	var endSize = this.addUnitInput(arrowPanel, 'pt', 20, 33, function()
+// 	{
+// 		endSizeUpdate.apply(this, arguments);
+// 	});
 
-	mxUtils.br(arrowPanel);
+// 	mxUtils.br(arrowPanel);
 	
-	var spacer = document.createElement('div');
-	spacer.style.height = '8px';
-	arrowPanel.appendChild(spacer);
+// 	var spacer = document.createElement('div');
+// 	spacer.style.height = '8px';
+// 	arrowPanel.appendChild(spacer);
 	
-	span = span.cloneNode(false);
-	mxUtils.write(span, mxResources.get('linestart'));
-	arrowPanel.appendChild(span);
+// 	span = span.cloneNode(false);
+// 	mxUtils.write(span, mxResources.get('linestart'));
+// 	arrowPanel.appendChild(span);
 	
-	var startSpacingUpdate, startSizeUpdate;
-	var startSpacing = this.addUnitInput(arrowPanel, 'pt', 74, 33, function()
-	{
-		startSpacingUpdate.apply(this, arguments);
-	});
-	var startSize = this.addUnitInput(arrowPanel, 'pt', 20, 33, function()
-	{
-		startSizeUpdate.apply(this, arguments);
-	});
+// 	var startSpacingUpdate, startSizeUpdate;
+// 	var startSpacing = this.addUnitInput(arrowPanel, 'pt', 74, 33, function()
+// 	{
+// 		startSpacingUpdate.apply(this, arguments);
+// 	});
+// 	var startSize = this.addUnitInput(arrowPanel, 'pt', 20, 33, function()
+// 	{
+// 		startSizeUpdate.apply(this, arguments);
+// 	});
 
-	mxUtils.br(arrowPanel);
-	this.addLabel(arrowPanel, mxResources.get('spacing'), 74, 50);
-	this.addLabel(arrowPanel, mxResources.get('size'), 20, 50);
-	mxUtils.br(arrowPanel);
+// 	mxUtils.br(arrowPanel);
+// 	this.addLabel(arrowPanel, mxResources.get('spacing'), 74, 50);
+// 	this.addLabel(arrowPanel, mxResources.get('size'), 20, 50);
+// 	mxUtils.br(arrowPanel);
 	
-	var perimeterPanel = colorPanel.cloneNode(false);
-	perimeterPanel.style.fontWeight = 'normal';
-	perimeterPanel.style.position = 'relative';
-	perimeterPanel.style.paddingLeft = '16px'
-	perimeterPanel.style.marginBottom = '2px';
-	perimeterPanel.style.marginTop = '6px';
-	perimeterPanel.style.borderWidth = '0px';
-	perimeterPanel.style.paddingBottom = '18px';
+// 	var perimeterPanel = colorPanel.cloneNode(false);
+// 	perimeterPanel.style.fontWeight = 'normal';
+// 	perimeterPanel.style.position = 'relative';
+// 	perimeterPanel.style.paddingLeft = '16px'
+// 	perimeterPanel.style.marginBottom = '2px';
+// 	perimeterPanel.style.marginTop = '6px';
+// 	perimeterPanel.style.borderWidth = '0px';
+// 	perimeterPanel.style.paddingBottom = '18px';
 	
-	var span = document.createElement('div');
-	span.style.position = 'absolute';
-	span.style.marginLeft = '3px';
-	span.style.marginBottom = '12px';
-	span.style.marginTop = '1px';
-	span.style.fontWeight = 'normal';
-	span.style.width = '120px';
-	mxUtils.write(span, mxResources.get('perimeter'));
-	perimeterPanel.appendChild(span);
+// 	var span = document.createElement('div');
+// 	span.style.position = 'absolute';
+// 	span.style.marginLeft = '3px';
+// 	span.style.marginBottom = '12px';
+// 	span.style.marginTop = '1px';
+// 	span.style.fontWeight = 'normal';
+// 	span.style.width = '120px';
+// 	mxUtils.write(span, mxResources.get('perimeter'));
+// 	perimeterPanel.appendChild(span);
 	
-	var perimeterUpdate;
-	var perimeterSpacing = this.addUnitInput(perimeterPanel, 'pt', 20, 41, function()
-	{
-		perimeterUpdate.apply(this, arguments);
-	});
+// 	var perimeterUpdate;
+// 	var perimeterSpacing = this.addUnitInput(perimeterPanel, 'pt', 20, 41, function()
+// 	{
+// 		perimeterUpdate.apply(this, arguments);
+// 	});
 
-	if (ss.edges.length == graph.getSelectionCount())
-	{
-		container.appendChild(stylePanel2);
+// 	if (ss.edges.length == graph.getSelectionCount())
+// 	{
+// 		container.appendChild(stylePanel2);
 		
-		if (mxClient.IS_QUIRKS)
-		{
-			mxUtils.br(container);
-			mxUtils.br(container);
-		}
+// 		if (mxClient.IS_QUIRKS)
+// 		{
+// 			mxUtils.br(container);
+// 			mxUtils.br(container);
+// 		}
 		
-		container.appendChild(arrowPanel);
-	}
-	else if (ss.vertices.length == graph.getSelectionCount())
-	{
-		if (mxClient.IS_QUIRKS)
-		{
-			mxUtils.br(container);
-		}
+// 		container.appendChild(arrowPanel);
+// 	}
+// 	else if (ss.vertices.length == graph.getSelectionCount())
+// 	{
+// 		if (mxClient.IS_QUIRKS)
+// 		{
+// 			mxUtils.br(container);
+// 		}
 		
-		container.appendChild(perimeterPanel);
-	}
+// 		container.appendChild(perimeterPanel);
+// 	}
 	
-	var listener = mxUtils.bind(this, function(sender, evt, force)
-	{
-		ss = this.format.getSelectionState();
-		var color = mxUtils.getValue(ss.style, strokeKey, null);
+// 	var listener = mxUtils.bind(this, function(sender, evt, force)
+// 	{
+// 		ss = this.format.getSelectionState();
+// 		var color = mxUtils.getValue(ss.style, strokeKey, null);
 
-		if (force || document.activeElement != input)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1));
-			input.value = (isNaN(tmp)) ? '' : tmp + ' pt';
-		}
+// 		if (force || document.activeElement != input)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1));
+// 			input.value = (isNaN(tmp)) ? '' : tmp + ' pt';
+// 		}
 		
-		if (force || document.activeElement != altInput)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1));
-			altInput.value = (isNaN(tmp)) ? '' : tmp + ' pt';
-		}
+// 		if (force || document.activeElement != altInput)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STROKEWIDTH, 1));
+// 			altInput.value = (isNaN(tmp)) ? '' : tmp + ' pt';
+// 		}
 		
-		styleSelect.style.visibility = (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge') ? '' : 'hidden';
+// 		styleSelect.style.visibility = (ss.style.shape == 'connector' || ss.style.shape == 'filledEdge') ? '' : 'hidden';
 		
-		if (mxUtils.getValue(ss.style, mxConstants.STYLE_CURVED, null) == '1')
-		{
-			styleSelect.value = 'curved';
-		}
-		else if (mxUtils.getValue(ss.style, mxConstants.STYLE_ROUNDED, null) == '1')
-		{
-			styleSelect.value = 'rounded';
-		}
+// 		if (mxUtils.getValue(ss.style, mxConstants.STYLE_CURVED, null) == '1')
+// 		{
+// 			styleSelect.value = 'curved';
+// 		}
+// 		else if (mxUtils.getValue(ss.style, mxConstants.STYLE_ROUNDED, null) == '1')
+// 		{
+// 			styleSelect.value = 'rounded';
+// 		}
 		
-		if (mxUtils.getValue(ss.style, mxConstants.STYLE_DASHED, null) == '1')
-		{
-			if (mxUtils.getValue(ss.style, mxConstants.STYLE_DASH_PATTERN, null) == null)
-			{
-				solid.style.borderBottom = '1px dashed ' + this.defaultStrokeColor;
-			}
-			else
-			{
-				solid.style.borderBottom = '1px dotted ' + this.defaultStrokeColor;
-			}
-		}
-		else
-		{
-			solid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
-		}
+// 		if (mxUtils.getValue(ss.style, mxConstants.STYLE_DASHED, null) == '1')
+// 		{
+// 			if (mxUtils.getValue(ss.style, mxConstants.STYLE_DASH_PATTERN, null) == null)
+// 			{
+// 				solid.style.borderBottom = '1px dashed ' + this.defaultStrokeColor;
+// 			}
+// 			else
+// 			{
+// 				solid.style.borderBottom = '1px dotted ' + this.defaultStrokeColor;
+// 			}
+// 		}
+// 		else
+// 		{
+// 			solid.style.borderBottom = '1px solid ' + this.defaultStrokeColor;
+// 		}
 		
-		altSolid.style.borderBottom = solid.style.borderBottom;
+// 		altSolid.style.borderBottom = solid.style.borderBottom;
 		
-		// Updates toolbar icon for edge style
-		var edgeStyleDiv = edgeStyle.getElementsByTagName('div')[0];
-		var es = mxUtils.getValue(ss.style, mxConstants.STYLE_EDGE, null);
+// 		// Updates toolbar icon for edge style
+// 		var edgeStyleDiv = edgeStyle.getElementsByTagName('div')[0];
+// 		var es = mxUtils.getValue(ss.style, mxConstants.STYLE_EDGE, null);
 		
-		if (mxUtils.getValue(ss.style, mxConstants.STYLE_NOEDGESTYLE, null) == '1')
-		{
-			es = null;
-		}
+// 		if (mxUtils.getValue(ss.style, mxConstants.STYLE_NOEDGESTYLE, null) == '1')
+// 		{
+// 			es = null;
+// 		}
 
-		if (es == 'orthogonalEdgeStyle' && mxUtils.getValue(ss.style, mxConstants.STYLE_CURVED, null) == '1')
-		{
-			edgeStyleDiv.className = 'geSprite geSprite-curved';
-		}
-		else if (es == 'straight' || es == 'none' || es == null)
-		{
-			edgeStyleDiv.className = 'geSprite geSprite-straight';
-		}
-		else if (es == 'entityRelationEdgeStyle')
-		{
-			edgeStyleDiv.className = 'geSprite geSprite-entity';
-		}
-		else if (es == 'elbowEdgeStyle')
-		{
-			edgeStyleDiv.className = 'geSprite ' + ((mxUtils.getValue(ss.style,
-				mxConstants.STYLE_ELBOW, null) == 'vertical') ?
-				'geSprite-verticalelbow' : 'geSprite-horizontalelbow');
-		}
-		else if (es == 'isometricEdgeStyle')
-		{
-			edgeStyleDiv.className = 'geSprite ' + ((mxUtils.getValue(ss.style,
-				mxConstants.STYLE_ELBOW, null) == 'vertical') ?
-				'geSprite-verticalisometric' : 'geSprite-horizontalisometric');
-		}
-		else
-		{
-			edgeStyleDiv.className = 'geSprite geSprite-orthogonal';
-		}
+// 		if (es == 'orthogonalEdgeStyle' && mxUtils.getValue(ss.style, mxConstants.STYLE_CURVED, null) == '1')
+// 		{
+// 			edgeStyleDiv.className = 'geSprite geSprite-curved';
+// 		}
+// 		else if (es == 'straight' || es == 'none' || es == null)
+// 		{
+// 			edgeStyleDiv.className = 'geSprite geSprite-straight';
+// 		}
+// 		else if (es == 'entityRelationEdgeStyle')
+// 		{
+// 			edgeStyleDiv.className = 'geSprite geSprite-entity';
+// 		}
+// 		else if (es == 'elbowEdgeStyle')
+// 		{
+// 			edgeStyleDiv.className = 'geSprite ' + ((mxUtils.getValue(ss.style,
+// 				mxConstants.STYLE_ELBOW, null) == 'vertical') ?
+// 				'geSprite-verticalelbow' : 'geSprite-horizontalelbow');
+// 		}
+// 		else if (es == 'isometricEdgeStyle')
+// 		{
+// 			edgeStyleDiv.className = 'geSprite ' + ((mxUtils.getValue(ss.style,
+// 				mxConstants.STYLE_ELBOW, null) == 'vertical') ?
+// 				'geSprite-verticalisometric' : 'geSprite-horizontalisometric');
+// 		}
+// 		else
+// 		{
+// 			edgeStyleDiv.className = 'geSprite geSprite-orthogonal';
+// 		}
 		
-		// Updates icon for edge shape
-		var edgeShapeDiv = edgeShape.getElementsByTagName('div')[0];
+// 		// Updates icon for edge shape
+// 		var edgeShapeDiv = edgeShape.getElementsByTagName('div')[0];
 		
-		if (ss.style.shape == 'link')
-		{
-			edgeShapeDiv.className = 'geSprite geSprite-linkedge';
-		}
-		else if (ss.style.shape == 'flexArrow')
-		{
-			edgeShapeDiv.className = 'geSprite geSprite-arrow';
-		}
-		else if (ss.style.shape == 'arrow')
-		{
-			edgeShapeDiv.className = 'geSprite geSprite-simplearrow';
-		}
-		else
-		{
-			edgeShapeDiv.className = 'geSprite geSprite-connection';
-		}
+// 		if (ss.style.shape == 'link')
+// 		{
+// 			edgeShapeDiv.className = 'geSprite geSprite-linkedge';
+// 		}
+// 		else if (ss.style.shape == 'flexArrow')
+// 		{
+// 			edgeShapeDiv.className = 'geSprite geSprite-arrow';
+// 		}
+// 		else if (ss.style.shape == 'arrow')
+// 		{
+// 			edgeShapeDiv.className = 'geSprite geSprite-simplearrow';
+// 		}
+// 		else
+// 		{
+// 			edgeShapeDiv.className = 'geSprite geSprite-connection';
+// 		}
 		
-		if (ss.edges.length == graph.getSelectionCount())
-		{
-			altStylePanel.style.display = '';
-			stylePanel.style.display = 'none';
-		}
-		else
-		{
-			altStylePanel.style.display = 'none';
-			stylePanel.style.display = '';
-		}
+// 		if (ss.edges.length == graph.getSelectionCount())
+// 		{
+// 			altStylePanel.style.display = '';
+// 			stylePanel.style.display = 'none';
+// 		}
+// 		else
+// 		{
+// 			altStylePanel.style.display = 'none';
+// 			stylePanel.style.display = '';
+// 		}
 		
-		function updateArrow(marker, fill, elt, prefix)
-		{
-			var markerDiv = elt.getElementsByTagName('div')[0];
+// 		function updateArrow(marker, fill, elt, prefix)
+// 		{
+// 			var markerDiv = elt.getElementsByTagName('div')[0];
 			
-			markerDiv.className = ui.getCssClassForMarker(prefix, ss.style.shape, marker, fill);
+// 			markerDiv.className = ui.getCssClassForMarker(prefix, ss.style.shape, marker, fill);
 			
-			if (markerDiv.className == 'geSprite geSprite-noarrow')
-			{
-				markerDiv.innerHTML = mxUtils.htmlEntities(mxResources.get('none'));
-				markerDiv.style.backgroundImage = 'none';
-				markerDiv.style.verticalAlign = 'top';
-				markerDiv.style.marginTop = '5px';
-				markerDiv.style.fontSize = '10px';
-				markerDiv.style.filter = 'none';
-				markerDiv.style.color = this.defaultStrokeColor;
-				markerDiv.nextSibling.style.marginTop = '0px';
-			}
+// 			if (markerDiv.className == 'geSprite geSprite-noarrow')
+// 			{
+// 				markerDiv.innerHTML = mxUtils.htmlEntities(mxResources.get('none'));
+// 				markerDiv.style.backgroundImage = 'none';
+// 				markerDiv.style.verticalAlign = 'top';
+// 				markerDiv.style.marginTop = '5px';
+// 				markerDiv.style.fontSize = '10px';
+// 				markerDiv.style.filter = 'none';
+// 				markerDiv.style.color = this.defaultStrokeColor;
+// 				markerDiv.nextSibling.style.marginTop = '0px';
+// 			}
 			
-			return markerDiv;
-		};
+// 			return markerDiv;
+// 		};
 		
-		var sourceDiv = updateArrow(mxUtils.getValue(ss.style, mxConstants.STYLE_STARTARROW, null),
-				mxUtils.getValue(ss.style, 'startFill', '1'), lineStart, 'start');
-		var targetDiv = updateArrow(mxUtils.getValue(ss.style, mxConstants.STYLE_ENDARROW, null),
-				mxUtils.getValue(ss.style, 'endFill', '1'), lineEnd, 'end');
+// 		var sourceDiv = updateArrow(mxUtils.getValue(ss.style, mxConstants.STYLE_STARTARROW, null),
+// 				mxUtils.getValue(ss.style, 'startFill', '1'), lineStart, 'start');
+// 		var targetDiv = updateArrow(mxUtils.getValue(ss.style, mxConstants.STYLE_ENDARROW, null),
+// 				mxUtils.getValue(ss.style, 'endFill', '1'), lineEnd, 'end');
 
-		// Special cases for markers
-		if (ss.style.shape == 'arrow')
-		{
-			sourceDiv.className = 'geSprite geSprite-noarrow';
-			targetDiv.className = 'geSprite geSprite-endblocktrans';
-		}
-		else if (ss.style.shape == 'link')
-		{
-			sourceDiv.className = 'geSprite geSprite-noarrow';
-			targetDiv.className = 'geSprite geSprite-noarrow';
-		}
+// 		// Special cases for markers
+// 		if (ss.style.shape == 'arrow')
+// 		{
+// 			sourceDiv.className = 'geSprite geSprite-noarrow';
+// 			targetDiv.className = 'geSprite geSprite-endblocktrans';
+// 		}
+// 		else if (ss.style.shape == 'link')
+// 		{
+// 			sourceDiv.className = 'geSprite geSprite-noarrow';
+// 			targetDiv.className = 'geSprite geSprite-noarrow';
+// 		}
 
-		mxUtils.setOpacity(edgeStyle, (ss.style.shape == 'arrow') ? 30 : 100);			
+// 		mxUtils.setOpacity(edgeStyle, (ss.style.shape == 'arrow') ? 30 : 100);			
 		
-		if (ss.style.shape != 'connector' && ss.style.shape != 'flexArrow' && ss.style.shape != 'filledEdge')
-		{
-			mxUtils.setOpacity(lineStart, 30);
-			mxUtils.setOpacity(lineEnd, 30);
-		}
-		else
-		{
-			mxUtils.setOpacity(lineStart, 100);
-			mxUtils.setOpacity(lineEnd, 100);
-		}
+// 		if (ss.style.shape != 'connector' && ss.style.shape != 'flexArrow' && ss.style.shape != 'filledEdge')
+// 		{
+// 			mxUtils.setOpacity(lineStart, 30);
+// 			mxUtils.setOpacity(lineEnd, 30);
+// 		}
+// 		else
+// 		{
+// 			mxUtils.setOpacity(lineStart, 100);
+// 			mxUtils.setOpacity(lineEnd, 100);
+// 		}
 
-		if (force || document.activeElement != startSize)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STARTSIZE, mxConstants.DEFAULT_MARKERSIZE));
-			startSize.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
+// 		if (force || document.activeElement != startSize)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_STARTSIZE, mxConstants.DEFAULT_MARKERSIZE));
+// 			startSize.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+// 		}
 		
-		if (force || document.activeElement != startSpacing)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_SOURCE_PERIMETER_SPACING, 0));
-			startSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
+// 		if (force || document.activeElement != startSpacing)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_SOURCE_PERIMETER_SPACING, 0));
+// 			startSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+// 		}
 
-		if (force || document.activeElement != endSize)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_ENDSIZE, mxConstants.DEFAULT_MARKERSIZE));
-			endSize.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
+// 		if (force || document.activeElement != endSize)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_ENDSIZE, mxConstants.DEFAULT_MARKERSIZE));
+// 			endSize.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+// 		}
 		
-		if (force || document.activeElement != startSpacing)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_TARGET_PERIMETER_SPACING, 0));
-			endSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
+// 		if (force || document.activeElement != startSpacing)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_TARGET_PERIMETER_SPACING, 0));
+// 			endSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+// 		}
 		
-		if (force || document.activeElement != perimeterSpacing)
-		{
-			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_PERIMETER_SPACING, 0));
-			perimeterSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
-		}
-	});
+// 		if (force || document.activeElement != perimeterSpacing)
+// 		{
+// 			var tmp = parseInt(mxUtils.getValue(ss.style, mxConstants.STYLE_PERIMETER_SPACING, 0));
+// 			perimeterSpacing.value = (isNaN(tmp)) ? '' : tmp  + ' pt';
+// 		}
+// 	});
 	
-	startSizeUpdate = this.installInputHandler(startSize, mxConstants.STYLE_STARTSIZE, mxConstants.DEFAULT_MARKERSIZE, 0, 999, ' pt');
-	startSpacingUpdate = this.installInputHandler(startSpacing, mxConstants.STYLE_SOURCE_PERIMETER_SPACING, 0, -999, 999, ' pt');
-	endSizeUpdate = this.installInputHandler(endSize, mxConstants.STYLE_ENDSIZE, mxConstants.DEFAULT_MARKERSIZE, 0, 999, ' pt');
-	endSpacingUpdate = this.installInputHandler(endSpacing, mxConstants.STYLE_TARGET_PERIMETER_SPACING, 0, -999, 999, ' pt');
-	perimeterUpdate = this.installInputHandler(perimeterSpacing, mxConstants.STYLE_PERIMETER_SPACING, 0, 0, 999, ' pt');
+// 	startSizeUpdate = this.installInputHandler(startSize, mxConstants.STYLE_STARTSIZE, mxConstants.DEFAULT_MARKERSIZE, 0, 999, ' pt');
+// 	startSpacingUpdate = this.installInputHandler(startSpacing, mxConstants.STYLE_SOURCE_PERIMETER_SPACING, 0, -999, 999, ' pt');
+// 	endSizeUpdate = this.installInputHandler(endSize, mxConstants.STYLE_ENDSIZE, mxConstants.DEFAULT_MARKERSIZE, 0, 999, ' pt');
+// 	endSpacingUpdate = this.installInputHandler(endSpacing, mxConstants.STYLE_TARGET_PERIMETER_SPACING, 0, -999, 999, ' pt');
+// 	perimeterUpdate = this.installInputHandler(perimeterSpacing, mxConstants.STYLE_PERIMETER_SPACING, 0, 0, 999, ' pt');
 
-	this.addKeyHandler(input, listener);
-	this.addKeyHandler(startSize, listener);
-	this.addKeyHandler(startSpacing, listener);
-	this.addKeyHandler(endSize, listener);
-	this.addKeyHandler(endSpacing, listener);
-	this.addKeyHandler(perimeterSpacing, listener);
+// 	this.addKeyHandler(input, listener);
+// 	this.addKeyHandler(startSize, listener);
+// 	this.addKeyHandler(startSpacing, listener);
+// 	this.addKeyHandler(endSize, listener);
+// 	this.addKeyHandler(endSpacing, listener);
+// 	this.addKeyHandler(perimeterSpacing, listener);
 
-	graph.getModel().addListener(mxEvent.CHANGE, listener);
-	this.listeners.push({destroy: function() { graph.getModel().removeListener(listener); }});
-	listener();
+// 	graph.getModel().addListener(mxEvent.CHANGE, listener);
+// 	this.listeners.push({destroy: function() { graph.getModel().removeListener(listener); }});
+// 	listener();
 
-	return container;
-};
+// 	return container;
+// };
 
 /**
  * Adds UI for configuring line jumps.

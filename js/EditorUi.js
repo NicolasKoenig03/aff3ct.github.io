@@ -3142,10 +3142,10 @@ EditorUi.prototype.updateActionStates = function()
     // this.menus.get('direction').setEnabled(unlocked && vertexSelected);
     // this.menus.get('align').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
     // this.menus.get('distribute').setEnabled(unlocked && vertexSelected && graph.getSelectionCount() > 1);
-    this.actions.get('selectVertices').setEnabled(unlocked);
-    this.actions.get('selectEdges').setEnabled(unlocked);
-    this.actions.get('selectAll').setEnabled(unlocked);
-    this.actions.get('selectNone').setEnabled(unlocked);
+    // this.actions.get('selectVertices').setEnabled(unlocked);
+    // this.actions.get('selectEdges').setEnabled(unlocked);
+    // this.actions.get('selectAll').setEnabled(unlocked);
+    // this.actions.get('selectNone').setEnabled(unlocked);
     
     this.updatePasteActionStates();
 };
@@ -3320,8 +3320,10 @@ EditorUi.prototype.createDivs = function()
 	this.toolbarContainer.style.left = '0px';
 	this.toolbarContainer.style.right = '0px';
 	this.sidebarContainer.style.left = '0px';
+	this.sidebarContainer.style.marginTop = '70px';
 	this.formatContainer.style.right = '0px';
 	this.formatContainer.style.zIndex = '1';
+	this.formatContainer.style.marginTop = '70px';
 	this.diagramContainer.style.right = ((this.format != null) ? this.formatWidth : 0) + 'px';
 	this.footerContainer.style.left = '0px';
 	this.footerContainer.style.right = '0px';
