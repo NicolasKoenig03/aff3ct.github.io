@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Test Json</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+        
+      </header>
+
+      <section>
+        
+      </section>
+
+    <script>
+    const header = document.querySelector('header');
+    const section = document.querySelector('section');
+
+    let requestURL = 'file:///home/telecom/Bureau/Aff3ct/aff3ct.github.io/json/aff3ct_modules.json';
+    let request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'text';
+    request.send();
+
+    request.onload = function() {
+      const obj = request.response;
+      const json = JSON.parse(obj);
+      populateHeader(json);
+      showTaskSource(json);
+      showTaskEncoder(json);
+      showTaskInterleaver(json);
+      showTaskDecoder_SIHO(json);
+      showTaskDecoder_HIHO(json);
+      showTaskDecoder_SISO(json);
+      showTaskModem(json);
+      showTaskChannel(json);
+      showTaskChannel_AWGN_LLR(json);
+      showTaskMonitor_BFER(json);
+    }
+
+
+    function populateHeader(jsonObj) {
+        var source = jsonObj['aff3ct::module::Source'];
+
+        var myH1 = document.createElement('h1');
+        myH1.textContent = 'Aff3ct Project';
+        header.appendChild(myH1);
+
+        var myPara = document.createElement('p');
+        myPara.textContent = 'List Module : ';
+        header.appendChild(myPara);
+    }
+
+    function showTaskSource(jsonObj) {
+        var source = jsonObj['aff3ct::module::Source'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = source.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(source.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = source['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+            var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+              for (var k = 0; k < parameter_socket.length; k++){
+                listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                myList.appendChild(listItem);
+              }
+
+          }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+
+    function showTaskEncoder(jsonObj) {
+        var encoder = jsonObj['aff3ct::module::Encoder'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = encoder.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(encoder.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = encoder['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskInterleaver(jsonObj) {
+        var interleaver = jsonObj['aff3ct::module::Interleaver'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = interleaver.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(interleaver.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = interleaver['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskDecoder_SIHO(jsonObj) {
+        var decoder = jsonObj['aff3ct::module::Decoder_SIHO'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = decoder.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(decoder.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = decoder['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskDecoder_HIHO(jsonObj) {
+        var decoder = jsonObj['aff3ct::module::Decoder_HIHO'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = decoder.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(decoder.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = decoder['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskDecoder_SISO(jsonObj) {
+        var decoder = jsonObj['aff3ct::module::Decoder_SISO'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = decoder.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(decoder.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = decoder['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskModem(jsonObj) {
+        var modem = jsonObj['aff3ct::module::Modem'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = modem.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(modem.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = modem['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskChannel(jsonObj) {
+        var channel = jsonObj['aff3ct::module::Channel'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = channel.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(channel.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = channel['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskChannel_AWGN_LLR(jsonObj) {
+        var channel = jsonObj['aff3ct::module::Channel_AWGN_LLR'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = channel.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(channel.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = channel['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+    function showTaskMonitor_BFER(jsonObj) {
+        var monitor = jsonObj['aff3ct::module::Monitor_BFER'];
+
+        var myH2 = document.createElement('h2');
+        myH2.textContent = monitor.module_name;
+        section.appendChild(myH2);
+
+        var tasks = Object.keys(monitor.tasks);
+      
+        for (var i = 0; i < tasks.length; i++) {
+            var myArticle = document.createElement('article');
+
+            var myH3 = document.createElement('h3');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+
+            var next = monitor['tasks'][tasks[i]];
+
+            myH3.textContent = tasks[i];
+            myPara1.textContent = 'Task name : ' + next.task_name;
+            myPara2.textContent = 'Socket : ';
+        
+           var socket = Object.keys(next.sockets);
+            
+            for (var j = 0; j < socket.length; j++) {
+
+              var parameter_socket = Object.keys(next.sockets[j]);
+
+              var listItem = document.createElement('li');
+              listItem.setAttribute('style', 'white-space: pre;');
+              listItem.textContent = 'N°' + socket[j] + ' :\n\r';
+              myList.appendChild(listItem);
+
+                for (var k = 0; k < parameter_socket.length; k++){
+                  listItem.textContent += parameter_socket[k] + ' :  ' + next.sockets[j][parameter_socket[k]] + ' \n\r';
+                  myList.appendChild(listItem);
+                }
+
+            }
+
+            myArticle.appendChild(myH3);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myList);
+
+            section.appendChild(myArticle);
+        }
+    }
+
+
+    </script>
+  </body>
+</html>
