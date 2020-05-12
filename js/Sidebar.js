@@ -1000,6 +1000,46 @@ Sidebar.prototype.addSourcePalette = function(expand)
 	this.addPaletteFunctions('source', 'Source', expand || false, fns);
 };
 
+Sidebar.prototype.addEncoderPalette = function (expand) {
+	// Avoids having to bind all functions to "this"
+	var sb = this;
+
+	// Reusable cell
+	var field = new mxCell('Param 1', new mxGeometry(10, 27, 140, 26), 'text;strokeColor=none;fillColor=red;align=left;verticalAlign=top;resizable=0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+	field.vertex = true;
+
+	var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
+	divider.vertex = true;
+
+	// Default tags
+	var dt = 'uml static class';
+
+	var fns = [
+		this.addEntry(dt + 'object instance', function () {
+			var options = PopulateDropDownList();
+			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
+				'<b>Module</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
+				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+				'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
+			cell.vertex = true;
+
+			var input = new mxCell('IN', new mxGeometry(-10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
+			input.vertex = true;
+
+			var output = new mxCell('OUT', new mxGeometry(cell.geometry.width - 10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
+			output.vertex = true;
+
+			cell.insert(input);
+			cell.insert(output);
+
+			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Source 2');
+		})
+	];
+
+	this.addPaletteFunctions('encoder', 'Encoder', expand || false, fns);
+}
+
 
 Sidebar.prototype.addModemPalette = function(expand)
 {

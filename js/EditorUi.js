@@ -3323,7 +3323,7 @@ EditorUi.prototype.createDivs = function()
 	this.sidebarContainer.style.marginTop = '70px';
 	this.formatContainer.style.right = '0px';
 	this.formatContainer.style.zIndex = '1';
-	this.formatContainer.style.marginTop = '70px';
+	this.formatContainer.style.marginTop = '74px';
 	this.diagramContainer.style.right = ((this.format != null) ? this.formatWidth : 0) + 'px';
 	this.footerContainer.style.left = '0px';
 	this.footerContainer.style.right = '0px';

@@ -1139,10 +1139,10 @@ Actions.prototype.init = function()
 			ui.setDefaultStyle(graph.getSelectionCell());
 		}
 	}, null, null, Editor.ctrlKey + '+Shift+D');
-	this.addAction('getXml', function() {
+	this.addAction('getXml', function() {		
 		var encoder = new mxCodec();
 		var node = encoder.encode(graph.getModel());
-		mxUtils.popup(mxUtils.getXml(node), true);
+		mxUtils.popup(mxUtils.getPrettyXml(node), true);
 	});
 	this.addAction('clearDefaultStyle', function()
 	{
