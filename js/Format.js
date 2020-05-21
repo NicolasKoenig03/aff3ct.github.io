@@ -5292,8 +5292,90 @@ StyleFormatPanel.prototype.addStyleOps = function(div)
 	btn.style.width = '202px';
 	div.appendChild(btn);
 
+	mxUtils.br(div)
+
+	mxUtils.br(div)
+
+	if (this.editorUi.editor.graph.getSelectionCount() == 1) {
+
+		SelectedId = this.editorUi.editor.graph.getSelectionCell();
+	
+		var namelabel1 = document.createElement('label'); // Create Label for Name Field
+		namelabel1.innerHTML = "Bits : "; // Set Field Labels
+		namelabel1.style.textAlign = "right"; 
+		namelabel1.style.width = "100px";
+		var inputelement1 = document.createElement('input'); // Create Input Field for Name
+		inputelement1.setAttribute("type", "text");
+		inputelement1.setAttribute("name", "dname");
+		inputelement1.style.width = "50px";
+		inputelement1.style.marginLeft = "10px";
+		
+		div.appendChild(namelabel1);
+		div.appendChild(inputelement1);
+		inputelement1.id = "input1";
+		mxUtils.br(div)
+
+		var namelabel2 = namelabel1.cloneNode(true);
+		namelabel2.innerHTML = "Codeword size : "; // Set Field Labels
+		var inputelement2 = inputelement1.cloneNode(true);
+		inputelement2.id = "input2";
+		div.appendChild(namelabel2);
+		div.appendChild(inputelement2);
+		mxUtils.br(div)
+
+		var namelabel3 = namelabel1.cloneNode(true);
+		namelabel3.innerHTML = "Frame errors : "; // Set Field Labels
+		var inputelement3 = inputelement1.cloneNode(true);
+		inputelement3.id = "input3";
+		div.appendChild(namelabel3);
+		div.appendChild(inputelement3);
+		mxUtils.br(div)
+
+		var namelabel4 = namelabel1.cloneNode(true);
+		namelabel4.innerHTML = "Seed : "; // Set Field Labels
+		var inputelement4 = inputelement1.cloneNode(true);
+		inputelement4.id = "input4";
+		div.appendChild(namelabel4);
+		div.appendChild(inputelement4);
+		mxUtils.br(div)
+
+
+		var taskList = document.createElement('select');
+		taskList.style.width = "100px";
+		taskList.style.height = "30px";
+		let list = ['task 1', 'task 2', 'task 3', 'task 4'];
+		for (var i=0; i<list.length; i++) {
+			var opt = document.createElement('option');
+			opt.value = list[i];
+			opt.innerHTML = list[i];
+			taskList.appendChild(opt);
+		}
+		div.appendChild(taskList)
+		div.appendChild()
+		mxUtils.br(div)
+
+		var btnApply = document.createElement('input');
+		btnApply.style.width = '202px';
+		btnApply.type = "button";
+		btnApply.value = "Apply Changes";
+		btnApply.onclick = function() {
+		div.appendChild(btnApply);
+
+		var bits = document.getElementById("input1").value
+		var codeWordSize = document.getElementById("input2").value
+		var frameErros = document.getElementById("input3").value
+		var seed = document.getElementById("input4").value
+
+		paramArr.push({"Bits" : bits, "CodeWordSize" : codeWordSize, "FrameErros" : frameErros, "Seed" : seed});
+
+		}
+	}
+
 	return div;
 };
+
+var paramArr = []
+
 
 
 /**
@@ -5779,7 +5861,19 @@ DiagramFormatPanel.prototype.addStyleOps = function(div)
 	btn.style.marginBottom = '2px';
 	div.appendChild(btn);
 
+	var btn = mxUtils.button(mxResources.get('getJSON'), mxUtils.bind(this, function (evt) {
+		this.editorUi.actions.get('getJSON').funct();
+	}));
+
+	mxUtils.br(div);
+
+	btn.setAttribute('title', mxResources.get('getJSON') + ' (' + this.editorUi.actions.get('getJSON').shortcut + ')');
+	btn.style.width = '202px';
+	btn.style.marginBottom = '2px';
+	div.appendChild(btn);
+
 	return div;
+
 };
 
 

@@ -57,7 +57,7 @@
 	"aff3ct::module::Modem": {
 		"module_name": "aff3ct::module::Modem",
 		"tasks": {
-			"demodulate_N1": {
+			"demodulate": {
 				"task_name": "demodulate",
 				"sockets": [
 					{
@@ -72,7 +72,7 @@
 					}
 				]
 			},
-			"modulate_N1": {
+			"modulate": {
 				"task_name": "modulate",
 				"sockets": [
 					{

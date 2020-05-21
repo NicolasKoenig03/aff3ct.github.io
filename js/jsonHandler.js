@@ -22,7 +22,6 @@ function main() {
         buildModule = buildModule(jsonTask);
         buildMain = buildMain(jsonTask);
         buildTask = buildTask(jsonTask);
-        console.log(buildTask)
     }   
 }
 
@@ -158,8 +157,8 @@ function getModule (jsonObj) {
 function getTasks(jsonObj) {
     let sourceTask  = jsonObj['aff3ct::module::Source_random'].tasks.generate_N1.task_name;
     let encoderTask = jsonObj['aff3ct::module::Encoder'].tasks.encode_N1.task_name;
-    let modTask     = jsonObj['aff3ct::module::Modem'].tasks.modulate_N1.task_name;
-    let demodTask   = jsonObj['aff3ct::module::Modem'].tasks.demodulate_N1.task_name;
+    let modTask     = jsonObj['aff3ct::module::Modem'].tasks.modulate.task_name;
+    let demodTask   = jsonObj['aff3ct::module::Modem'].tasks.demodulate.task_name;
     let channelTask = jsonObj['aff3ct::module::Channel_AWGN_LLR'].tasks.add_noise.task_name;
     let decoderTask = jsonObj['aff3ct::module::Decoder_SIHO'].tasks.decode_siho_N1.task_name;
 
