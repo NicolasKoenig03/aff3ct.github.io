@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Aff3ct Module</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+      <header>
+        
+      </header>
+
+      <section>
+        
+      </section>
+
+    <script type="text/javascript">
+
+var objetJS = {
+      "aff3ct::module::Channel_AWGN_LLR": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Channel_AWGN_LLR",
+          "class_short_name": "Channel_AWGN_LLR",
+          "class_inheritence": {
+            "0": "public Channel<R>",
+          },
+          "class_tasks": {
+              "void add_noise(const R *X_N, R *Y_N, const int frame_id = -1)": {
+                  "method_short_name": "add_noise",
+                  "method_arguments": {
+                      "0": {
+                        "soc_dir": "input",
+                        "soc_name": "X_N",
+                        "soc-type": "R *",
+                      },
+                      "1": {
+                          "soc_dir": "output",
+                          "soc_name": "Y_N",
+                          "soc-type": "R *",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              }
+          }
+      },
+
+      "aff3ct::module::Channel": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Channel",
+          "class_short_name": "Channel",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+          "class_tasks": {
+              "virtual void add_noise(const R *X_N, R *Y_N, const int frame_id = -1)": {
+                "method_short_name": "add_noise",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "X_N",
+                          "soc-type": "R *",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N",
+                        "soc-type": "R *",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "virtual void add_noise_wg(const R *X_N, R *Y_N, R *H_N, const int frame_id = -1)": {
+                  "method_short_name": "add_noise",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "X_N",
+                          "soc-type": "R *",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N",
+                        "soc-type": "R *",
+                      },
+                      "2": {
+                        "soc_dir": "output",
+                        "soc_name": "H_N",
+                        "soc-type": "R *",
+                      },
+                      "3": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void add_noise(const R *X_N, R *Y_N, const int frame_id = -1)": {
+                "method_short_name": "add_noise",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "X_N",
+                          "soc-type": 	"std::vector<R, A> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N",
+                        "soc-type": 	"std::vector<R, A> &",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void add_noise_wg(const R *X_N, R *Y_N, R *H_N, const int frame_id = -1)": {
+                "method_short_name": "add_noise",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "X_N",
+                          "soc-type": "std::vector<R, A> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N",
+                        "soc-type": "std::vector<R, A> &",
+                      },
+                      "2": {
+                        "soc_dir": "output",
+                        "soc_name": "H_N",
+                        "soc-type": "std::vector<R, A> &",
+                      },
+                      "3": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              }
+          }
+      },
+
+      "aff3ct::module::Channel_NO": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Channel_NO",
+          "class_short_name": "Channel_NO",
+          "class_inheritence": {
+            "0": "public Channel<R>",
+          },
+      },
+
+      /*"aff3ct::module::Decoder": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Decoder",
+          "class_short_name": "Decoder",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+      },*/
+
+      "aff3ct::module::Decoder_NO": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Decoder_NO",
+          "class_short_name": "Decoder_NO",
+          "class_inheritence": {
+            "0": "public Decoder_SISO<B, R>",
+          },
+      },
+
+      "aff3ct::module::Decoder_repetition_std": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Decoder_repetition_std",
+          "class_short_name": "Decoder_repetition_std",
+          "class_inheritence": {
+            "0": "public Decoder_repetition<B, R>",
+          },
+      },
+
+      "aff3ct::module::Encoder": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Encoder",
+          "class_short_name": "Encoder",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+          "class_tasks": {
+              "virtual void encode(const B *U_K, B *X_N, const int frame_id = -1)": {
+                "method_short_name": "encode",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "U_K",
+                          "soc-type": "B *",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "X_N",
+                        "soc-type": "B *",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void encode(const std::vector<B, A> &U_K, std::vector<B, A> &X_N, const int frame_id = -1)": {
+                  "method_short_name": "encode",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "U_K",
+                          "soc-type": "std::vector<B, A> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "X_N",
+                        "soc-type": "std::vector<B, A> &",
+                      },
+                      "2": {
+                        "soc_dir": "output",
+                        "soc_name": "H_N",
+                        "soc-type": "R *",
+                      },
+                      "3": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+          }
+      },
+
+      "aff3ct::module::Encoder_AZCW": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Encoder_AZCW",
+          "class_short_name": "Encoder_AZCW",
+          "class_inheritence": {
+            "0": "public Encoder<B>",
+          },
+      },
+
+      "aff3ct::module::Encoder_NO": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Encoder_NO",
+          "class_short_name": "Encoder_NO",
+          "class_inheritence": {
+            "0": "public Encoder<B>",
+          },
+      },
+
+      "aff3ct::module::Encoder_repetition_sys": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Encoder_repetition_sys",
+          "class_short_name": "Encoder_repetition_sys",
+          "class_inheritence": {
+            "0": "public Encoder<B>",
+          },
+      },
+
+      "aff3ct::module::Modem": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Modem",
+          "class_short_name": "Modem",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+          "class_tasks": {
+              "void demodulate(const std::vector<Q, A> &Y_N1, std::vector<Q, A> &Y_N2, const int frame_id = -1)": {
+                "method_short_name": "demodulate",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "Y_N1",
+                          "soc-type": "std::vector<Q, A> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N2",
+                        "soc-type": "std::vector<Q, A> &",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void demodulate_wg(const std::vector<R, AR> &H_N, const std::vector<Q, AQ> &Y_N1, std::vector<Q, AQ> &Y_N2, const int frame_id = -1)": {
+                  "method_short_name": "demodulate_wg",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "H_N",
+                          "soc-type": "std::vector<R, AR> &",
+                      },
+                      "1": {
+                        "soc_dir": "input",
+                        "soc_name": "Y_N1",
+                        "soc-type": "std::vector<Q, AQ> &",
+                      },
+                      "2": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N2",
+                        "soc-type": "std::vector<Q, AQ> &",
+                      },
+                      "3": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void filter(const std::vector<R, A> &Y_N1, std::vector<R, A> &Y_N2, const int frame_id = -1)": {
+                "method_short_name": "filter",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "Y_N1",
+                          "soc-type": 	"std::vector<R, A> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "Y_N2",
+                        "soc-type": 	"std::vector<R, A> &",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void modulate(const std::vector<B, AB> &X_N1, std::vector<R, AR> &X_N2, const int frame_id = -1)": {
+                "method_short_name": "modulate",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "X_N1",
+                          "soc-type": "std::vector<B, AB> &",
+                      },
+                      "1": {
+                        "soc_dir": "output",
+                        "soc_name": "X_N2",
+                        "soc-type": "std::vector<R, AR> &",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              }
+          }
+      },
+
+      "aff3ct::module::Modem_BPSK": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Modem_BPSK",
+          "class_short_name": "Modem_BPSK",
+          "class_inheritence": {
+            "0": "public Modem<B, R, Q>",
+          },
+      },
+      
+      "aff3ct::module::Modem_BPSK_fast": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Modem_BPSK_fast",
+          "class_short_name": "Modem_BPSK_fast",
+          "class_inheritence": {
+            "0": "public Modem<B, R, Q>",
+          },
+      },
+
+      /*"aff3ct::module::Monitor": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Monitor",
+          "class_short_name": "Monitor",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+      },*/
+
+      "aff3ct::module::Monitor_BFER": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Monitor_BFER",
+          "class_short_name": "Monitor_BFER",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Monitor",
+          },
+          "class_tasks": {
+              "int check_errors(const std::vector<B, A> &U, const std::vector<B, A> &Y, const int frame_id = -1)": {
+                "method_short_name": "check_errors",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "U_K",
+                          "soc-type": "B *",
+                      },
+                      "1": {
+                        "soc_dir": "input",
+                        "soc_name": "Y",
+                        "soc-type": "std::vector<B, A> &",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "virtual int check_errors(const B *U, const B *Y, const int frame_id = -1)": {
+                  "method_short_name": "check_errors",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "input",
+                          "soc_name": "U",
+                          "soc-type": "B *",
+                      },
+                      "1": {
+                        "soc_dir": "input",
+                        "soc_name": "Y",
+                        "soc-type": "B *",
+                      },
+                      "2": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+          }
+      },
+
+      "aff3ct::module::Source": {
+          "class_is_module": true,
+          "class_name": "aff3ct::module::Source",
+          "class_short_name": "Source",
+          "class_inheritence": {
+            "0": "public aff3ct::module::Module",
+          },
+          "class_tasks": {
+              "virtual void generate(B *U_K, const int frame_id = -1)": {
+                "method_short_name": "generate",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "output",
+                          "soc_name": "U_K",
+                          "soc-type": "B *",
+                      },
+                      "1": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+
+              "void generate(std::vector<B, A> &U_K, const int frame_id = -1)": {
+                  "method_short_name": "generate",
+                  "method_arguments": {
+                      "0": {
+                          "soc_dir": "output",
+                          "soc_name": "U_K",
+                          "soc-type": "std::vector<B, A> &",
+                      },
+                      "1": {
+                          "arg_dir": null,
+                          "arg_name": "frame_id",
+                      }
+                  }
+              },
+          }
+      },
+
+      "aff3ct::module::Source_AZCW": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Source_AZCW",
+          "class_short_name": "Source_AZCW",
+          "class_inheritence": {
+            "0": "public Source<B>",
+          },
+      },
+
+      "aff3ct::module::Source_random": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Source_random",
+          "class_short_name": "Source_random",
+          "class_inheritence": {
+            "0": "public Source<B>",
+          },
+      },
+
+      "aff3ct::module::Source_user_binary": {
+          "class_is_module": false,
+          "class_name": "aff3ct::module::Source_user_binary",
+          "class_short_name": "Source_user_binary",
+          "class_inheritence": {
+            "0": "public Source<B>",
+          },
+      },
+
+    };
+
+    function request_ModuleTask () {
+      const obj_module = JSON.stringify(objetJS);
+      const json_module = JSON.parse(obj_module);
+
+      var json_object = [];
+
+      for (var i = 0; i < Object.keys(json_module).length; i++){
+        AddModule(json_module, i, json_object);
+      }
+
+      console.log(json_object);
+
+    }
+
+    function AddModule(jsonObj, i, json_object){
+
+      var source = Object.keys(jsonObj)[i];   // TypeModuleAbstract  
+
+      if(jsonObj[source].class_is_module == true){
+
+        var ListTypeModule = [];
+
+        for (var k = 0; k < Object.keys(jsonObj).length; k++){
+
+          var var_name = Object.keys(jsonObj)[k]; //TypeModule
+
+          var inheritence = jsonObj[var_name]['class_inheritence'][0];
+
+          var index = inheritence.indexOf(jsonObj[source].class_short_name);
+
+          if(index !== -1){
+
+            ListTypeModule.push(jsonObj[var_name].class_short_name);
+
+          }
+
+        }
+
+        var tasks = Object.keys(jsonObj[source].class_tasks);
+
+        var AddTaskTable = [];
+
+        var ListTasks = [];
+
+        for(var i = 0; i < tasks.length; i++){
+
+            var task = tasks[i];
+
+            var method = Object.keys(jsonObj[source]['class_tasks'][task]['method_arguments']); // nbSocket
+            var short_name = jsonObj[source]['class_tasks'][task].method_short_name; //Task
+
+            for(var j = 0; j < ListTypeModule.length; j++){ 
+
+              AddTaskTable.push({ short_name : { 'TypeModule' : ListTypeModule[j], 'NbSockets' : method.length }});
+
+            }
+
+            ListTasks.push({ short_name : {AddTaskTable}});
+
+            var AddTaskTable = [];
+
+        }
+
+        var AddModuleAbstract = {'TypeModuleAbstract' : jsonObj[source].class_short_name, 'Tasks' : ListTasks } ;
+
+        json_object.push(AddModuleAbstract);
+
+      }
+
+    }
+
+    
+    window.onload = request_ModuleTask();
+
+    </script>
+  </body>
+</html>
