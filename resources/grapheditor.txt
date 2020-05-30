@@ -233,6 +233,7 @@ pageScale=Page Scale
 pageSetup=Page Setup
 panTooltip=Space+Drag to Scroll
 paperSize=Paper Size
+parameters=Parameters
 paste=Paste
 pasteHere=Paste Here
 pasteSize=Paste Size
