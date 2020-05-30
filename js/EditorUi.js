@@ -500,6 +500,7 @@ EditorUi = function(editor, container, lightbox)
 			// Updates UI
 			this.fireEvent(new mxEventObject('styleChanged', 'keys', [], 'values', [], 'cells', []));
 		};
+
 	
 		// Keys that should be ignored if the cell has a value (known: new default for all cells is html=1 so
 	    // for the html key this effecticely only works for edges inserted via the connection handler)
@@ -3118,6 +3119,7 @@ EditorUi.prototype.updateActionStates = function()
    	this.actions.get('removeFromGroup').setEnabled(oneVertexSelected &&
 		   graph.getModel().isVertex(graph.getModel().getParent(graph.getSelectionCell())));
 	this.actions.get('getXml').setEnabled(graph.getModel());
+	this.actions.get('getJSON').setEnabled(graph.getModel());
 
 	// Updates menu states
    	var state = graph.view.getState(graph.getSelectionCell());

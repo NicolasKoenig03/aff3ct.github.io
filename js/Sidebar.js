@@ -647,7 +647,7 @@ Sidebar.prototype.addSearchPalette = function(expand)
 	div.style.overflow = 'hidden';
 	div.style.width = '100%';
 	div.style.padding = '8px';
-	div.style.paddingTop = '80px';
+	div.style.paddingTop = '3px';
 	div.style.paddingBottom = '0px';
 
 	if (!expand)
@@ -963,41 +963,44 @@ Sidebar.prototype.insertSearchHint = function(div, searchTerm, count, page, resu
 Sidebar.prototype.addSourcePalette = function(expand)
 {
 	// Avoids having to bind all functions to "this"
-		var sb = this;
+	var sb = this;
 
-		// Reusable cell
-		var field = new mxCell('Param 1', new mxGeometry(10, 27, 140, 26), 'text;strokeColor=none;fillColor=red;align=left;verticalAlign=top;resizable=0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
-		field.vertex = true;
+	// Reusable cell
+	var field = new mxCell('Param 1', new mxGeometry(10, 27, 140, 26), 'text;strokeColor=none;fillColor=red;align=left;verticalAlign=top;resizable=0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;');
+	field.vertex = true;
 
-		var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
-		divider.vertex = true;
+	var divider = new mxCell('', new mxGeometry(0, 0, 40, 8), 'line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;');
+	divider.vertex = true;
+	var truc = [];
 
-		// Default tags
-		var dt = 'uml static class';
-
-		var fns = [
+	// Default tags
+	var dt = 'uml static class';
+	
+	var fns = [
 		this.addEntry(dt + 'object instance', function () {
 			var options = PopulateDropDownList();
 			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-				'<b>Source</b></p>' +
-				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options	+ '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
-				'connectable=0;editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
+			'<b cellId="0">Source</b></p>' +
+			'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
+			'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options	+ '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+			'connectable=0;editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 			cell.vertex = true;
-
+			
 			var input = new mxCell('IN', new mxGeometry(-10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=west;fontSize=9;shape=rectangle;resizable=0;');
 			input.vertex = true;
-
+			
 			var output = new mxCell('OUT', new mxGeometry(cell.geometry.width -10, cell.geometry.height / 2, 20, 20), 'rotatable=0;movable=0;snapToPoint=0;perimeter=none;container=0;rounded=1;portConstraint=east;fontSize=9;shape=rectangle;resizable=0;');
 			output.vertex = true;
-
+			
 			cell.insert(output);
 
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Source 2');
-		})
+		}),
 	];
 
-	this.addPaletteFunctions('source', 'Source', expand || false, fns);
+	this.addMenuPalette('Source', 'Generate', fns);
+	
+	// this.addPaletteFunctions('source', 'Source', expand || false, fns);
 };
 
 Sidebar.prototype.addEncoderPalette = function (expand) {
@@ -1018,9 +1021,10 @@ Sidebar.prototype.addEncoderPalette = function (expand) {
 		this.addEntry(dt + 'object instance', function () {
 			var options = PopulateDropDownList();
 			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-				'<b>Module</b></p>' +
-				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+				'<b>Encoder</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>'
+				// 'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>'
+				, new mxGeometry(0, 0, 190, 120),
 				'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 			cell.vertex = true;
 
@@ -1059,9 +1063,10 @@ Sidebar.prototype.addModemPalette = function(expand)
 		this.addEntry(dt + 'object instance', function () {
 			var options = PopulateDropDownList();
 			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-				'<b>Module</b></p>' +
-				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+				'<b>Modem</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' 
+				// 'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>'
+				, new mxGeometry(0, 0, 190, 120),
 				'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 			cell.vertex = true;
 
@@ -1099,9 +1104,10 @@ Sidebar.prototype.addChannelPalette = function(expand)
 		this.addEntry(dt + 'object instance', function () {
 			var options = PopulateDropDownList();
 			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-				'<b>Module</b></p>' +
-				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+				'<b>Channel</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>'
+				// 'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>'
+				, new mxGeometry(0, 0, 190, 120),
 				'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 			cell.vertex = true;
 
@@ -1138,9 +1144,10 @@ Sidebar.prototype.addDecoderPalette = function(expand) {
 		this.addEntry(dt + 'object instance', function () {
 			var options = PopulateDropDownList();
 			var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-				'<b>Module</b></p>' +
-				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-				'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+				'<b>Decoder</b></p>' +
+				'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>'
+				// 'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>'
+				, new mxGeometry(0, 0, 190, 120),
 				'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 			cell.vertex = true;
 
@@ -1178,9 +1185,10 @@ Sidebar.prototype.addMonitorPalette = function(expand)
 			this.addEntry(dt + 'object instance', function () {
 				var options = PopulateDropDownList();
 				var cell = new mxCell('<p style="margin:0px;margin-top:4px;text-align:center;">' +
-					'<b>Module</b></p>' +
-					'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>' +
-					'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>', new mxGeometry(0, 0, 190, 120),
+					'<b>Monitor</b></p>' +
+					'<hr size="1"/><p style="margin:0px;margin-left:4px;"><br/>'
+					// 'Tâche: <SELECT class="custom-select" id="ddlModules" size="1">' + options + '</SELECT><br/>'
+					, new mxGeometry(0, 0, 190, 120),
 					'editable=0;resizable=0;rotatable=0;movableLabel=0;verticalAlign=top;align=left;overflow=fill;connectable=0;fontStyle=1;fontSize=12;fontFamily=Helvetica;html=1;');
 				cell.vertex = true;
 
@@ -1228,6 +1236,7 @@ Sidebar.prototype.createTitle = function(label)
 
 	return elt;
 };
+
 
 /**
  * Creates a thumbnail for the given cells.
@@ -2839,6 +2848,47 @@ Sidebar.prototype.addPalette = function(id, title, expanded, onInit)
 
     return div;
 };
+
+
+/**
+ * Adds the given palette.
+ */
+Sidebar.prototype.addMenuPalette = function (category, task, fns) {
+	let nbTask = 2;
+	elt = document.createElement('a');
+	elt.className = 'geTitle accordion';
+	mxUtils.write(elt, category);
+
+	this.container.appendChild(elt);
+
+	for (var i=0; i<nbTask; i++) {
+
+		divPanel = document.createElement('div')
+		divPanel.className = 'panel'
+		divPanel.style.paddingLeft = "10px";
+	
+		divTasks = document.createElement('div')
+		divTasks.className = 'panel'
+		divTasks.style.paddingLeft = "10px";
+	
+		tasks = document.createElement('a')
+		tasks.className = 'geTitle accordion';
+		mxUtils.write(tasks, task+" "+i);
+	
+		divPanel.appendChild(tasks)
+	
+		this.addFoldingHandler(elt, divPanel, null);
+		this.addFoldingHandler(tasks, divTasks, null);
+
+		this.container.appendChild(divPanel);
+		this.container.appendChild(divTasks);
+
+		for (var j = 0; j < fns.length; j++) {
+			divTasks.appendChild(fns[j](divTasks));
+		}
+	}
+};
+
 
 /**
  * Create the given title element.

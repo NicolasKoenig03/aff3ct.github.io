@@ -498,7 +498,8 @@ Format.prototype.refresh = function()
 		else
 		{
 			label.style.borderLeftWidth = '0px';
-			mxUtils.write(label, mxResources.get('style'));
+			mxUtils.write(label, mxResources.get('parameters'));
+			div.style.textAlign = 'center';
 			div.appendChild(label);
 			
 			var stylePanel = div.cloneNode(false);
@@ -510,25 +511,25 @@ Format.prototype.refresh = function()
 		}
 		
 		// Text
-		mxUtils.write(label2, mxResources.get('text'));
-		div.appendChild(label2);
+		// mxUtils.write(label2, mxResources.get('text'));
+		// div.appendChild(label2);
 
-		var textPanel = div.cloneNode(false);
-		textPanel.style.display = 'none';
-		this.panels.push(new TextFormatPanel(this, ui, textPanel));
-		this.container.appendChild(textPanel);
+		// var textPanel = div.cloneNode(false);
+		// textPanel.style.display = 'none';
+		// this.panels.push(new TextFormatPanel(this, ui, textPanel));
+		// this.container.appendChild(textPanel);
 		
-		// Arrange
-		mxUtils.write(label3, mxResources.get('arrange'));
-		div.appendChild(label3);
+		// // Arrange
+		// mxUtils.write(label3, mxResources.get('arrange'));
+		// div.appendChild(label3);
 
-		var arrangePanel = div.cloneNode(false);
-		arrangePanel.style.display = 'none';
-		this.panels.push(new ArrangePanel(this, ui, arrangePanel));
-		this.container.appendChild(arrangePanel);
+		// var arrangePanel = div.cloneNode(false);
+		// arrangePanel.style.display = 'none';
+		// this.panels.push(new ArrangePanel(this, ui, arrangePanel));
+		// this.container.appendChild(arrangePanel);
 		
-		addClickHandler(label2, textPanel, idx++);
-		addClickHandler(label3, arrangePanel, idx++);
+		// addClickHandler(label2, textPanel, idx++);
+		// addClickHandler(label3, arrangePanel, idx++);
 	}
 };
 
@@ -1469,7 +1470,7 @@ BaseFormatPanel.prototype.destroy = function()
 ArrangePanel = function(format, editorUi, container)
 {
 	BaseFormatPanel.call(this, format, editorUi, container);
-	this.init();
+	// this.init();
 };
 
 mxUtils.extend(ArrangePanel, BaseFormatPanel);
@@ -2514,7 +2515,7 @@ mxUtils.extend(TextFormatPanel, BaseFormatPanel);
 TextFormatPanel.prototype.init = function()
 {
 	this.container.style.borderBottom = 'none';
-	this.addFont(this.container);
+	// this.addFont(this.container);
 };
 
 /**
@@ -4054,13 +4055,13 @@ StyleFormatPanel.prototype.init = function()
 			this.container.appendChild(this.addSvgStyles(this.createPanel()));
 		}
 		
-		if (!ss.containsImage || ss.style.shape == 'image')
-		{
-			this.container.appendChild(this.addFill(this.createPanel()));
-		}
+		// if (!ss.containsImage || ss.style.shape == 'image')
+		// {
+		// 	this.container.appendChild(this.addFill(this.createPanel()));
+		// }
 	
 		// this.container.appendChild(this.addStroke(this.createPanel()));
-		this.container.appendChild(this.addLineJumps(this.createPanel()));
+		// this.container.appendChild(this.addLineJumps(this.createPanel()));
 		var opacityPanel = this.createRelativeOption(mxResources.get('opacity'), mxConstants.STYLE_OPACITY, 41);
 		opacityPanel.style.paddingTop = '8px';
 		opacityPanel.style.paddingBottom = '8px';
@@ -4260,111 +4261,111 @@ StyleFormatPanel.prototype.addEditOps = function(div)
 /**
  * Adds the label menu items to the given menu and parent.
  */
-StyleFormatPanel.prototype.addFill = function(container)
-{
-	var ui = this.editorUi;
-	var graph = ui.editor.graph;
-	var ss = this.format.getSelectionState();
-	container.style.paddingTop = '6px';
-	container.style.paddingBottom = '6px';
+// StyleFormatPanel.prototype.addFill = function(container)
+// {
+// 	var ui = this.editorUi;
+// 	var graph = ui.editor.graph;
+// 	var ss = this.format.getSelectionState();
+// 	container.style.paddingTop = '6px';
+// 	container.style.paddingBottom = '6px';
 
-	// Adds gradient direction option
-	var gradientSelect = document.createElement('select');
-	gradientSelect.style.position = 'absolute';
-	gradientSelect.style.marginTop = '-2px';
-	gradientSelect.style.right = (mxClient.IS_QUIRKS) ? '52px' : '72px';
-	gradientSelect.style.width = '70px';
+// 	// Adds gradient direction option
+// 	var gradientSelect = document.createElement('select');
+// 	gradientSelect.style.position = 'absolute';
+// 	gradientSelect.style.marginTop = '-2px';
+// 	gradientSelect.style.right = (mxClient.IS_QUIRKS) ? '52px' : '72px';
+// 	gradientSelect.style.width = '70px';
 	
-	// Stops events from bubbling to color option event handler
-	mxEvent.addListener(gradientSelect, 'click', function(evt)
-	{
-		mxEvent.consume(evt);
-	});
+// 	// Stops events from bubbling to color option event handler
+// 	mxEvent.addListener(gradientSelect, 'click', function(evt)
+// 	{
+// 		mxEvent.consume(evt);
+// 	});
 
-	var gradientPanel = this.createCellColorOption(mxResources.get('gradient'), mxConstants.STYLE_GRADIENTCOLOR, '#ffffff', function(color)
-	{
-		if (color == null || color == mxConstants.NONE)
-		{
-			gradientSelect.style.display = 'none';
-		}
-		else
-		{
-			gradientSelect.style.display = '';
-		}
-	});
+// 	var gradientPanel = this.createCellColorOption(mxResources.get('gradient'), mxConstants.STYLE_GRADIENTCOLOR, '#ffffff', function(color)
+// 	{
+// 		if (color == null || color == mxConstants.NONE)
+// 		{
+// 			gradientSelect.style.display = 'none';
+// 		}
+// 		else
+// 		{
+// 			gradientSelect.style.display = '';
+// 		}
+// 	});
 
-	var fillKey = (ss.style.shape == 'image') ? mxConstants.STYLE_IMAGE_BACKGROUND : mxConstants.STYLE_FILLCOLOR;
-	var label = (ss.style.shape == 'image') ? mxResources.get('background') : mxResources.get('fill');
+// 	var fillKey = (ss.style.shape == 'image') ? mxConstants.STYLE_IMAGE_BACKGROUND : mxConstants.STYLE_FILLCOLOR;
+// 	var label = (ss.style.shape == 'image') ? mxResources.get('background') : mxResources.get('fill');
 	
-	var fillPanel = this.createCellColorOption(label, fillKey, '#ffffff');
-	fillPanel.style.fontWeight = 'bold';
+// 	var fillPanel = this.createCellColorOption(label, fillKey, '#ffffff');
+// 	fillPanel.style.fontWeight = 'bold';
 
-	var tmpColor = mxUtils.getValue(ss.style, fillKey, null);
-	gradientPanel.style.display = (tmpColor != null && tmpColor != mxConstants.NONE &&
-		ss.fill && ss.style.shape != 'image') ? '' : 'none';
+// 	var tmpColor = mxUtils.getValue(ss.style, fillKey, null);
+// 	gradientPanel.style.display = (tmpColor != null && tmpColor != mxConstants.NONE &&
+// 		ss.fill && ss.style.shape != 'image') ? '' : 'none';
 
-	var directions = [mxConstants.DIRECTION_NORTH, mxConstants.DIRECTION_EAST,
-	                  mxConstants.DIRECTION_SOUTH, mxConstants.DIRECTION_WEST];
+// 	var directions = [mxConstants.DIRECTION_NORTH, mxConstants.DIRECTION_EAST,
+// 	                  mxConstants.DIRECTION_SOUTH, mxConstants.DIRECTION_WEST];
 
-	for (var i = 0; i < directions.length; i++)
-	{
-		var gradientOption = document.createElement('option');
-		gradientOption.setAttribute('value', directions[i]);
-		mxUtils.write(gradientOption, mxResources.get(directions[i]));
-		gradientSelect.appendChild(gradientOption);
-	}
+// 	for (var i = 0; i < directions.length; i++)
+// 	{
+// 		var gradientOption = document.createElement('option');
+// 		gradientOption.setAttribute('value', directions[i]);
+// 		mxUtils.write(gradientOption, mxResources.get(directions[i]));
+// 		gradientSelect.appendChild(gradientOption);
+// 	}
 	
-	gradientPanel.appendChild(gradientSelect);
+// 	gradientPanel.appendChild(gradientSelect);
 
-	var listener = mxUtils.bind(this, function()
-	{
-		ss = this.format.getSelectionState();
-		var value = mxUtils.getValue(ss.style, mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
+// 	var listener = mxUtils.bind(this, function()
+// 	{
+// 		ss = this.format.getSelectionState();
+// 		var value = mxUtils.getValue(ss.style, mxConstants.STYLE_GRADIENT_DIRECTION, mxConstants.DIRECTION_SOUTH);
 		
-		// Handles empty string which is not allowed as a value
-		if (value == '')
-		{
-			value = mxConstants.DIRECTION_SOUTH;
-		}
+// 		// Handles empty string which is not allowed as a value
+// 		if (value == '')
+// 		{
+// 			value = mxConstants.DIRECTION_SOUTH;
+// 		}
 		
-		gradientSelect.value = value;
-		container.style.display = (ss.fill) ? '' : 'none';
+// 		gradientSelect.value = value;
+// 		container.style.display = (ss.fill) ? '' : 'none';
 		
-		var fillColor = mxUtils.getValue(ss.style, mxConstants.STYLE_FILLCOLOR, null);
+// 		var fillColor = mxUtils.getValue(ss.style, mxConstants.STYLE_FILLCOLOR, null);
 
-		if (!ss.fill || ss.containsImage || fillColor == null || fillColor == mxConstants.NONE || ss.style.shape == 'filledEdge')
-		{
-			gradientPanel.style.display = 'none';
-		}
-		else
-		{
-			gradientPanel.style.display = '';
-		}
-	});
+// 		if (!ss.fill || ss.containsImage || fillColor == null || fillColor == mxConstants.NONE || ss.style.shape == 'filledEdge')
+// 		{
+// 			gradientPanel.style.display = 'none';
+// 		}
+// 		else
+// 		{
+// 			gradientPanel.style.display = '';
+// 		}
+// 	});
 	
-	graph.getModel().addListener(mxEvent.CHANGE, listener);
-	this.listeners.push({destroy: function() { graph.getModel().removeListener(listener); }});
-	listener();
+// 	graph.getModel().addListener(mxEvent.CHANGE, listener);
+// 	this.listeners.push({destroy: function() { graph.getModel().removeListener(listener); }});
+// 	listener();
 
-	mxEvent.addListener(gradientSelect, 'change', function(evt)
-	{
-		graph.setCellStyles(mxConstants.STYLE_GRADIENT_DIRECTION, gradientSelect.value, graph.getSelectionCells());
-		mxEvent.consume(evt);
-	});
+// 	mxEvent.addListener(gradientSelect, 'change', function(evt)
+// 	{
+// 		graph.setCellStyles(mxConstants.STYLE_GRADIENT_DIRECTION, gradientSelect.value, graph.getSelectionCells());
+// 		mxEvent.consume(evt);
+// 	});
 	
-	container.appendChild(fillPanel);
-	container.appendChild(gradientPanel);
+// 	container.appendChild(fillPanel);
+// 	container.appendChild(gradientPanel);
 	
-	// Adds custom colors
-	var custom = this.getCustomColors();
+// 	// Adds custom colors
+// 	var custom = this.getCustomColors();
 	
-	for (var i = 0; i < custom.length; i++)
-	{
-		container.appendChild(this.createCellColorOption(custom[i].title, custom[i].key, custom[i].defaultValue));
-	}
+// 	for (var i = 0; i < custom.length; i++)
+// 	{
+// 		container.appendChild(this.createCellColorOption(custom[i].title, custom[i].key, custom[i].defaultValue));
+// 	}
 	
-	return container;
-};
+// 	return container;
+// };
 
 /**
  * Adds the label menu items to the given menu and parent.
@@ -5237,30 +5238,30 @@ StyleFormatPanel.prototype.addEffects = function(div)
 		right.innerHTML = '';
 		current = left;
 		
-		if (ss.rounded)
-		{
-			addOption(mxResources.get('rounded'), mxConstants.STYLE_ROUNDED, 0);
-		}
+		// if (ss.rounded)
+		// {
+		// 	addOption(mxResources.get('rounded'), mxConstants.STYLE_ROUNDED, 0);
+		// }
 		
-		if (ss.style.shape == 'swimlane')
-		{
-			addOption(mxResources.get('divider'), 'swimlaneLine', 1);
-		}
+		// if (ss.style.shape == 'swimlane')
+		// {
+		// 	addOption(mxResources.get('divider'), 'swimlaneLine', 1);
+		// }
 
-		if (!ss.containsImage)
-		{
-			addOption(mxResources.get('shadow'), mxConstants.STYLE_SHADOW, 0);
-		}
+		// if (!ss.containsImage)
+		// {
+		// 	addOption(mxResources.get('shadow'), mxConstants.STYLE_SHADOW, 0);
+		// }
 		
-		if (ss.glass)
-		{
-			addOption(mxResources.get('glass'), mxConstants.STYLE_GLASS, 0);
-		}
+		// if (ss.glass)
+		// {
+		// 	addOption(mxResources.get('glass'), mxConstants.STYLE_GLASS, 0);
+		// }
 
-		if (ss.comic)
-		{
-			addOption(mxResources.get('comic'), 'comic', 0);
-		}
+		// if (ss.comic)
+		// {
+		// 	addOption(mxResources.get('comic'), 'comic', 0);
+		// }
 		
 		if (count == 0)
 		{
@@ -5292,8 +5293,89 @@ StyleFormatPanel.prototype.addStyleOps = function(div)
 	btn.style.width = '202px';
 	div.appendChild(btn);
 
+	mxUtils.br(div)
+
+	mxUtils.br(div)
+
+	if (this.editorUi.editor.graph.getSelectionCount() == 1) {
+
+		SelectedId = this.editorUi.editor.graph.getSelectionCell();
+	
+		var namelabel1 = document.createElement('label'); // Create Label for Name Field
+		namelabel1.innerHTML = "Bits : "; // Set Field Labels
+		namelabel1.style.textAlign = "right"; 
+		namelabel1.style.width = "100px";
+		var inputelement1 = document.createElement('input'); // Create Input Field for Name
+		inputelement1.setAttribute("type", "text");
+		inputelement1.setAttribute("name", "dname");
+		inputelement1.style.width = "50px";
+		inputelement1.style.marginLeft = "10px";
+		
+		div.appendChild(namelabel1);
+		div.appendChild(inputelement1);
+		inputelement1.id = "input1";
+		mxUtils.br(div)
+
+		var namelabel2 = namelabel1.cloneNode(true);
+		namelabel2.innerHTML = "Codeword size : "; // Set Field Labels
+		var inputelement2 = inputelement1.cloneNode(true);
+		inputelement2.id = "input2";
+		div.appendChild(namelabel2);
+		div.appendChild(inputelement2);
+		mxUtils.br(div)
+
+		var namelabel3 = namelabel1.cloneNode(true);
+		namelabel3.innerHTML = "Frame errors : "; // Set Field Labels
+		var inputelement3 = inputelement1.cloneNode(true);
+		inputelement3.id = "input3";
+		div.appendChild(namelabel3);
+		div.appendChild(inputelement3);
+		mxUtils.br(div)
+
+		var namelabel4 = namelabel1.cloneNode(true);
+		namelabel4.innerHTML = "Seed : "; // Set Field Labels
+		var inputelement4 = inputelement1.cloneNode(true);
+		inputelement4.id = "input4";
+		div.appendChild(namelabel4);
+		div.appendChild(inputelement4);
+		mxUtils.br(div)
+
+
+		var taskList = document.createElement('select');
+		taskList.style.width = "100px";
+		taskList.style.height = "30px";
+		let list = ['task 1', 'task 2', 'task 3', 'task 4'];
+		for (var i=0; i<list.length; i++) {
+			var opt = document.createElement('option');
+			opt.value = list[i];
+			opt.innerHTML = list[i];
+			taskList.appendChild(opt);
+		}
+		div.appendChild(taskList)
+		mxUtils.br(div)
+
+		var btnApply = document.createElement('input');
+		btnApply.style.width = '202px';
+		btnApply.type = "button";
+		btnApply.value = "Apply Changes";
+		btnApply.onclick = function() {
+		div.appendChild(btnApply);
+
+		var bits = document.getElementById("input1").value
+		var codeWordSize = document.getElementById("input2").value
+		var frameErros = document.getElementById("input3").value
+		var seed = document.getElementById("input4").value
+
+		paramArr.push({"Bits" : bits, "CodeWordSize" : codeWordSize, "FrameErros" : frameErros, "Seed" : seed});
+
+		}
+	}
+
 	return div;
 };
+
+var paramArr = []
+
 
 
 /**
@@ -5326,11 +5408,11 @@ DiagramFormatPanel.prototype.init = function()
 	var editor = ui.editor;
 	var graph = editor.graph;
 
-	this.container.appendChild(this.addView(this.createPanel()));
+	// this.container.appendChild(this.addView(this.createPanel()));
 
 	if (graph.isEnabled())
 	{
-		this.container.appendChild(this.addOptions(this.createPanel()));
+		// this.container.appendChild(this.addOptions(this.createPanel()));
 		this.container.appendChild(this.addPaperSize(this.createPanel()));
 		this.container.appendChild(this.addStyleOps(this.createPanel()));
 	}
@@ -5348,7 +5430,7 @@ DiagramFormatPanel.prototype.addView = function(div)
 	div.appendChild(this.createTitle(mxResources.get('view')));
 	
 	// Grid
-	this.addGridOption(div);
+	// this.addGridOption(div);
 	
 	// Page View
 	if (DiagramFormatPanel.showPageView)
@@ -5747,39 +5829,45 @@ DiagramFormatPanel.prototype.addPaperSize = function(div)
  */
 DiagramFormatPanel.prototype.addStyleOps = function(div)
 {
-	var btn = mxUtils.button(mxResources.get('editData'), mxUtils.bind(this, function(evt)
+	var btn = mxUtils.button(mxResources.get('getXml'), mxUtils.bind(this, function(evt)
 	{
-		this.editorUi.actions.get('editData').funct();
+		this.editorUi.actions.get('getXml').funct();
 	}));
 	
-	btn.setAttribute('title', mxResources.get('editData') + ' (' + this.editorUi.actions.get('editData').shortcut + ')');
+	btn.setAttribute('title', mxResources.get('getXml') + ' (' + this.editorUi.actions.get('getXml').shortcut + ')');
 	btn.style.width = '202px';
 	btn.style.marginBottom = '2px';
 	div.appendChild(btn);
 
-	mxUtils.br(div);
+	// mxUtils.br(div);
 	
-	btn = mxUtils.button(mxResources.get('clearDefaultStyle'), mxUtils.bind(this, function(evt)
-	{
-		this.editorUi.actions.get('clearDefaultStyle').funct();
-	}));
+	// btn = mxUtils.button(mxResources.get('clearDefaultStyle'), mxUtils.bind(this, function(evt)
+	// {
+	// 	this.editorUi.actions.get('clearDefaultStyle').funct();
+	// }));
 	
-	btn.setAttribute('title', mxResources.get('clearDefaultStyle') + ' (' + this.editorUi.actions.get('clearDefaultStyle').shortcut + ')');
-	btn.style.width = '202px';
-	div.appendChild(btn);
-
-	var btn = mxUtils.button(mxResources.get('getXml'), mxUtils.bind(this, function (evt) {
-		this.editorUi.actions.get('getXml').funct();
-	}));
-
-	mxUtils.br(div);
+	// btn.setAttribute('title', mxResources.get('clearDefaultStyle') + ' (' + this.editorUi.actions.get('clearDefaultStyle').shortcut + ')');
+	// btn.style.width = '202px';
+	// div.appendChild(btn);
 
 	btn.setAttribute('title', mxResources.get('getXml') + ' (' + this.editorUi.actions.get('getXml').shortcut + ')');
 	btn.style.width = '202px';
 	btn.style.marginBottom = '2px';
 	div.appendChild(btn);
 
+	var btn = mxUtils.button(mxResources.get('getJSON'), mxUtils.bind(this, function (evt) {
+		this.editorUi.actions.get('getJSON').funct();
+	}));
+
+	mxUtils.br(div);
+
+	btn.setAttribute('title', mxResources.get('getJSON') + ' (' + this.editorUi.actions.get('getJSON').shortcut + ')');
+	btn.style.width = '202px';
+	btn.style.marginBottom = '2px';
+	div.appendChild(btn);
+
 	return div;
+
 };
 
 

@@ -1144,6 +1144,154 @@ Actions.prototype.init = function()
 		var node = encoder.encode(graph.getModel());
 		mxUtils.popup(mxUtils.getPrettyXml(node), true);
 	});
+	this.addAction('getJSON', function() {
+		var json = {}
+		var model = graph.getModel()
+		var parent = model.getCell(1)
+		var nbCellsInGraph = parent.getChildCount()
+		
+		if (nbCellsInGraph !== 0) { // There are cells on the graph currently
+			// Acces to cell info
+			for (var i = 0; i < nbCellsInGraph; i++) 
+			{
+				var modules = model.getChildVertices(parent);
+				var module = modules[i]
+
+				if (module.getChildCount() == 1) { 
+					let params = []
+
+					var type = "aff3ct::module::Source_random"
+					var module_name = "aff3ct::module::Source"
+
+					var task_type = "generate_N1"
+					var task_name = "generate"
+					
+					soc_name_out = module.children[0].value
+					soc_dir_out = "out"
+					soc_type_out = "std::vector<B, A> &"
+
+					params.push({ "type": type, 
+								"module_name": module_name, 
+								"task_type": task_type, 
+								"task_name": task_name, 
+								"soc_name_out": soc_name_out, 
+								"soc_dir_out": soc_dir_out,
+								"soc_type_out": soc_type_out });
+
+					var sourceJSON = getSourceJSON(params[0], json);
+
+				} else {
+					var type = "Source"
+					var module_name = "machin"
+					var task_name = "ouioui"
+					soc_name_in = module.children[0].value
+					soc_name_out = module.children[1].value
+					soc_dir_out = "out"
+					soc_type_out = "vector"
+					
+					array.push({ "type": type, 
+								"module_name": module_name, 
+								"task_type": task_type,
+								"task_name": task_name,
+								"soc_name_in": soc_name_in,
+								"soc_dir_in": soc_dir_in,
+								"soc_type_in": soc_type_in,
+								"soc_name_out": soc_name_out,
+								"soc_dir_out": soc_dir_out,
+								"soc_type_out": soc_type_out });
+				}
+			}					
+		}
+	});
+
+	function getSourceJSON(arr, json) {
+		json[arr.type] =
+		{
+			"module_name": arr.module_name,
+			"tasks": {
+				[arr.task_type]: {
+					"task_name": arr.task_name,
+					"sockets": [
+						{
+							"soc_name": arr.soc_name_out,
+							"soc_dir": arr.soc_dir_out,
+							"soc_type": arr.soc_type_out
+						},
+					]
+				}
+			}
+		}
+		return json
+	}
+
+	function getGenericJSON(arr, json) {
+		json[arr.type] = 
+			{
+				"module_name": arr.module_name,
+				"tasks": {
+					[arr.task_type]: {
+						"task_name": arr.task_name,
+						"sockets": [
+							{
+								"soc_name": arr.soc_name_out,
+								"soc_dir": arr.soc_dir_out,
+								"soc_type": arr.soc_type_out
+							},
+							{
+								"soc_name": arr.soc_name_in,
+								"soc_dir": arr.soc_dir_in,
+								"soc_type": arr.soc_type_in
+							}
+						]
+					}
+				}
+			}
+		return json
+	}
+
+
+
+	function getModemJSON(arr, json) {
+		json[arr.type] =
+		{
+			"module_name": arr.name,
+				"tasks": {
+				[task_type_dmd]: {
+					"task_name": arr.task_name_dmd,
+						"sockets": [
+							{
+								"soc_name": arr.soc_name_in_dmd,
+								"soc_dir": arr.soc_dir_in_dmd,
+								"soc_type": arr.soc_type_in_dmd
+							},
+							{
+								"soc_name": arr.soc_name_out_dmd,
+								"soc_dir": arr.soc_dir_out_dmd,
+								"soc_type": arr.soc_type_out_dmd
+							}
+						]
+				},
+				[task_type_mod]: {
+					"task_name": arr.task_name_mod,
+						"sockets": [
+							{
+								"soc_name": arr.soc_name_in_mod,
+								"soc_dir": arr.soc_dir_in_mod,
+								"soc_type": arr.soc_type_in_mod
+							},
+							{
+								"soc_name": arr.soc_name_out_mod,
+								"soc_dir": arr.soc_dir_out_mod,
+								"soc_type": arr.soc_type_out_mod
+							}
+						]
+				}
+			}
+		}
+		return json
+	}
+	
+
 	this.addAction('clearDefaultStyle', function()
 	{
 		if (graph.isEnabled())
