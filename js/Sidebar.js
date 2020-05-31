@@ -5,7 +5,6 @@
  * Construcs a new sidebar for the given editor.
  */
 
-
 function Sidebar(editorUi, container)
 {
 	this.editorUi = editorUi;
@@ -997,8 +996,8 @@ Sidebar.prototype.addSourcePalette = function(expand)
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Source 2');
 		}),
 	];
-
-	this.addMenuPalette('Source', 'Generate', fns);
+	let source = moduleArray[5]
+	this.addMenuPalette(source.TypeModuleAbstract, source.Tasks, fns);
 	
 	// this.addPaletteFunctions('source', 'Source', expand || false, fns);
 };
@@ -1040,8 +1039,9 @@ Sidebar.prototype.addEncoderPalette = function (expand) {
 			return sb.createVertexTemplateFromCells([cell], cell.geometry.width, cell.geometry.height, 'Source 2');
 		})
 	];
-
-	this.addPaletteFunctions('encoder', 'Encoder', expand || false, fns);
+	let encoder = moduleArray[2]
+	this.addMenuPalette(encoder.TypeModuleAbstract, encoder.Tasks, fns);
+	// this.addPaletteFunctions('encoder', 'Encoder', expand || false, fns);
 }
 
 
@@ -1083,7 +1083,10 @@ Sidebar.prototype.addModemPalette = function(expand)
 		})
 	];
 
-	this.addPaletteFunctions('modem', 'Modem', expand || false, fns);
+	let modem = moduleArray[3]
+	this.addMenuPalette(modem.TypeModuleAbstract, modem.Tasks, fns);
+
+	// this.addPaletteFunctions('modem', 'Modem', expand || false, fns);
 };
 
 Sidebar.prototype.addChannelPalette = function(expand)
@@ -1124,7 +1127,10 @@ Sidebar.prototype.addChannelPalette = function(expand)
 		})
 	];
 
-	this.addPaletteFunctions('channel', 'Channel', expand || false, fns);
+	let channel = moduleArray[0]
+	this.addMenuPalette(channel.TypeModuleAbstract, channel.Tasks, fns);
+
+	// this.addPaletteFunctions('channel', 'Channel', expand || false, fns);
 };
 
 Sidebar.prototype.addDecoderPalette = function(expand) {
@@ -1164,7 +1170,10 @@ Sidebar.prototype.addDecoderPalette = function(expand) {
 		})
 	];
 
-	this.addPaletteFunctions('decoder', 'Decoder', expand || false, fns);
+	let decoder = moduleArray[1]
+	this.addMenuPalette(decoder.TypeModuleAbstract, decoder.Tasks, fns);
+
+	// this.addPaletteFunctions('decoder', 'Decoder', expand || false, fns);
 }
 
 Sidebar.prototype.addMonitorPalette = function(expand)
@@ -1206,7 +1215,10 @@ Sidebar.prototype.addMonitorPalette = function(expand)
 
 	];
 
-	this.addPaletteFunctions('monitor', 'Monitor', expand || false, fns);
+	let monitor = moduleArray[4]
+	this.addMenuPalette(monitor.TypeModuleAbstract, monitor.Tasks, fns);
+
+	// this.addPaletteFunctions('monitor', 'Monitor', expand || false, fns);
 };
 
 // Sidebar.prototype.addGeneralPalette = function(expand)
@@ -2853,32 +2865,39 @@ Sidebar.prototype.addPalette = function(id, title, expanded, onInit)
 /**
  * Adds the given palette.
  */
-Sidebar.prototype.addMenuPalette = function (category, task, fns) {
-	let nbTask = 2;
+Sidebar.prototype.addMenuPalette = function (TypeModuleAbstract, tasks, fns) {
+	let nbTask = tasks.length;
 	elt = document.createElement('a');
 	elt.className = 'geTitle accordion';
-	mxUtils.write(elt, category);
+	mxUtils.write(elt, TypeModuleAbstract);
 
 	this.container.appendChild(elt);
+
+	console.log(tasks[0].TaskName)
 
 	for (var i=0; i<nbTask; i++) {
 
 		divPanel = document.createElement('div')
+		divPanel.style.display = 'none';
+
 		divPanel.className = 'panel'
 		divPanel.style.paddingLeft = "10px";
 	
 		divTasks = document.createElement('div')
+		divTasks.style.display = 'none';
+
 		divTasks.className = 'panel'
 		divTasks.style.paddingLeft = "10px";
 	
-		tasks = document.createElement('a')
-		tasks.className = 'geTitle accordion';
-		mxUtils.write(tasks, task+" "+i);
+		task = document.createElement('a')
+		task.className = 'geTitle accordion';
+		mxUtils.write(task, tasks[i].TaskName);
 	
-		divPanel.appendChild(tasks)
+		divPanel.appendChild(task)
 	
 		this.addFoldingHandler(elt, divPanel, null);
-		this.addFoldingHandler(tasks, divTasks, null);
+		this.addFoldingHandler(elt, divTasks, null);
+		this.addFoldingHandler(task, divTasks, null);
 
 		this.container.appendChild(divPanel);
 		this.container.appendChild(divTasks);

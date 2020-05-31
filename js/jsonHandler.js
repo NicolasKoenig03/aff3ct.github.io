@@ -196,7 +196,7 @@ function getSocket(jsonObj) {
             "demodOut": demodOut,
             "decodIn": decodIn,
         }
-        console.log(socket)
+        // console.log(socket)
 
     return socket
 }
