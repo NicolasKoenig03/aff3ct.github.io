@@ -1,7 +1,8 @@
 var moduleArray = [];
-requestModuleData();
+// requestModuleData();
 
 function requestModuleData () {
+  console.log("ruuning")
 
   fetch('../json/ModuleSidebar.json')
     .then(function (resp) {

@@ -18,6 +18,14 @@
 	<script src="./js/lib/bootstrap-4.1.1.min.js"></script>
 	
 	<script type="text/javascript" src="./js/ModuelSidebarParser.js"></script>
+	<script type="text/javascript">
+		function preloadFunc() {
+			console.log('before')
+			requestModuleData();
+			console.log('after')
+		}
+		window.onpaint = preloadFunc();
+	</script>
 
 
     <style>
