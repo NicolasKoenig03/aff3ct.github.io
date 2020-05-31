@@ -4,7 +4,7 @@ var moduleArray = [];
 
 function requestModuleData() {
 
-  let requestURL = './json/ModuleSidebar.json';
+  let requestURL = 'aff3ct.github.io/json/ModuleSidebar.json';
   let request = new XMLHttpRequest();
 
   request.onreadystatechange = function () {
