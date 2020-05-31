@@ -8,7 +8,7 @@ function main() {
         download(filename, code)
     }, false);
 
-    var reqURL = 'aff3ct.github.io/json/example.json';
+    var reqURL = './json/example.json';
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = function() {
