@@ -5,7 +5,7 @@ var moduleArray = [];
 function requestModuleData() {
   console.log("ruuning")
 
-  let requestURL = '../json/ModuleSidebar.json';
+  let requestURL = '/json/ModuleSidebar.json';
   let request = new XMLHttpRequest();
 
   request.onreadystatechange = function () {
