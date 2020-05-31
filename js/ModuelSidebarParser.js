@@ -1,23 +1,43 @@
 var moduleArray = [];
 // requestModuleData();
 
-function requestModuleData () {
+
+function requestModuleData() {
   console.log("ruuning")
 
-  fetch('../json/ModuleSidebar.json')
-    .then(function (resp) {
-      return resp.json();
-    })
-    .then(function (data) {
+  let requestURL = '../json/ModuleSidebar.json';
+  let request = new XMLHttpRequest();
+  request.responseType = 'json';
+  request.open('GET', requestURL);
+  request.onload = function() {
+    const json_module  = request.response;
       
-      const json_module = data;
+    for (var i = 0; i < Object.keys(json_module).length; i++) {
+      AddModule(json_module, i);
+    }
+  };
+  request.send(null);
+ }
 
-      for (var i = 0; i < Object.keys(json_module).length; i++){
-        AddModule(json_module, i);
-      }
+
+
+// function requestModuleData () {
+//   console.log("ruuning")
+
+//   fetch('../json/ModuleSidebar.json')
+//     .then(function (resp) {
+//       return resp.json();
+//     })
+//     .then(function (data) {
       
-    });
-}
+//       const json_module = data;
+
+//       for (var i = 0; i < Object.keys(json_module).length; i++){
+//         AddModule(json_module, i);
+//       }
+      
+//     });
+// }
 
 function AddModule(jsonObj, i) {
 
