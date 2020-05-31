@@ -7,6 +7,14 @@ function requestModuleData() {
 
   let requestURL = '../json/ModuleSidebar.json';
   let request = new XMLHttpRequest();
+
+  request.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.response)
+    } else if (this.readyState == 4 && this.status == 404) {
+      alert("Error 404 !");
+    }
+  }
   request.responseType = 'json';
   request.open('GET', requestURL);
   request.onload = function() {
