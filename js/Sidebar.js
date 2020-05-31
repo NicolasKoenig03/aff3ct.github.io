@@ -2873,8 +2873,6 @@ Sidebar.prototype.addMenuPalette = function (TypeModuleAbstract, tasks, fns) {
 
 	this.container.appendChild(elt);
 
-	console.log(tasks[0].TaskName)
-
 	for (var i=0; i<nbTask; i++) {
 
 		divPanel = document.createElement('div')
