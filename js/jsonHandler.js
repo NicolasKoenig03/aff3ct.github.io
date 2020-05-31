@@ -8,24 +8,30 @@ function main() {
         download(filename, code)
     }, false);
 
-    var container = document.getElementById('container');
+    var reqURL = '../json/example.json';
+    var xhr = new XMLHttpRequest();
 
-    let requestURL_ModuleTask = '../json/example.json';
-    let request_ModuleTask = new XMLHttpRequest();
-    request_ModuleTask.open('GET', requestURL_ModuleTask);
-    request_ModuleTask.responseType = 'json';
-    // request_ModuleTask.send();
+    xhr.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+            console.log(this.response)
+        } else if(this.readyState == 4 && this.status == 404) {
+            alert("Error 404");
+        }
+    }
+    xhr.open('GET', reqURL, true);
+    xhr.responseType = "json";
+    xhr.send();
 
-    request_ModuleTask.onload = function() {
-        const objTask = request_ModuleTask.response;
-        const jsonTask = request_ModuleTask.response;
+    xhr.onload = function() {
+        const objTask = xhr.response;
+        const jsonTask = xhr.response;
         console.log(jsonTask)
         // const jsonTask = JSON.parse(objTask);
         buildModule = buildModule(jsonTask);
         buildMain = buildMain(jsonTask);
         buildTask = buildTask(jsonTask);
     };
-    request_ModuleTask.send(null);   
+       
 }
 
 
