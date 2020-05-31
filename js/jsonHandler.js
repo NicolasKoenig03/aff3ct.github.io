@@ -13,16 +13,19 @@ function main() {
     let requestURL_ModuleTask = '../json/example.json';
     let request_ModuleTask = new XMLHttpRequest();
     request_ModuleTask.open('GET', requestURL_ModuleTask);
-    request_ModuleTask.responseType = 'text';
-    request_ModuleTask.send();
+    request_ModuleTask.responseType = 'json';
+    // request_ModuleTask.send();
 
     request_ModuleTask.onload = function() {
         const objTask = request_ModuleTask.response;
-        const jsonTask = JSON.parse(objTask);
+        const jsonTask = request_ModuleTask.response;
+        console.log(jsonTask)
+        // const jsonTask = JSON.parse(objTask);
         buildModule = buildModule(jsonTask);
         buildMain = buildMain(jsonTask);
         buildTask = buildTask(jsonTask);
-    }   
+    };
+    request_ModuleTask.send(null);   
 }
 
 
