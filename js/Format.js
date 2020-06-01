@@ -5341,25 +5341,25 @@ StyleFormatPanel.prototype.addStyleOps = function(div)
 		mxUtils.br(div)
 
 
-		var taskList = document.createElement('select');
-		taskList.style.width = "100px";
-		taskList.style.height = "30px";
-		let list = ['task 1', 'task 2', 'task 3', 'task 4'];
-		for (var i=0; i<list.length; i++) {
-			var opt = document.createElement('option');
-			opt.value = list[i];
-			opt.innerHTML = list[i];
-			taskList.appendChild(opt);
-		}
-		div.appendChild(taskList)
-		mxUtils.br(div)
+		// var taskList = document.createElement('select');
+		// taskList.style.width = "100px";
+		// taskList.style.height = "30px";
+		// let list = ['task 1', 'task 2', 'task 3', 'task 4'];
+		// for (var i=0; i<list.length; i++) {
+		// 	var opt = document.createElement('option');
+		// 	opt.value = list[i];
+		// 	opt.innerHTML = list[i];
+		// 	taskList.appendChild(opt);
+		// }
+		// div.appendChild(taskList)
+		// mxUtils.br(div)
 
 		var btnApply = document.createElement('input');
 		btnApply.style.width = '202px';
 		btnApply.type = "button";
 		btnApply.value = "Apply Changes";
-		btnApply.onclick = function() {
 		div.appendChild(btnApply);
+		btnApply.onclick = function() {
 
 		var bits = document.getElementById("input1").value
 		var codeWordSize = document.getElementById("input2").value
